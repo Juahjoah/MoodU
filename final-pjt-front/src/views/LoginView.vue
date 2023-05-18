@@ -4,10 +4,9 @@
     <form @submit.prevent="login">
       <label for="username">ID: </label>
       <input type="text" id="username" v-model="username" />
-      <br />
+
       <label for="password">PW: </label>
       <input type="password" id="password" v-model="password" />
-      <br />
 
       <input type="submit" value="logIn" />
     </form>

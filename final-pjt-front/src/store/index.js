@@ -14,6 +14,8 @@ export default new Vuex.Store({
     createPersistedState(),
   ],
   state: {
+    movies: [
+    ],
     token: null,
   },
   getters: {
@@ -23,12 +25,29 @@ export default new Vuex.Store({
     },
   },
   mutations: {
+    GET_MOVIES(state, movies) {
+      state.movies = movies
+      console.log(state.movies)
+    },
     SAVE_TOKEN(state, token) {
       state.token = token
       router.push({ name: 'MovieView.vue' })
     }
   },
   actions: {
+    getMovies(context) {
+      axios({
+        method: 'get',
+        url: `${API_URL}/movies/`,
+      })
+        .then((response) => {
+          // console.log(response, context)
+          context.commit('GET_MOVIES', response.data)
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+    },
     signup(context, payload) {
       const username = payload.username
       const password1 = payload.password1
@@ -63,6 +82,9 @@ export default new Vuex.Store({
         .then((response) => {
           // console.log(response)
           context.commit('SAVE_TOKEN', response.data.key)
+          console.log(username)
+          console.log(response)
+          return username
         })
         .catch((error) => {
           console.log(error)
