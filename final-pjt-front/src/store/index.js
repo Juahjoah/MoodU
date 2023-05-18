@@ -14,9 +14,14 @@ export default new Vuex.Store({
     createPersistedState(),
   ],
   state: {
-
+    token: null,
   },
   getters: {
+    isLogin(state) {
+      // 토큰을 가지고 있는 경우에만 로그인 상태로 유지
+      return state.token ? true : false
+    }
+
   },
   mutations: {
   },
