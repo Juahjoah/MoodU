@@ -3,5 +3,5 @@ from . import views
 
 app_name = 'community'
 urlpatterns = [
-    path('', views.index)
+    path('', views.community_list),
 ]

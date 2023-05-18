@@ -10,11 +10,13 @@ class MovieListSerializer(serializers.ModelSerializer):
 
 
 class CommentSerializer(serializers.ModelSerializer):
+    # username = serializers.CharField(source = user.username)
 
     class Meta:
         model = Comment
         fields = '__all__'
         read_only_fields = ('movie',)
+
 
 
 class MovieSerializer(serializers.ModelSerializer):
