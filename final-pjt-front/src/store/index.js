@@ -14,6 +14,7 @@ export default new Vuex.Store({
     createPersistedState(),
   ],
   state: {
+
   },
   getters: {
   },
@@ -38,9 +39,25 @@ export default new Vuex.Store({
         .catch((error) => {
           console.log(error)
         })
+    },
+    login(context, payload) {
+      const username = payload.username
+      const password = payload.password
+
+      axios({
+        method: 'post',
+        url: `${API_URL}/accounts/login/`,
+        data: {
+          username, password
+        }
+      })
+        .then((response) => {
+          console.log(response)
+        })
+        .catch((error) => {
+          console.log(error)
+        })
     }
-
-
   },
   modules: {
   }

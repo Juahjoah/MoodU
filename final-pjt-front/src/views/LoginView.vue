@@ -2,8 +2,8 @@
   <div class="login">
     <h1>Login</h1>
     <form @submit.prevent="login">
-      <label for="userid">ID: </label>
-      <input type="text" id="userid" v-model="userid" />
+      <label for="username">ID: </label>
+      <input type="text" id="username" v-model="username" />
       <br />
       <label for="password">PW: </label>
       <input type="password" id="password" v-model="password" />
@@ -19,17 +19,17 @@ export default {
   name: "LoginView",
   data() {
     return {
-      userid: null,
+      username: null,
       password: null,
     };
   },
   methods: {
     login() {
-      const userid = this.userid;
+      const username = this.username;
       const password = this.password;
 
       const payload = {
-        userid,
+        username,
         password,
       };
 
