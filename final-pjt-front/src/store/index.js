@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 
 import axios from 'axios'
 import createPersistedState from 'vuex-persistedstate'
-// import router from '../router'
+import router from '../router'
 
 Vue.use(Vuex)
 
@@ -18,12 +18,15 @@ export default new Vuex.Store({
   },
   getters: {
     isLogin(state) {
-      // 토큰을 가지고 있는 경우에만 로그인 상태로 유지
+      // 로그인 상태를 확인해서 작업 가능 권한 부여
       return state.token ? true : false
-    }
-
+    },
   },
   mutations: {
+    SAVE_TOKEN(state, token) {
+      state.token = token
+      router.push({ name: 'MovieView.vue' })
+    }
   },
   actions: {
     signup(context, payload) {
@@ -39,7 +42,8 @@ export default new Vuex.Store({
         }
       })
         .then((response) => {
-          console.log(response)
+          // console.log(response)
+          context.commit('SAVE_TOKEN', response.data.key)
         })
         .catch((error) => {
           console.log(error)
@@ -57,7 +61,8 @@ export default new Vuex.Store({
         }
       })
         .then((response) => {
-          console.log(response)
+          // console.log(response)
+          context.commit('SAVE_TOKEN', response.data.key)
         })
         .catch((error) => {
           console.log(error)
