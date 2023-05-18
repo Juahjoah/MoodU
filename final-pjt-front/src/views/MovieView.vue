@@ -1,15 +1,34 @@
 <template>
   <div class="Movie">
     <h1>Movie</h1>
+    <p>{{ movie }}</p>
+    <br />
+    <MovieCard :movie="movie" />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
+import MovieCard from "@/components/MovieCard.vue";
 
 export default {
   name: "MovieView",
-  components: {},
+  data() {
+    return {
+      movie: null,
+    };
+  },
+  components: {
+    MovieCard,
+  },
+  created() {
+    this.getMovies();
+  },
+  methods: {
+    getMovies() {
+      this.$store.dispatch("getMovies");
+      this.movie = this.$store.state.movies;
+    },
+  },
 };
 </script>
 
