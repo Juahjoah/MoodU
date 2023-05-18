@@ -12,7 +12,7 @@
 
       <label for="password2"> PW confirmation:</label>
       <input type="password" id="password2" v-model="password2" />
-
+      <br />
       <input type="submit" value="Signup" />
     </form>
   </div>
