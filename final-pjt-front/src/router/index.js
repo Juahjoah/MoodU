@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import MovieView from '../views/MovieView.vue'
 import CommunityView from '../views/CommunityView.vue'
-import SignUpView from '../views/SignUpView.vue'
+import SignupView from '../views/SignupView.vue'
 import LoginView from '../views/LoginView.vue'
 
 Vue.use(VueRouter)
@@ -20,8 +20,8 @@ const routes = [
   },
   {
     path: '/signup',
-    name: 'SignUpView',
-    component: SignUpView
+    name: 'SignupView',
+    component: SignupView
   },
   {
     path: '/login',
