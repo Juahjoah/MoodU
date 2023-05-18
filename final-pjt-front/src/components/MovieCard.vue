@@ -1,13 +1,26 @@
 <template>
   <div class="MovieCard">
-    <h1>MovieCard</h1>
+    <!-- <h1>MovieCard</h1> -->
+    <div>
+      <img class="movie-poster-img" :src="getPoster" alt="Movie Img">
+      <p>{{movie.title}}</p>
+      <p>{{movie.overview}}</p>
+
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   name: "MovieCard",
-  props: {},
+  props: {
+    movie: Object,
+  },
+  computed: {
+    getPoster() { 
+      return `https://image.tmdb.org/t/p/original/${this.movie.poster_path}`
+    }
+  },
 };
 </script>
 

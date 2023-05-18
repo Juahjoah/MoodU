@@ -3,7 +3,7 @@
     <h1>Movie</h1>
     <p>{{ movie }}</p>
     <br />
-    <MovieCard :movie="movie" />
+    <MovieCard v-for="movie in movies" :key="movie.id" :movie="movie" />
   </div>
 </template>
 
@@ -14,7 +14,7 @@ export default {
   name: "MovieView",
   data() {
     return {
-      movie: null,
+      movies: null,
     };
   },
   components: {
@@ -26,7 +26,7 @@ export default {
   methods: {
     getMovies() {
       this.$store.dispatch("getMovies");
-      this.movie = this.$store.state.movies;
+      this.movies = this.$store.state.movies;
     },
   },
 };
