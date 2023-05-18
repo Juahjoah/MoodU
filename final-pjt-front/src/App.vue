@@ -2,7 +2,9 @@
   <div id="app">
     <nav>
       <router-link to="/">Movie</router-link> |
-      <router-link to="/community">Community</router-link>
+      <router-link to="/community">Community</router-link> |
+      <router-link to="/signup">Sign up</router-link> |
+      <router-link to="/login">Login</router-link>
     </nav>
     <router-view />
   </div>
