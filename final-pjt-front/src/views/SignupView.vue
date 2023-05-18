@@ -2,8 +2,8 @@
   <div class="signup">
     <h1>Signup Page</h1>
     <form @submit.prevent="signup">
-      <label for="userid">ID : </label>
-      <input type="text" id="userid" v-model="userid" />
+      <label for="username">ID : </label>
+      <input type="text" id="username" v-model="username" />
       <br />
 
       <label for="password1"> PW: </label>
@@ -30,12 +30,12 @@ export default {
   },
   methods: {
     signup() {
-      const userid = this.userid;
+      const username = this.username;
       const password1 = this.password1;
       const password2 = this.password2;
 
       const payload = {
-        userid,
+        username,
         password1,
         password2,
       };

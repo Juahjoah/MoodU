@@ -21,7 +21,7 @@ export default new Vuex.Store({
   },
   actions: {
     signup(context, payload) {
-      const userid = payload.userid
+      const username = payload.username
       const password1 = payload.password1
       const password2 = payload.password2
 
@@ -29,7 +29,7 @@ export default new Vuex.Store({
         method: 'post',
         url: `${API_URL}/accounts/signup/`,
         data: {
-          userid, password1, password2
+          username, password1, password2
         }
       })
         .then((response) => {
