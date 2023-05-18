@@ -20,10 +20,10 @@
 
 <script>
 export default {
-  name: "SignUpView",
+  name: "SignupView",
   data() {
     return {
-      userid: null,
+      username: null,
       password1: null,
       password2: null,
     };
