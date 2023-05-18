@@ -17,8 +17,8 @@ class Movie(models.Model):
     # movie와 genres M:N table
     genres = models.ManyToManyField(Genre)
 
-    like_users = models.ForeignKey(
-        settings.AUTH_USER_MODEL, related_name='like_movies', on_delete=models.CASCADE)
+    like_users = models.ManyToManyField(
+        settings.AUTH_USER_MODEL, related_name='like_movies')
 
 
 class Comment(models.Model):
