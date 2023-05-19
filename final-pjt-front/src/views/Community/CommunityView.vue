@@ -1,6 +1,8 @@
 <template>
   <div class="community">
-    <h1>This is community page</h1>
+    <h1>여러분의 생각을 들려주세요.</h1>
+    <input type="text" />
+    <article></article>
   </div>
 </template>
 
