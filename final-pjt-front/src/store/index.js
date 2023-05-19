@@ -24,7 +24,6 @@ export default new Vuex.Store({
       state.movies = movies
       console.log(state.movies)
     },
-
     USER(state, username) {
       state.user = username
       console.log(state.user)

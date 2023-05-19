@@ -1,14 +1,15 @@
 <template>
   <div class="create">
     <h1>커뮤니티 게시글 작성</h1>
-    <form @submit.prevent="createCommunity"></form>
-    <label for="title"> 제목: </label>
-    <input type="text" id="title" v-model.trim="title" />
-    <br />
-    <label for="content"> 내용 :</label>
-    <input type="text" id="content" v-model.trim="content" />
-    <br />
-    <input type="submit" value="작성 완료" />
+    <form @submit.prevent="createCommunity">
+      <label for="title"> 제목: </label>
+      <input type="text" id="title" v-model.trim="title" />
+      <br />
+      <label for="content"> 내용 :</label>
+      <textarea type="text" id="content" v-model.trim="content" />
+      <br />
+      <input type="submit" value="작성 완료" />
+    </form>
   </div>
 </template>
 
@@ -25,6 +26,13 @@ export default {
     };
   },
   methods: {
+    setToken: function () {
+      const token = localStorage.getItem("jwt");
+      const config = {
+        Authorization: `Bearer ${token}`,
+      };
+      return config;
+    },
     createCommunity() {
       const title = this.title;
       const content = this.content;
@@ -43,14 +51,14 @@ export default {
           title,
           content,
         },
-        header: {
-          Authorization: `Bearer ${"#"}`,
-        },
+        headers: this.setToken(),
       })
-        .then(() => {
+        .then((response) => {
+          console.log(response);
           this.$router.push({ name: "CommunityView" });
         })
         .catch((error) => {
+          console.log(this.data);
           console.log(error);
         });
     },
