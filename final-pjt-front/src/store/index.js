@@ -17,6 +17,7 @@ export default new Vuex.Store({
     movies: [
     ],
     token: null,
+    user: null,
   },
   getters: {
     isLogin(state) {
@@ -32,6 +33,10 @@ export default new Vuex.Store({
     SAVE_TOKEN(state, token) {
       state.token = token
       router.push({ name: 'MovieView.vue' })
+    },
+    USER(state, username) {
+      state.user = username
+      console.log(state.user)
     }
   },
   actions: {
@@ -60,13 +65,15 @@ export default new Vuex.Store({
           username, password1, password2
         }
       })
-        .then((response) => {
-          // console.log(response)
-          context.commit('SAVE_TOKEN', response.data.key)
-        })
-        .catch((error) => {
-          console.log(error)
-        })
+      .then(() => {
+        // console.log(response)
+        alert('회원가입 성공')
+        router.push({name: 'LoginView'})
+
+      })
+      .catch((error) => {
+        console.log(error)
+      })
     },
     login(context, payload) {
       const username = payload.username
@@ -81,14 +88,21 @@ export default new Vuex.Store({
       })
         .then((response) => {
           // console.log(response)
-          context.commit('SAVE_TOKEN', response.data.key)
-          console.log(username)
-          console.log(response)
-          return username
+          localStorage.setItem("jwt", response.data.accessToken)
+          context.commit("USER", username)
         })
         .catch((error) => {
           console.log(error)
         })
+    },
+    logout(context) {
+      console.log(context)
+      const username = this.state.user
+
+      if (username) {
+        localStorage.removeItem('jwt')
+        this.state.user = null
+      }
     }
   },
   modules: {

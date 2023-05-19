@@ -1,14 +1,31 @@
 <template>
   <div id="app">
     <nav>
+      <p>{{$store.state.user}}</p>
+      <div v-if="!$store.state.user">
+        <router-link :to="{ name: 'SignupView' }">Sign up page</router-link> |
+        <router-link :to="{ name: 'LoginView' }">Login page</router-link>
+      </div>
+      <div v-else>
+        <a @click="logout">logout</a> |
+        <router-link to="#">profile</router-link>
+      </div>
       <router-link to="/">Movie</router-link> |
       <router-link to="/community">Community</router-link> |
-      <router-link :to="{ name: 'SignupView' }">Sign up page</router-link> |
-      <router-link :to="{ name: 'LoginView' }">Login page</router-link>
     </nav>
     <router-view />
   </div>
 </template>
+
+<script>
+export default {
+  methods: {
+    logout() {
+      this.$store.dispatch("logout");
+    }
+  }
+}
+</script>
 
 <style>
 #app {
