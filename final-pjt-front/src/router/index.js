@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import MovieView from '../views/MovieView.vue'
-import CommunityView from '../views/CommunityView.vue'
-import SignupView from '../views/SignupView.vue'
-import LoginView from '../views/LoginView.vue'
-import MovieDetailView from '../views/MovieDetailView.vue'
+import MovieView from '../views/Movie/MovieView.vue'
+import CommunityView from '../views/Community/CommunityView.vue'
+import SignupView from '../views/Accounts/SignupView.vue'
+import LoginView from '../views/Accounts/LoginView.vue'
+import MovieDetailView from '../views/Movie/MovieDetailView.vue'
 
 Vue.use(VueRouter)
 
