@@ -1,9 +1,10 @@
 <template>
   <div class="Movie">
     <h1>Movie</h1>
-    <p>{{ movie }}</p>
     <br />
-    <MovieCard v-for="movie in movies" :key="movie.id" :movie="movie" />
+    <section class="movielist">
+      <MovieCard v-for="movie in movies" :key="movie.id" :movie="movie" />
+    </section>
   </div>
 </template>
 

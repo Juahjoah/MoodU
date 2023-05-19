@@ -1,22 +1,39 @@
 <template>
-  <div class="moviedetail"></div>
+  <div class="moviedetail">
+    <p>{{ movie.title }}</p>
+    <p>{{ movie.overview }}</p>
+    <p>{{ movie.release_date }}</p>
+  </div>
 </template>
 
 <script>
+import axios from "axios";
+
+const API_URL = "http://127.0.0.1:8000";
+
 export default {
   name: "MovieDetailView",
   data() {
     return {
-      movies: null,
+      movie: null,
     };
   },
   created() {
-    this.getMovies();
+    this.getMoviesDetail();
   },
   methods: {
-    getMovies() {
-      this.$store.dispatch("getMovies");
-      this.movies = this.$store.state.movies;
+    getMoviesDetail() {
+      axios({
+        method: "get",
+        url: `${API_URL}/movies/${this.$route.params.id}/`,
+      })
+        .then((response) => {
+          console.log(response);
+          this.movie = response.data;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
   },
 };

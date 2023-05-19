@@ -1,11 +1,12 @@
 <template>
-  <div class="MovieCard">
+  <div class="card">
     <!-- <h1>MovieCard</h1> -->
-    <div>
-      <img class="movie-poster-img" :src="getPoster" alt="Movie Img">
-      <p>{{movie.title}}</p>
-      <p>{{movie.overview}}</p>
-
+    <div class="each-movie-card">
+      <router-link :to="{ name: 'MovieDetail', params: { id: movie.id } }">
+        <img class="card-img-top" :src="getPoster" alt="Card image cap" />
+        <p>{{ movie.title }}</p>
+        <p>{{ movie.overview }}</p>
+      </router-link>
     </div>
   </div>
 </template>
@@ -17,9 +18,9 @@ export default {
     movie: Object,
   },
   computed: {
-    getPoster() { 
-      return `https://image.tmdb.org/t/p/original/${this.movie.poster_path}`
-    }
+    getPoster() {
+      return `https://image.tmdb.org/t/p/original/${this.movie.poster_path}`;
+    },
   },
 };
 </script>
