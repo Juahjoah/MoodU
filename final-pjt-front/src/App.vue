@@ -13,7 +13,7 @@
       <router-link to="/">Movie</router-link> |
       <router-link :to="{ name: 'Community' }">Community</router-link> |
     </nav>
-    <hr width="100%" />
+    <hr />
     <router-view />
   </div>
 </template>
