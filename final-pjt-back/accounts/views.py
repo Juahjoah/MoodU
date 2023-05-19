@@ -5,8 +5,8 @@ from .serializers import UserSerializer
 from django.shortcuts import get_object_or_404, get_list_or_404
 from .models import User
 from .serializers import UserSerializer
-import jwt
 
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
 @api_view(['POST'])
 def signup(request):
@@ -20,8 +20,7 @@ def signup(request):
     serializer = UserSerializer(data=request.data)
     # print(serializer)
     # 유효성 검사
-    if serializer.is_valid(raise_exception=True): # serializers에 fields의 password가 꼭 필요하다고 에러가 뜸 필드에서 지워버림
-        # print('여기서 에러나나?')
+    if serializer.is_valid(raise_exception=True):
         user = serializer.save()
         # 비밀번호 hash 해서 저장
         user.set_password(request.data.get('password'))
@@ -37,10 +36,17 @@ def login(request):
     users = get_object_or_404(User, username = username)
     serializer = UserSerializer(users)
     # print(serializer.data)
-    # return Response(serializer.data['id'], status = 200)
 
-    encoded = jwt.encode({"id": serializer.data['id']}, "JWT", algorithm="HS256")
+    token = TokenObtainPairSerializer.get_token(users)
+    refresh_token = str(token)
+    access_token = str(token.access_token)
+
     data = {
-        "accessToken" : encoded
+        "user": serializer.data,
+        "message": "register success",
+        "token":{
+            "accessToken" : access_token,
+            "refresh": refresh_token,
+        },
     }
     return Response(data, status = 200)

@@ -18,28 +18,18 @@ export default new Vuex.Store({
     ],
     user: null,
   },
-  getters: {
-    isLogin(state) {
-      // 로그인 상태를 확인해서 작업 가능 권한 부여
-      return state.token ? true : false
-    },
-  },
+
   mutations: {
     GET_MOVIES(state, movies) {
       state.movies = movies
       console.log(state.movies)
     },
-    SAVE_TOKEN(state, token) {
-      state.token = token
-      router.push({ name: 'MovieView.vue' })
-    },
+
     USER(state, username) {
       state.user = username
       console.log(state.user)
     },
-    LOGOUT(state) {
-      state.user = null
-    }
+
   },
   actions: {
     getMovies(context) {
@@ -86,11 +76,12 @@ export default new Vuex.Store({
         url: `${API_URL}/accounts/login/`,
         data: {
           username, password
-        }
+        },
+        // headers: {Authorization: `Bearer ${localStorage.getItem('jwt')}`}
       })
         .then((response) => {
           // console.log(response)
-          localStorage.setItem("jwt", response.data.accessToken)
+          localStorage.setItem("jwt", response.data.token.accessToken)
           context.commit("USER", username)
         })
         .catch((error) => {
@@ -99,10 +90,11 @@ export default new Vuex.Store({
     },
     logout(context) {
       console.log(context)
+      const username = this.state.user
 
-      if (this.state.user) {
+      if (username) {
         localStorage.removeItem('jwt')
-        context.commit("LOGOUT")
+        this.state.user = null
       }
     },
 
