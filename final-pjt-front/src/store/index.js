@@ -16,7 +16,6 @@ export default new Vuex.Store({
   state: {
     movies: [
     ],
-    token: null,
     user: null,
   },
   getters: {
@@ -37,6 +36,9 @@ export default new Vuex.Store({
     USER(state, username) {
       state.user = username
       console.log(state.user)
+    },
+    LOGOUT(state){
+      state.user = null
     }
   },
   actions: {
@@ -97,12 +99,12 @@ export default new Vuex.Store({
     },
     logout(context) {
       console.log(context)
-      const username = this.state.user
-
-      if (username) {
+      
+      if (this.state.user) {
         localStorage.removeItem('jwt')
-        this.state.user = null
+        context.commit("LOGOUT")
       }
+      
     }
   },
   modules: {
