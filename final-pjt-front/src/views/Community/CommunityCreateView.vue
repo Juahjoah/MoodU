@@ -8,7 +8,7 @@
       <label for="content"> 내용 :</label>
       <textarea type="text" id="content" v-model.trim="content" />
       <br />
-      <input type="submit" value="작성 완료" />
+      <button @click="createCommunity">제출</button>
     </form>
   </div>
 </template>
@@ -26,13 +26,6 @@ export default {
     };
   },
   methods: {
-    setToken: function () {
-      const token = localStorage.getItem("jwt");
-      const config = {
-        Authorization: `Bearer ${token}`,
-      };
-      return config;
-    },
     createCommunity() {
       const title = this.title;
       const content = this.content;
@@ -44,6 +37,7 @@ export default {
         alert("내용 입력해주세요");
         return;
       }
+      const token = localStorage.getItem("jwt");
       axios({
         method: "post",
         url: `${API_URL}/community/create/`,
@@ -51,7 +45,9 @@ export default {
           title,
           content,
         },
-        headers: this.setToken(),
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       })
         .then((response) => {
           console.log(response);
