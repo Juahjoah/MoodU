@@ -20,7 +20,7 @@ export default new Vuex.Store({
   },
   getters: {
     isLogin(state) {
-      // 로그인 상태를 확인해서 작업 가능 권한 부여
+      // 로그인 상태를 확인해서 작업 가능 권한 부여 -> 아직 사용X
       return state.token ? true : false
     },
   },

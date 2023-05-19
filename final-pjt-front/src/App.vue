@@ -11,7 +11,7 @@
         <router-link to="#">profile</router-link>
       </div>
       <router-link to="/">Movie</router-link> |
-      <router-link to="/community">Community</router-link> |
+      <router-link :to="{ name: 'Community' }">Community</router-link> |
     </nav>
     <hr width="100%" />
     <router-view />
