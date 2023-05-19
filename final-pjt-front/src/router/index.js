@@ -4,6 +4,7 @@ import MovieView from '../views/MovieView.vue'
 import CommunityView from '../views/CommunityView.vue'
 import SignupView from '../views/SignupView.vue'
 import LoginView from '../views/LoginView.vue'
+import MovieDetailView from '../views/MovieDetailView.vue'
 
 Vue.use(VueRouter)
 
@@ -12,6 +13,11 @@ const routes = [
     path: '/',
     name: 'Movie',
     component: MovieView
+  },
+  {
+    path: '/:id',
+    name: 'MovieDetail',
+    component: MovieDetailView
   },
   {
     path: '/community',

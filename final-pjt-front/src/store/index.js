@@ -37,7 +37,7 @@ export default new Vuex.Store({
       state.user = username
       console.log(state.user)
     },
-    LOGOUT(state){
+    LOGOUT(state) {
       state.user = null
     }
   },
@@ -67,15 +67,15 @@ export default new Vuex.Store({
           username, password1, password2
         }
       })
-      .then(() => {
-        // console.log(response)
-        alert('회원가입 성공')
-        router.push({name: 'LoginView'})
+        .then(() => {
+          // console.log(response)
+          alert('회원가입 성공')
+          router.push({ name: 'LoginView' })
 
-      })
-      .catch((error) => {
-        console.log(error)
-      })
+        })
+        .catch((error) => {
+          console.log(error)
+        })
     },
     login(context, payload) {
       const username = payload.username
@@ -99,13 +99,13 @@ export default new Vuex.Store({
     },
     logout(context) {
       console.log(context)
-      
+
       if (this.state.user) {
         localStorage.removeItem('jwt')
         context.commit("LOGOUT")
       }
-      
-    }
+    },
+
   },
   modules: {
   }

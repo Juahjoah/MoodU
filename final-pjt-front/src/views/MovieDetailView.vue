@@ -15,7 +15,7 @@ export default {
   name: "MovieDetailView",
   data() {
     return {
-      movie: null,
+      movie: Object,
     };
   },
   created() {

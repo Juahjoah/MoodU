@@ -3,7 +3,7 @@
     <!-- <h1>MovieCard</h1> -->
     <div class="each-movie-card">
       <router-link :to="{ name: 'MovieDetail', params: { id: movie.id } }">
-        <img class="card-img-top" :src="getPoster" alt="Card image cap" />
+        <img class="card-img-top" :src="getPoster" alt="Poster image" />
         <p>{{ movie.title }}</p>
         <p>{{ movie.overview }}</p>
       </router-link>

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <nav>
-      <p>{{$store.state.user}}</p>
+    <nav class="main_nav">
+      <p>{{ $store.state.user }}</p>
       <div v-if="!$store.state.user">
         <router-link :to="{ name: 'SignupView' }">Sign up page</router-link> |
         <router-link :to="{ name: 'LoginView' }">Login page</router-link>
@@ -13,6 +13,7 @@
       <router-link to="/">Movie</router-link> |
       <router-link to="/community">Community</router-link> |
     </nav>
+    <hr width="100%" />
     <router-view />
   </div>
 </template>
@@ -22,9 +23,9 @@ export default {
   methods: {
     logout() {
       this.$store.dispatch("logout");
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style>
@@ -47,5 +48,10 @@ nav a {
 
 nav a.router-link-exact-active {
   color: #42b983;
+}
+
+.main_nav {
+  /* background-color: lemonchiffon; */
+  height: 3rem;
 }
 </style>
