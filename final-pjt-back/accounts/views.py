@@ -20,7 +20,8 @@ def signup(request):
     serializer = UserSerializer(data=request.data)
     # print(serializer)
     # 유효성 검사
-    if serializer.is_valid(raise_exception=True):
+    if serializer.is_valid(raise_exception=True): # serializers에 fields의 password가 꼭 필요하다고 에러가 뜸 필드에서 지워버림
+        # print('여기서 에러나나?')
         user = serializer.save()
         # 비밀번호 hash 해서 저장
         user.set_password(request.data.get('password'))
