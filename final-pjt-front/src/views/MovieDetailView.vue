@@ -9,6 +9,7 @@
     <p>인기도: {{ movie.popularity }}</p>
     <p>평균 점수: {{ movie.vote_average }}</p>
     <p>투표 수: {{ movie.vote_count }}</p>
+    <p>장르 : {{ movie.genres }}</p>
     <hr />
     <p>좋아요 누른 사용자 : {{ movie.like_users }}</p>
     <section class="user_comment">
