@@ -6,18 +6,14 @@
     </article>
     <br />
     <hr />
-    <button @click="createmove">Create</button>
+    <router-link :to="{ name: 'CommunityCreate' }">[CREATE]</router-link>
   </div>
 </template>
 
 <script>
 export default {
   name: "CommunityView",
-  methods: {
-    createmove() {
-      this.$router.push({ name: "CommunityCreate" });
-    },
-  },
+  methods: {},
 };
 </script>
 
