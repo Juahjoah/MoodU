@@ -7,6 +7,8 @@
     <br />
     <label for="content"> 내용 :</label>
     <input type="text" id="content" v-model.trim="content" />
+    <br />
+    <input type="submit" value="작성 완료" />
   </div>
 </template>
 
