@@ -93,7 +93,7 @@ export default new Vuex.Store({
 
       if (username) {
         localStorage.removeItem('jwt')
-        this.state.user = null
+        context.commit('LOGOUT')
       }
     },
 
