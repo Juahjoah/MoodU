@@ -1,44 +1,15 @@
 <template>
   <div class="card">
-    <!-- <h1>MovieCard</h1> -->
-    <div class="each-movie-card"
-    data-glide-el="track"
-    ref="slider"
-    type="carousel"
-    :breakpoints="{3000: {perView: 7}, 1100: {perView: 5}, 600: {perView: 3}}"
-    >
-    <!-- <div class="each-movie-card"
-    type="carousel"
-    perView="6"
-    data-glide-el="track"
-    ref="slider"
-    :breakpoints="{3000: {perView: 7}, 1100: {perView: 5}, 600: {perView: 3}}"
-    > -->
+    <div class="each-movie-card">
       <router-link :to="{ name: 'MovieDetail', params: { id: movie.id } }">
         <img class="card-img-top" :src="getPoster" alt="Poster image" />
-        <p>{{ movie.title }}</p>
-        <p>{{ movie.overview }}</p>
-        <!-- <vue-glide 
-        class="glide__track"
-        data-glide-el="track"
-        ref="slider"
-        type="carousel"
-        :breakpoints="{3000: {perView: 7}, 1100: {perView: 5}, 600: {perView: 3}}"
-      >
-      <p>{{ movie.title }}</p> -->
-        <!-- <vue-glide-slide
-          v-for="(movie, idx) in movie"
-          :key="idx">
-          
-        </vue-glide-slide> -->
-      <!-- </vue-glide> -->
-      </router-link>
+          <p> {{movie.title}}</p>
+        </router-link>
     </div>
   </div>
 </template>
 
 <script>
-import { Glide, GlideSlide } from 'vue-glide-js'
 
 export default {
   name: "MovieCard",
@@ -46,8 +17,6 @@ export default {
     movie: Object,
   },
   components:{
-    [Glide.name]: Glide,
-    [GlideSlide.name]: GlideSlide
   },
   computed: {
     getPoster() {
@@ -76,11 +45,12 @@ a {
 .card {
   width: 13rem;
   height: auto;
+  margin: 20px;
 }
 .card img {
   width: 13rem;
   height: auto;
+  overflow-x: hidden;
 }
-
 
 </style>

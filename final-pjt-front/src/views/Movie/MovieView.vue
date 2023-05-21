@@ -37,6 +37,9 @@ export default {
 
 .movielist {
   display: flex;
-
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0px 20px;
 }
 </style>
