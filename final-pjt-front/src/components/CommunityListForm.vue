@@ -1,17 +1,24 @@
 <template>
-  <div class="CommunityListFrom">
-    <CommunityListItem />
+  <div class="CommunityListForm">
+    <div class="communitylist" v-for="(community, idx) in communities" :key="idx">
+        <p>{{community}}</p>
+        <p> {{community.id}} </p>
+        <p> {{community.title}} </p>
+        <p> {{community.content}} </p>
+    </div>
   </div>
 </template>
 
 <script>
-import CommunityListItem from "@/components/CommunityListItem.vue";
 
 export default {
   name: "CommunityListForm",
-  components: {
-    CommunityListItem,
+  props: {
+    communities: Array,
   },
+  methods: {
+
+  }
 };
 </script>
 

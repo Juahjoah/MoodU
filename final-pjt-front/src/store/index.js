@@ -84,7 +84,7 @@ export default new Vuex.Store({
           // console.log(response)
           localStorage.setItem("jwt", response.data.token.accessToken)
           context.commit("USER", username)
-          router.push({ name: 'MovieView' })
+          router.push({ name: 'Movie' })
         })
         .catch((error) => {
           console.log(error)
@@ -97,7 +97,7 @@ export default new Vuex.Store({
       if (username) {
         localStorage.removeItem('jwt')
         context.commit('LOGOUT')
-        router.push({ name: 'MovieView' })
+        router.push({ name: 'Movie' })
       }
     },
 

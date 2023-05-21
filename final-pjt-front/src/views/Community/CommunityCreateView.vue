@@ -1,7 +1,7 @@
 <template>
   <div class="create">
     <h1>커뮤니티 게시글 작성</h1>
-    <form @submit.prevent="createCommunity">
+    <form>
       <label for="title"> 제목: </label>
       <input type="text" id="title" v-model.trim="title" />
       <br />
@@ -21,8 +21,8 @@ export default {
   name: "CommunityCreateView",
   data() {
     return {
-      title: null,
-      content: null,
+      title: '',
+      content: '',
     };
   },
   methods: {
@@ -54,7 +54,7 @@ export default {
           this.$router.push({ name: "CommunityView" });
         })
         .catch((error) => {
-          console.log(this.data);
+          // console.log(this.data);
           console.log(error);
         });
     },
