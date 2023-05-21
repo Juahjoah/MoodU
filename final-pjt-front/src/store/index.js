@@ -18,7 +18,6 @@ export default new Vuex.Store({
     ],
     user: null,
   },
-
   mutations: {
     GET_MOVIES(state, movies) {
       state.movies = movies
@@ -28,6 +27,9 @@ export default new Vuex.Store({
       state.user = username
       console.log(state.user)
     },
+    LOGOUT(state) {
+      state.user = null
+    }
 
   },
   actions: {
@@ -95,6 +97,7 @@ export default new Vuex.Store({
       if (username) {
         localStorage.removeItem('jwt')
         context.commit('LOGOUT')
+        router.push({ name: 'MovieView' })
       }
     },
 
