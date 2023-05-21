@@ -82,6 +82,7 @@ export default new Vuex.Store({
           // console.log(response)
           localStorage.setItem("jwt", response.data.token.accessToken)
           context.commit("USER", username)
+          router.push({ name: 'MovieView' })
         })
         .catch((error) => {
           console.log(error)
