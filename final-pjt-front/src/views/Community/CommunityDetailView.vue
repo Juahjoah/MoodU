@@ -1,11 +1,11 @@
 <template>
   <div class="communitydetail">
-    <p>{{ community }}</p>
+    <!-- <p>{{ community }}</p> -->
     <p>제목 : {{ community.title }}</p>
     <p>내용 : {{ community.content }}</p>
     <p>작성자 : {{ community.username }}</p>
     <hr />
-    <!-- <button @click="communityUpdate()">[수정하기]</button> -->
+    <button @click="communityUpdate()">[수정하기]</button>
     <button @click="communityDelete()">[삭제하기]</button>
   </div>
 </template>
@@ -46,7 +46,16 @@ export default {
           console.log(error);
         });
     },
-    communityUpdate() {},
+    communityUpdate() {
+      if (this.$store.state.user == this.community.username) {
+        this.$router.push({
+          name: "CommunityUpdate",
+          params: { id: this.community.id },
+        });
+      } else {
+        alert("본인이 작성한 글만 수정이 가능합니다.");
+      }
+    },
     communityDelete() {
       if (confirm("정말 삭제하시겠습니까?")) {
         axios({
@@ -63,7 +72,6 @@ export default {
       }
     },
   },
-
   computed: {},
 };
 </script>
