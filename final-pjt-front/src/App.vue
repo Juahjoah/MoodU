@@ -1,18 +1,21 @@
 <template>
   <div id="app">
     <nav class="main_nav">
-      <p>{{ $store.state.user }}</p>
-      <div v-if="!$store.state.user">
+      <section v-if="!$store.state.user">
+        <router-link to="/">Movie</router-link> |
+        <router-link :to="{ name: 'Community' }">Community</router-link> |
         <router-link :to="{ name: 'SignupView' }">Sign up page</router-link> |
         <router-link :to="{ name: 'LoginView' }">Login page</router-link>
-      </div>
-      <div v-else>
+      </section>
+      <section v-else>
+        <router-link to="/">Movie</router-link> |
+        <router-link :to="{ name: 'Community' }">Community</router-link> |
         <a @click="logout">logout</a> |
         <router-link to="#">profile</router-link>
-      </div>
-      <router-link to="/">Movie</router-link> |
-      <router-link :to="{ name: 'Community' }">Community</router-link> |
+        <p class="navp">{{ $store.state.user }}님! 오늘도 반가워요!</p>
+      </section>
     </nav>
+    <hr />
     <router-view />
   </div>
 </template>
@@ -38,6 +41,7 @@ export default {
 
 nav {
   padding: 30px;
+  height: 3rem;
 }
 
 nav a {
@@ -49,8 +53,11 @@ nav a.router-link-exact-active {
   color: #42b983;
 }
 
-.main_nav {
-  /* background-color: lemonchiffon; */
+/* background-color: lemonchiffon; */
+/* .main_nav {
   height: 3rem;
-}
+} */
+
+/* .navp {
+} */
 </style>

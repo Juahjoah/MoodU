@@ -33,7 +33,7 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    getCommunities(context) {
+    getMovies(context) {
       axios({
         method: 'get',
         url: `${API_URL}/movies/`,
