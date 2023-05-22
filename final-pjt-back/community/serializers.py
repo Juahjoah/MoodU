@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 class ReviewSerializer(serializers.ModelSerializer):
     username = serializers.SerializerMethodField()
-    print(username)
+    # print(username)
 
     def get_username(self, obj): # obj : get_username() 메소드의 인자로 전달되는 객체
         # 이 메소드는 ReviewSerializer 클래스 내에서 username 필드를 위한 직렬화 메소드로 사용된다.
