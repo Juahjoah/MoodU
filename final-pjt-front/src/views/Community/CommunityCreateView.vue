@@ -50,7 +50,7 @@ export default {
         },
       })
         .then((response) => {
-          this.$router.push({ name: "Community" });
+          this.$router.push({ name: "Community" }).catch(() => { });
           console.log(response);
         })
         .catch((error) => {
