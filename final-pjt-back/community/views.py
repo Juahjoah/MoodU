@@ -30,7 +30,7 @@ def community_create(request):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     
 
-@api_view(['GET', 'DELETE', 'PUT'])
+@api_view(['GET', 'DELETE'])
 def community_detail(request, review_pk):
     review = get_object_or_404(Review, pk=review_pk)
 
@@ -43,8 +43,12 @@ def community_detail(request, review_pk):
             review.delete()
             return Response({'delete':f'{review_pk}번 글이 삭제되었습니다.'}, status=status.HTTP_204_NO_CONTENT)
     
-    elif request.method == 'PUT':
-        if request.user == review.user:
+
+
+@api_view(['PUT'])
+def community_update(request, review_pk):
+    review = get_object_or_404(Review, pk=review_pk)
+    if request.user == review.user:
             serializer = ReviewSerializer(review, data=request.data)
             if serializer.is_valid(raise_exception=True):
                 serializer.save()
