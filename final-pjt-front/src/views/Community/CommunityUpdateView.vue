@@ -65,7 +65,7 @@ export default {
           this.$router.push({
             name: "CommunityDetail",
             params: { id: this.community.id },
-          });
+          }).catch(() => { });
         })
         .catch((error) => {
           console.log(error);
