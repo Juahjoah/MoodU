@@ -41,5 +41,6 @@ export default {
   flex-wrap: wrap;
   justify-content: center;
   margin: 0px 20px;
+
 }
 </style>
