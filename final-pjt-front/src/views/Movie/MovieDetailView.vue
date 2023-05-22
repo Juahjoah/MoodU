@@ -17,7 +17,8 @@
     </div>
     <!--여러개의 장르가 있어 for로 출력-->
     <hr />
-    <p>좋아요 누른 사용자 : {{ movie.like_users }}</p>
+    <!-- <p>좋아요 누른 사용자 : {{ movie.like_users }}</p> -->
+    <button @click="upLike()">이 영화 맘에 드셨나요?</button>
     <section class="user_comment">
       <p class="displaytext">여러분은 영화를 어떻게 보셨나요?</p>
       <!-- <p>{{ movie.comment_set }}</p> -->
@@ -54,6 +55,7 @@ export default {
           console.log(error);
         });
     },
+    upLike() {},
   },
   computed: {
     getPoster() {
