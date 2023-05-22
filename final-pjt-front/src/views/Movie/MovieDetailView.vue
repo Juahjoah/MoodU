@@ -18,7 +18,7 @@
     <hr />
     <!-- <p>좋아요 누른 사용자 : {{ movie.like_users }}</p> -->
     <button @click="upLike()">이 영화 맘에 드셨나요?</button>
-    <span>{{ count }}</span>
+    <span>{{count}}</span>
     <section class="user_comment">
       <p class="displaytext">여러분은 영화를 어떻게 보셨나요?</p>
       <input type="text" v-model.trim="comment" @keyup.enter="createComment">
@@ -32,15 +32,14 @@ import axios from "axios";
 // import { __vlsComponentHelper } from 'vue-editor-bridge'; // /? 내가 잘못 눌럿남?
 
 const API_URL = "http://127.0.0.1:8000";
-const token = localStorage.getItem('jwt')
 
 export default {
   name: "MovieDetailView",
   data() {
     return {
       movie: Object,
-      count: null,
       comment: null,
+      count: 0,
     };
   },
   created() {
@@ -62,7 +61,8 @@ export default {
         });
     },
     upLike() {
-
+      const token = localStorage.getItem('jwt')
+      
       axios({
         method: 'post',
         url: `${API_URL}/movies/${this.$route.params.id}/like/`,
@@ -73,6 +73,7 @@ export default {
       }).then((res)=> {
         console.log(res)
         this.count = res.data.liked_count
+
       }).catch((err)=> {
         console.log(err)
       })
@@ -81,6 +82,7 @@ export default {
     },
     createComment() {
       const comment = this.comment
+      const token = localStorage.getItem('jwt')
 
       if (!comment) {
         alert('댓글을 달고 엔터를 눌러라')
@@ -89,7 +91,7 @@ export default {
           method: 'post',
           url: `${API_URL}/movies/${this.$route.params.id}/comments/create/`,
           headers: {
-          Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${token}`,
           },
           data: {
             content : comment
