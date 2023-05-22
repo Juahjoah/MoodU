@@ -1,6 +1,7 @@
 <template>
   <div class="community">
     <h1>여러분의 생각을 들려주세요.</h1>
+    <p>로그인한 사용자만 접근할 수 있어요!</p>
     <article>
       <CommunityListForm :communities="communities" />
     </article>
