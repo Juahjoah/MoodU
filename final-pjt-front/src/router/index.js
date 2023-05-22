@@ -8,6 +8,7 @@ import MovieDetailView from '../views/Movie/MovieDetailView.vue'
 import CommunityCreateView from '../views/Community/CommunityCreateView.vue'
 import CommunityDetailView from '../views/Community/CommunityDetailView.vue'
 import CommunityUpdateView from '../views/Community/CommunityUpdateView.vue'
+import ProfileView from '../views/Accounts/ProfileView.vue'
 
 Vue.use(VueRouter)
 
