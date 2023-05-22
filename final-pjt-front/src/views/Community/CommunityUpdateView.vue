@@ -1,7 +1,7 @@
 <template>
   <div class="communityupdateview">
     <h1>커뮤니티 게시글 수정</h1>
-    <form>
+    <form @submit.prevent="updateCommunity">
       <label for="title"> 제목: </label>
       <input type="text" id="title" v-model.trim="community.title" />
       <br />
