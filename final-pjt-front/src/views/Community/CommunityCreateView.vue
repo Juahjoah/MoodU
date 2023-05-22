@@ -21,8 +21,8 @@ export default {
   name: "CommunityCreateView",
   data() {
     return {
-      title: '',
-      content: '',
+      title: "",
+      content: "",
     };
   },
   methods: {
@@ -51,7 +51,7 @@ export default {
       })
         .then((response) => {
           console.log(response);
-          this.$router.push({ name: "CommunityView" });
+          this.$router.push({ name: "Community" });
         })
         .catch((error) => {
           // console.log(this.data);

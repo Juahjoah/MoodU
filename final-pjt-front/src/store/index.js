@@ -18,6 +18,7 @@ export default new Vuex.Store({
     ],
     user: null,
   },
+
   mutations: {
     GET_MOVIES(state, movies) {
       state.movies = movies
@@ -30,7 +31,6 @@ export default new Vuex.Store({
     LOGOUT(state) {
       state.user = null
     }
-
   },
   actions: {
     getMovies(context) {
@@ -39,7 +39,7 @@ export default new Vuex.Store({
         url: `${API_URL}/movies/`,
       })
         .then((response) => {
-          // console.log(response, context)
+          console.log(response)
           context.commit('GET_MOVIES', response.data)
         })
         .catch((error) => {
@@ -77,11 +77,11 @@ export default new Vuex.Store({
         url: `${API_URL}/accounts/login/`,
         data: {
           username, password
-        },
-        // headers: {Authorization: `Bearer ${localStorage.getItem('jwt')}`}
+        }
       })
         .then((response) => {
           // console.log(response)
+          console.log(response.data.user.username)
           localStorage.setItem("jwt", response.data.token.accessToken)
           context.commit("USER", username)
           router.push({ name: 'Movie' })
@@ -97,10 +97,9 @@ export default new Vuex.Store({
       if (username) {
         localStorage.removeItem('jwt')
         context.commit('LOGOUT')
-        router.push({ name: 'Movie' })
+        router.push({ name: 'Movie' }).catch(() => { });
       }
-    },
-
+    }
   },
   modules: {
   }
