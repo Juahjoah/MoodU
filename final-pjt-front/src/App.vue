@@ -14,7 +14,7 @@
         <router-link :to="{ name: 'Community' }">Community</router-link> |
         <img class="logoimg" src="./assets/MoodU.png" alt="moodU_logo" />
         <a @click="logout">logout</a> |
-        <router-link to="#">profile</router-link>
+        <router-link :to="{ name: 'ProfileView' }">my profile</router-link>
       </section>
     </nav>
     <hr />
