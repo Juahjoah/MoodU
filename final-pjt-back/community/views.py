@@ -17,7 +17,7 @@ import jwt
 
 @api_view(['GET'])
 def community_list(request):
-    reviews = get_list_or_404(Review)
+    reviews = Review.objects.all()
     serializer = ReviewSerializer(reviews, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
 
