@@ -22,7 +22,7 @@ def get_movie_genre() :
     
     for genre in response['genres']:
         if not Genre.objects.filter(name = genre['name']).exists():
-            genre_data = Genre.objects.create(name = genre['name'])
+            genre_data = Genre.objects.create(id = genre['id'], name = genre['name'])
 
 
 
