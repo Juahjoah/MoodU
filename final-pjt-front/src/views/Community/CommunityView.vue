@@ -1,7 +1,6 @@
 <template>
   <div class="community">
     <h1>여러분의 생각을 들려주세요.</h1>
-    <p>로그인한 사용자만 접근할 수 있어요!</p>
     <article>
       <CommunityListForm :communities="communities" />
     </article>
@@ -28,16 +27,26 @@ export default {
     };
   },
   methods: {
+    setToken() {
+      const token = localStorage.getItem("jwt");
+      const config = {
+        Authorization: `Bearer ${token}`,
+      };
+      return config;
+    },
     getCommunities() {
       axios({
         method: "get",
         url: `${API_URL}/community/`,
+        headers: this.setToken(),
       })
         .then((response) => {
           console.log(response);
           this.communities = response.data;
         })
         .catch((error) => {
+          alert("로그인한 콩알님들만 볼 수 있어요😣!");
+          this.$router.push({ name: "LoginView" });
           console.log(error);
         });
     },
