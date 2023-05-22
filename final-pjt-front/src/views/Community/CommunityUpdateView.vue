@@ -1,14 +1,14 @@
 <template>
   <div class="communityupdateview">
     <h1>커뮤니티 게시글 수정</h1>
-    <form @submit.prevent="updateCommunity">
+    <form>
       <label for="title"> 제목: </label>
       <input type="text" id="title" v-model.trim="community.title" />
       <br />
       <label for="content"> 내용 :</label>
       <textarea type="text" id="content" v-model.trim="community.content" />
       <br />
-      <button @click="updateCommunity(community)">제출</button>
+      <button @click.self.prevent="updateCommunity(community)">제출</button>
     </form>
   </div>
 </template>
