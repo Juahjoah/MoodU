@@ -5,8 +5,8 @@
     <p>내용 : {{ community.content }}</p>
     <p>작성자 : {{ community.username }}</p>
     <hr />
-    <button @click="communityUpdate()">[수정하기]</button>
-    <button @click="communityDelete()">[삭제하기]</button>
+    <button @click.self.prevent="communityUpdate()">[수정하기]</button>
+    <button @click.self.prevent="communityDelete()">[삭제하기]</button>
   </div>
 </template>
 
