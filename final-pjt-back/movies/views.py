@@ -12,11 +12,8 @@ from .models import Movie, Comment, Genre
 from .serializers import MovieListSerializer, MovieSerializer, CommentSerializer
 
 
-
-
 # 장르 가져와서 저장하기
 def get_movie_genre() :
-
     url = "https://api.themoviedb.org/3/genre/movie/list"
     params = {
         'language': 'ko-KR',
@@ -62,7 +59,6 @@ def get_movie_data() :
                 movie_data.save()
 
 
-
 @api_view(['GET'])
 def index(request):
     get_movie_genre()
@@ -70,6 +66,7 @@ def index(request):
     movies = get_list_or_404(Movie)
     serializer = MovieListSerializer(movies, many=True)
     return Response(serializer.data)
+
 
 @api_view(['GET'])
 def detail(request, movie_pk):
@@ -130,5 +127,11 @@ def recommend_movie(request, emotion): # happy, sad, soso, angry, joy, depressed
         
         if all(g not in except_ids for g in gen): # gen의 g를 돌면서 g가 모두 except_ids에 포함되지 않으면
             filtered_data.append(data)
-            
+
     return Response(filtered_data)
+
+
+def like_movie(request, movie_pk):
+    # movie = get_object_or_404(Movie, pk=movie_pk)
+    pass
+
