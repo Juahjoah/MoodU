@@ -9,13 +9,18 @@
     <p>인기도: {{ movie.popularity }}</p>
     <p>평균 점수: {{ movie.vote_average }}</p>
     <p>투표 수: {{ movie.vote_count }}</p>
-    <p>장르 : {{ movie.genres[0].name }}</p>
+    <div>
+      장르 :
+      <p v-for="genre in movie.genres" :key="genre.id">
+        {{ genre.name }}
+      </p>
+    </div>
     <!--여러개의 장르가 있어 for로 출력-->
     <hr />
     <p>좋아요 누른 사용자 : {{ movie.like_users }}</p>
     <section class="user_comment">
       <p class="displaytext">여러분은 영화를 어떻게 보셨나요?</p>
-      <p>{{ movie.comment_set }}</p>
+      <!-- <p>{{ movie.comment_set }}</p> -->
     </section>
   </div>
 </template>
