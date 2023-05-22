@@ -5,9 +5,9 @@ import CommunityView from '../views/Community/CommunityView.vue'
 import SignupView from '../views/Accounts/SignupView.vue'
 import LoginView from '../views/Accounts/LoginView.vue'
 import MovieDetailView from '../views/Movie/MovieDetailView.vue'
-import CommunityCreateView from '../views/Community/CommunityCreateView'
-import CommunityDetailView from '../views/Community/CommunityDetailView'
-import CommunityUpdateView from '../views/Community/CommunityUpdateView'
+import CommunityCreateView from '../views/Community/CommunityCreateView.vue'
+import CommunityDetailView from '../views/Community/CommunityDetailView.vue'
+import CommunityUpdateView from '../views/Community/CommunityUpdateView.vue'
 
 Vue.use(VueRouter)
 
