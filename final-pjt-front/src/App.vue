@@ -1,18 +1,20 @@
 <template>
   <div id="app">
+    <p class="navp">{{ $store.state.user }}님! 오늘도 반가워요!</p>
     <nav class="main_nav">
-      <section v-if="!$store.state.user">
+      <section class="nlogin" v-if="!$store.state.user">
         <router-link to="/">Movie</router-link> |
         <router-link :to="{ name: 'Community' }">Community</router-link> |
+        <img class="logoimg" src="./assets/MoodU.png" alt="moodU_logo" />
         <router-link :to="{ name: 'SignupView' }">Sign up page</router-link> |
         <router-link :to="{ name: 'LoginView' }">Login page</router-link>
       </section>
-      <section v-else>
+      <section class="ylogin" v-else>
         <router-link to="/">Movie</router-link> |
         <router-link :to="{ name: 'Community' }">Community</router-link> |
+        <img class="logoimg" src="./assets/MoodU.png" alt="moodU_logo" />
         <a @click="logout">logout</a> |
         <router-link to="#">profile</router-link>
-        <p class="navp">{{ $store.state.user }}님! 오늘도 반가워요!</p>
       </section>
     </nav>
     <hr />
@@ -31,8 +33,47 @@ export default {
 </script>
 
 <style>
+@import url("https://fonts.googleapis.com/css2?family=Jua&display=swap");
+</style>
+<style>
+/* reset.css */
+html,
+body,
+div,
+span,
+object,
+a,
+img,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+center,
+fieldset,
+form,
+article,
+footer,
+header,
+menu,
+nav,
+section {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Jua", sans-serif;
+  font-size: 25px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -54,10 +95,22 @@ nav a.router-link-exact-active {
 }
 
 /* background-color: lemonchiffon; */
-/* .main_nav {
-  height: 3rem;
-} */
+.main_nav {
+  height: 5rem;
+}
 
-/* .navp {
-} */
+.logoimg {
+  width: 8rem;
+  margin: 0px auto;
+}
+
+nav section {
+  display: flex;
+  justify-content: space-around;
+}
+
+.navp {
+  /* float: right; */
+  right: 10px;
+}
 </style>
