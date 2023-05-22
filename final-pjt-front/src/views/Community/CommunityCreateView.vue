@@ -8,7 +8,7 @@
       <label for="content"> 내용 :</label>
       <textarea type="text" id="content" v-model.trim="content" />
       <br />
-      <button @click="createCommunity">제출</button>
+      <button @click="createCommunity()">제출</button>
     </form>
   </div>
 </template>
@@ -50,11 +50,10 @@ export default {
         },
       })
         .then((response) => {
-          console.log(response);
           this.$router.push({ name: "Community" });
+          console.log(response);
         })
         .catch((error) => {
-          // console.log(this.data);
           console.log(error);
         });
     },
