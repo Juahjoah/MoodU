@@ -51,7 +51,12 @@ const routes = [
     path: '/login',
     name: 'LoginView',
     component: LoginView
-  }
+  },
+  {
+    path: '/profile',
+    name: 'ProfileView',
+    component: ProfileView
+  },
 ]
 
 const router = new VueRouter({
