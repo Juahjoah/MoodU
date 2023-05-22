@@ -3,7 +3,10 @@
     <p>{{ community }}</p>
     <p>제목 : {{ community.title }}</p>
     <p>내용 : {{ community.content }}</p>
-    <p>작성자 : {{ community.user }}</p>
+    <p>작성자 : {{ community.username }}</p>
+    <hr />
+    <!-- <button @click="communityUpdate()">[수정하기]</button> -->
+    <button @click="communityDelete()">[탈퇴하기]</button>
   </div>
 </template>
 
@@ -35,6 +38,24 @@ export default {
         .catch((error) => {
           console.log(error);
         });
+    },
+    communityDelete() {},
+    communityUpdate() {
+      if (confirm('정말 삭제하시겠습니까?')) {
+        axios({
+          method: 'delete',
+          url: `${API_URL}/community/${this.$route.params.id}/`
+
+        })
+        .then(() => {
+          // commit('SET_REVIEW', {})
+          router.push({ name: 'CommunityView' })
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+      }
+    },
     },
   },
   computed: {},
