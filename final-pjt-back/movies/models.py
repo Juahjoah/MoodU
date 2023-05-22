@@ -3,6 +3,7 @@ from django.conf import settings
 # Create your models here.
 
 class Genre(models.Model):
+    # ids = models.IntegerField()
     name = models.CharField(max_length=50)
 
 

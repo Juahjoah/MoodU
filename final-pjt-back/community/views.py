@@ -22,7 +22,7 @@ def community_list(request):
     return Response(serializer.data, status=status.HTTP_200_OK)
 
 @api_view(['POST'])
-@permission_classes([AllowAny])
+@permission_classes([IsAuthenticated])
 def community_create(request):
     serializer = ReviewSerializer(data = request.data)
     if serializer.is_valid(raise_exception=True):
