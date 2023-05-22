@@ -85,3 +85,8 @@ def create_comment(request, movie_pk):
     if serializer.is_valid(raise_exception=True):
         serializer.save(user=request.user, movie = movie)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
+    
+    
+
+def recommend_movie(request, emotion):
+    pass
