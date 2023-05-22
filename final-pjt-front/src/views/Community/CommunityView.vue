@@ -13,9 +13,9 @@
 
 <script>
 import CommunityListForm from "@/components/CommunityListForm.vue";
-
 import axios from "axios";
 
+const API_URL = "http://127.0.0.1:8000";
 export default {
   name: "CommunityView",
   components: {
@@ -30,7 +30,7 @@ export default {
     getCommunities() {
       axios({
         method: "get",
-        url: "http://127.0.0.1:8000/community/",
+        url: `${API_URL}/community/`,
       })
         .then((response) => {
           console.log(response);
