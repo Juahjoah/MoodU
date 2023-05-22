@@ -6,7 +6,7 @@
     <p>작성자 : {{ community.username }}</p>
     <hr />
     <!-- <button @click="communityUpdate()">[수정하기]</button> -->
-    <button @click="communityDelete()">[탈퇴하기]</button>
+    <button @click="communityDelete()">[삭제하기]</button>
   </div>
 </template>
 
@@ -26,6 +26,13 @@ export default {
     this.getCommunityDetail();
   },
   methods: {
+    setToken() {
+      const token = localStorage.getItem("jwt");
+      const config = {
+        Authorization: `Bearer ${token}`,
+      };
+      return config;
+    },
     getCommunityDetail() {
       axios({
         method: "get",
@@ -39,16 +46,16 @@ export default {
           console.log(error);
         });
     },
-    communityDelete() {},
-    communityUpdate() {
+    communityUpdate() {},
+    communityDelete() {
       if (confirm("정말 삭제하시겠습니까?")) {
         axios({
           method: "delete",
           url: `${API_URL}/community/${this.$route.params.id}/`,
+          headers: this.setToken(),
         })
           .then(() => {
-            // commit('SET_REVIEW', {})
-            router.push({ name: "CommunityView" });
+            this.$router.push({ name: "Community" });
           })
           .catch((error) => {
             console.log(error);
