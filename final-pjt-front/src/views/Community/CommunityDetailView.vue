@@ -3,7 +3,7 @@
     <p>{{ community }}</p>
     <p>제목 : {{ community.title }}</p>
     <p>내용 : {{ community.content }}</p>
-    <p>작성자 : {{ community.user }}</p>
+    <p>작성자 : {{ community.username }}</p>
   </div>
 </template>
 
