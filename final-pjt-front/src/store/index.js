@@ -61,7 +61,7 @@ export default new Vuex.Store({
         .then(() => {
           // console.log(response)
           alert('회원가입 성공')
-          router.push({name: 'LoginView'})
+          router.push({ name: 'LoginView' })
 
         })
         .catch((error) => {
@@ -97,7 +97,7 @@ export default new Vuex.Store({
       if (username) {
         localStorage.removeItem('jwt')
         context.commit('LOGOUT')
-        router.push({ name: 'Movie' })
+        router.push({ name: 'Movie' }).catch(() => { });
       }
     }
   },
