@@ -5,4 +5,5 @@ app_name = 'community'
 urlpatterns = [
     path('', views.community_list),
     path('create/', views.community_create),
+    path('<int:review_pk>/', views.community_detail),
 ]
