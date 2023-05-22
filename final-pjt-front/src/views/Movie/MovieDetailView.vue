@@ -15,7 +15,6 @@
         {{ genre.name }}
       </p>
     </div>
-    <!--여러개의 장르가 있어 for로 출력-->
     <hr />
     <!-- <p>좋아요 누른 사용자 : {{ movie.like_users }}</p> -->
     <button @click="upLike()">이 영화 맘에 드셨나요?</button>
@@ -55,7 +54,10 @@ export default {
           console.log(error);
         });
     },
-    upLike() {},
+    upLike() {
+      // 카운트 올라가기
+      // 버튼 내부 멘트 ~님이 좋아요를 누른 영화입니다! 로 바꾸기
+    },
   },
   computed: {
     getPoster() {
