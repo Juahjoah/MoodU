@@ -1,6 +1,9 @@
 <template>
   <div class="communitydetail">
-    <p>{{ movie.title }}</p>
+    <p>{{ community }}</p>
+    <p>제목 : {{ community.title }}</p>
+    <p>내용 : {{ community.content }}</p>
+    <p>작성자 : {{ community.user }}</p>
   </div>
 </template>
 
@@ -13,7 +16,7 @@ export default {
   name: "CommunityDetailView",
   data() {
     return {
-      communities: Object,
+      community: Object,
     };
   },
   created() {
@@ -39,8 +42,4 @@ export default {
 </script>
 
 <style scoped>
-img {
-  float: right;
-  width: 15em;
-}
 </style>
