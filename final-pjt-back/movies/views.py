@@ -131,7 +131,23 @@ def recommend_movie(request, emotion): # happy, sad, soso, angry, joy, depressed
     return Response(filtered_data)
 
 
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
 def like_movie(request, movie_pk):
-    # movie = get_object_or_404(Movie, pk=movie_pk)
-    pass
+    movie = get_object_or_404(Movie, pk=movie_pk)
+    user = request.user
+    
+    if movie.like_users.filter(pk = user.pk).exists():
+        movie.like_users.remove(user)
+        is_liked = False
+    else:
+        movie.like_users.add(user)
+        is_liked = True
+
+    context = {
+            'is_liked': is_liked,
+            'liked_count': movie.like_users.count(),
+        }
+
+    return Response(context)
 
