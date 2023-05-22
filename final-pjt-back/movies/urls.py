@@ -6,5 +6,6 @@ urlpatterns = [
     path('', views.index),
     path('<int:movie_pk>/', views.detail),
     path('<int:movie_pk>/comments/create/', views.create_comment),
-    path('recommended/<str:emtion>/', views.recommend_movie),
+    path('recommended/<str:emotion>/', views.recommend_movie),
+    path('<int:movie_pk>/like/', views.like_movie)
 ]

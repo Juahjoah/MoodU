@@ -5,13 +5,15 @@ from django.shortcuts import get_object_or_404, get_list_or_404
 from rest_framework.decorators import api_view
 from rest_framework import status
 from rest_framework.decorators import permission_classes
+from rest_framework.permissions import IsAuthenticated, AllowAny
 
 import requests
 from .models import Movie, Comment, Genre
 from .serializers import MovieListSerializer, MovieSerializer, CommentSerializer
 
-def get_movie_genre() :
 
+# 장르 가져와서 저장하기
+def get_movie_genre() :
     url = "https://api.themoviedb.org/3/genre/movie/list"
     params = {
         'language': 'ko-KR',
@@ -25,9 +27,7 @@ def get_movie_genre() :
             genre_data = Genre.objects.create(id = genre['id'], name = genre['name'])
 
 
-
-
-# 데이터를 요청을 보내서 저장한다.
+# 영화 가져와서 저장하기
 def get_movie_data() :
     for i in range(1, 4):
         URL = 'https://api.themoviedb.org/3/movie/popular'
@@ -59,7 +59,6 @@ def get_movie_data() :
                 movie_data.save()
 
 
-
 @api_view(['GET'])
 def index(request):
     get_movie_genre()
@@ -67,6 +66,7 @@ def index(request):
     movies = get_list_or_404(Movie)
     serializer = MovieListSerializer(movies, many=True)
     return Response(serializer.data)
+
 
 @api_view(['GET'])
 def detail(request, movie_pk):
@@ -77,7 +77,7 @@ def detail(request, movie_pk):
 
 
 @api_view(['POST'])
-
+@permission_classes([IsAuthenticated])
 def create_comment(request, movie_pk):
     movie = get_object_or_404(Movie, pk=movie_pk)
     serializer = CommentSerializer(data=request.data)
@@ -86,7 +86,52 @@ def create_comment(request, movie_pk):
         serializer.save(user=request.user, movie = movie)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     
-    
 
-def recommend_movie(request, emotion):
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def recommend_movie(request, emotion): # happy, sad, soso, angry, joy, depressed
+
+    if emotion == 'happy': # 판타지, 가족, 애니메이션, 스릴러, TV 영화 (except 공포, 스릴러, 범죄)
+        accept_ids = [14, 10751, 16, 53, 10770]
+        except_ids = [27, 53, 80]
+        
+    elif emotion == 'sad': # 애니메이션, 코미디, 모험, 음악, 가족 (except 전쟁, 로맨스, 범죄)
+        accept_ids = [16, 35, 12, 10402, 10751]
+        except_ids = [10752, 10749, 80]
+        
+    elif emotion == 'soso': # 공포, SF, 다큐멘터리, 역사, 음악 (except 전쟁, 로맨스)
+        accept_ids = [27, 878, 99, 36, 10402]
+        except_ids = [10752, 10749, 16]
+
+    elif emotion == 'angry': # 액션, 모험, 애니메이션, 코미디 (except 범죄, 다큐멘터리, 로맨스)
+        accept_ids = [28, 12, 16, 35, 878]
+        except_ids = [80, 99, 10749]
+
+    elif emotion == 'joy': # 모험, SF, 미스터리, 판타지, 음악 (except 공포, 전쟁, 로맨스)
+        accept_ids = [12, 878, 9648, 14, 10402]
+        except_ids = [10752, 27, 10749]
+
+    elif emotion == 'depressed': # 코미디, 음악, 판타지, 드라마, 액션 (except 전쟁, 로맨스, 범죄)
+        accept_ids = [35, 10402, 14, 18, 28]
+        except_ids = [10752, 27, 10749]
+
+    movies = Movie.objects.filter(genres__in = accept_ids)
+    serializer = MovieSerializer(movies, many=True)
+
+    # print(serializer.data)
+    filtered_data = []
+    for data in serializer.data:
+        # print(data['genres'])
+        gen = [gen['id'] for gen in data['genres']] # data안의 장르들을 for문으로 가져오고, 그들의 id를 list화
+        print(gen)
+        
+        if all(g not in except_ids for g in gen): # gen의 g를 돌면서 g가 모두 except_ids에 포함되지 않으면
+            filtered_data.append(data)
+
+    return Response(filtered_data)
+
+
+def like_movie(request, movie_pk):
+    # movie = get_object_or_404(Movie, pk=movie_pk)
     pass
+

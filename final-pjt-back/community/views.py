@@ -21,6 +21,7 @@ def community_list(request):
     serializer = ReviewSerializer(reviews, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
 
+
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def community_create(request):
