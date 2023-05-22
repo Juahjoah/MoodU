@@ -41,23 +41,22 @@ export default {
     },
     communityDelete() {},
     communityUpdate() {
-      if (confirm('정말 삭제하시겠습니까?')) {
+      if (confirm("정말 삭제하시겠습니까?")) {
         axios({
-          method: 'delete',
-          url: `${API_URL}/community/${this.$route.params.id}/`
-
+          method: "delete",
+          url: `${API_URL}/community/${this.$route.params.id}/`,
         })
-        .then(() => {
-          // commit('SET_REVIEW', {})
-          router.push({ name: 'CommunityView' })
-        })
-        .catch((error) => {
-          console.log(error)
-        })
+          .then(() => {
+            // commit('SET_REVIEW', {})
+            router.push({ name: "CommunityView" });
+          })
+          .catch((error) => {
+            console.log(error);
+          });
       }
     },
-    },
   },
+
   computed: {},
 };
 </script>
