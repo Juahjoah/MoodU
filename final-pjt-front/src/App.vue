@@ -2,12 +2,15 @@
   <div id="app">
     <nav class="main_nav">
       <section class="nlogin" v-if="!$store.state.user">
-        <router-link to="/">Movie</router-link>
-        <div>..................</div>
-        <router-link :to="{ name: 'Community' }">Community</router-link>
+        <div class="boundary1">
+          <router-link to="/">Movie</router-link>
+          <router-link :to="{ name: 'Community' }">Community</router-link>
+        </div>
         <img class="logoimg" src="./assets/MoodU.png" alt="moodU_logo" />
-        <router-link :to="{ name: 'SignupView' }">Sign up page</router-link>
-        <router-link :to="{ name: 'LoginView' }">Login page</router-link>
+        <div class="boundary2">
+          <router-link :to="{ name: 'SignupView' }">Sign up page</router-link>
+          <router-link :to="{ name: 'LoginView' }">Login page</router-link>
+        </div>
       </section>
       <section class="ylogin" v-else>
         <router-link to="/">Movie</router-link>
@@ -17,7 +20,7 @@
         <router-link :to="{ name: 'ProfileView' }">my profile</router-link>
       </section>
       <hr />
-      <div v-if="!$store.state.user">
+      <div class="hidiv" v-if="!$store.state.user">
         <p align="right">오늘도 모듀와 함께 행복해요.</p>
       </div>
       <div v-else>
@@ -44,41 +47,6 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Jua&display=swap");
 </style>
 <style>
-/* reset.css */
-/* html,
-body,
-div,
-span,
-object,
-a,
-img,
-q,
-s,
-samp,
-small,
-strike,
-strong,
-sub,
-sup,
-tt,
-var,
-center,
-fieldset,
-form,
-article,
-footer,
-header,
-menu,
-nav,
-section {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
-} */
-
 #app {
   font-family: "Jua", sans-serif;
   font-size: 15px;
@@ -95,11 +63,14 @@ nav {
 
 nav section {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: end;
   font-size: 20px;
 
   /* text-align: justify, :after; */
+}
+.hidiv {
+  height: 10rem;
 }
 
 .navp {
@@ -126,5 +97,18 @@ nav a.router-link-exact-active {
 .logoimg {
   width: 8rem;
   margin: 0px auto;
+}
+
+.boundary1 {
+  width: 20rem;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 10px;
+}
+.boundary2 {
+  width: 20rem;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 10px;
 }
 </style>
