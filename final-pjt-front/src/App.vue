@@ -2,22 +2,30 @@
   <div id="app">
     <nav class="main_nav">
       <section class="nlogin" v-if="!$store.state.user">
-        <router-link to="/">Movie</router-link> |
-        <router-link :to="{ name: 'Community' }">Community</router-link> |
+        <router-link to="/">Movie</router-link>
+        <div>..................</div>
+        <router-link :to="{ name: 'Community' }">Community</router-link>
         <img class="logoimg" src="./assets/MoodU.png" alt="moodU_logo" />
-        <router-link :to="{ name: 'SignupView' }">Sign up page</router-link> |
+        <router-link :to="{ name: 'SignupView' }">Sign up page</router-link>
         <router-link :to="{ name: 'LoginView' }">Login page</router-link>
       </section>
       <section class="ylogin" v-else>
-        <p class="navp">{{ $store.state.user }}님! 오늘도 반가워요!</p>
-        <router-link to="/">Movie</router-link> |
-        <router-link :to="{ name: 'Community' }">Community</router-link> |
+        <router-link to="/">Movie</router-link>
+        <router-link :to="{ name: 'Community' }">Community</router-link>
         <img class="logoimg" src="./assets/MoodU.png" alt="moodU_logo" />
-        <a @click="logout">logout</a> |
+        <a @click="logout">logout</a>
         <router-link :to="{ name: 'ProfileView' }">my profile</router-link>
       </section>
+      <hr />
+      <div v-if="!$store.state.user">
+        <p align="right">오늘도 모듀와 함께 행복해요.</p>
+      </div>
+      <div v-else>
+        <p align="right" class="navp">
+          {{ $store.state.user }}님! 오늘도 반가워요!
+        </p>
+      </div>
     </nav>
-    <hr />
     <router-view />
   </div>
 </template>
@@ -37,7 +45,7 @@ export default {
 </style>
 <style>
 /* reset.css */
-html,
+/* html,
 body,
 div,
 span,
@@ -69,7 +77,7 @@ section {
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
-}
+} */
 
 #app {
   font-family: "Jua", sans-serif;
@@ -81,13 +89,27 @@ section {
 }
 
 nav {
-  padding: 30px;
+  padding: 50px;
   height: 3rem;
+}
+
+nav section {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  font-size: 20px;
+
+  /* text-align: justify, :after; */
+}
+
+.navp {
+  height: 0.5rem;
 }
 
 nav a {
   font-weight: bold;
   color: #2c3e50;
+  text-decoration: none;
 }
 
 nav a.router-link-exact-active {
@@ -97,20 +119,12 @@ nav a.router-link-exact-active {
 /* background-color: lemonchiffon; */
 .main_nav {
   height: 5rem;
+  /* display: flex;
+  flex-direction: column-reverse; */
 }
 
 .logoimg {
   width: 8rem;
   margin: 0px auto;
-}
-
-nav section {
-  display: flex;
-  justify-content: space-around;
-}
-
-.navp {
-  /* float: right; */
-  right: 10px;
 }
 </style>
