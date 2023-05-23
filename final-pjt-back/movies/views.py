@@ -103,6 +103,32 @@ def create_comment(request, movie_pk):
     if serializer.is_valid(raise_exception=True):
         serializer.save(user=request.user, movie = movie)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
+    
+
+
+@api_view(['PUT', 'DELETE'])
+@permission_classes([IsAuthenticated])
+def comments_del_up(request, movie_pk, comment_pk):
+    movie = get_object_or_404(Movie, pk=movie_pk)
+    comment = get_object_or_404(Comment, pk=comment_pk, movie=movie)
+
+    if request.method == 'DELETE':
+        if request.user == comment.user:
+            comment.delete()
+            return Response({'delete':f'{comment_pk}번 글이 삭제되었습니다.'}, status=status.HTTP_204_NO_CONTENT)
+        return Response({'error': 'user가 같지 않아 삭제할 수 없습니다.'})
+    
+    elif request.method == 'PUT':
+        print(request.user, comment.user)
+        if request.user == comment.user:
+            serializer = CommentSerializer(comment, data=request.data)
+            if serializer.is_valid(raise_exception=True):
+                serializer.save()
+                return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+
+    
 
 
 # 영화 추천 알고리즘
