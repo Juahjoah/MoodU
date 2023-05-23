@@ -66,12 +66,15 @@
         </label>
         <br />
 
-        <input class="signup_btn" type="submit" value="회원가입" />
+        <input class="signup_btn btn-4" type="submit" value="Signup" />
       </form>
     </div>
   </div>
 </template>
 
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Pangolin&display=swap");
+</style>
 <script>
 export default {
   name: "SignupView",
@@ -113,9 +116,14 @@ export default {
 <style>
 .signupinput {
   /* width: 12rem; */
+  font-family: "Pangolin", cursive;
   width: 70%;
-  height: 1.5rem;
+  height: 2rem;
   border-radius: 5px;
+}
+
+label {
+  margin: 4px;
 }
 
 .signupbox {
@@ -124,5 +132,30 @@ export default {
 }
 
 .signup_btn {
+  font-family: "Pangolin", cursive;
+  flex: 1 1 auto;
+  margin: 10px;
+  padding: 10px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: black;
+  text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 20px #eee;
+  border-radius: 5px;
+}
+
+.signup_btn:hover {
+  background-position: right center; /* change the direction of the change here */
+}
+
+.btn-4 {
+  background-image: linear-gradient(
+    to right,
+    #a1c4fd 0%,
+    #c2e9fb 51%,
+    #a1c4fd 100%
+  );
 }
 </style>
