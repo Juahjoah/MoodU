@@ -14,11 +14,11 @@
 
 export default {
   name: "MovieCard",
+
   props: {
     movie: Object,
   },
-  components:{
-  },
+
   computed: {
     getPoster() {
       return `https://image.tmdb.org/t/p/original/${this.movie.poster_path}`;

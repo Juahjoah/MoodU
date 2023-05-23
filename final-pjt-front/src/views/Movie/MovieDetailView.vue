@@ -51,36 +51,40 @@ export default {
   },
 
   methods: {
+    // 영화 상세 정보 가져오기
     getMoviesDetail() {
       axios({
         method: "get",
         url: `${API_URL}/movies/${this.$route.params.id}/`,
       })
-        .then((response) => {
-          // console.log(response);
-          this.movie = response.data;
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      .then((res) => {
+        // console.log(response);
+        this.movie = res.data;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
     },
 
+    // 좋아요 수 가져오기
     getLikeCount() {
       axios({
         method: "get",
         url: `${API_URL}/movies/${this.$route.params.id}/like/count/`,
       })
-        .then((res) => {
-          console.log(res);
-          this.count = res.data.like_count;
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      .then((res) => {
+        // console.log(res);
+        this.count = res.data.like_count;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
     },
 
+    // 좋아요 누르기
     likeMovie() {
       const token = localStorage.getItem("jwt");
+
       axios({
         method: "post",
         url: `${API_URL}/movies/${this.$route.params.id}/like/`,
@@ -88,13 +92,13 @@ export default {
           Authorization: `Bearer ${token}`,
         },
       })
-        .then((res) => {
-          console.log(res);
-          this.getLikeCount();
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      .then(() => {
+        // console.log(res);
+        this.getLikeCount();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
     },
   },
 
