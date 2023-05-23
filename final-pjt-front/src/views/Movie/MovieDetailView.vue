@@ -1,50 +1,58 @@
 <template>
   <div class="moviedetail">
-    <p>{{ movie.title }}</p>
-    <p>개봉일: {{ movie.release_date }}</p>
-    <br />
-    <img :src="getPoster" />
-    <hr />
-    <p>{{ movie.overview }}</p>
-    <p>인기도: {{ movie.popularity }}</p>
-    <p>평균 점수: {{ movie.vote_average }}</p>
-    <p>투표 수: {{ movie.vote_count }}</p>
     <div>
-      장르 :
-      <span v-for="genre in movie.genres" :key="genre.id">
-        {{ genre.name }},
-      </span>
+      <p>{{ movie.title }}</p>
+      <p>개봉일: {{ movie.release_date }}</p>
+      <img :src="getPoster" />
+      <hr />
+      <p>{{ movie.overview }}</p>
+      <p>인기도: {{ movie.popularity }}</p>
+      <p>평균 점수: {{ movie.vote_average }}</p>
+      <p>투표 수: {{ movie.vote_count }}</p>
+      <div>
+        장르 :
+        <span v-for="genre in movie.genres" :key="genre.id">
+          {{ genre.name }},
+        </span>
+      </div>
+      <hr />
     </div>
-    <hr />
-    <!-- <p>좋아요 누른 사용자 : {{ movie.like_users }}</p> -->
-    <button @click="upLike()">이 영화 맘에 드셨나요?</button>
+
+    <button @click="likeMovie()">이 영화 맘에 드셨나요?</button>
     <span>{{count}}</span>
+
     <section class="user_comment">
       <p class="displaytext">여러분은 영화를 어떻게 보셨나요?</p>
       <input type="text" v-model.trim="comment" @keyup.enter="createComment">
-      <!-- <p>{{ movie.comment_set }}</p> -->
+      <button @click="createComment">!</button>
+      <MovieComment />
     </section>
+
   </div>
 </template>
 
 <script>
 import axios from "axios";
-// import { __vlsComponentHelper } from 'vue-editor-bridge'; // /? 내가 잘못 눌럿남?
+import MovieComment from '@/components/MovieComment'
 
 const API_URL = "http://127.0.0.1:8000";
 
 export default {
   name: "MovieDetailView",
+  components: {
+    MovieComment
+  },
   data() {
     return {
       movie: Object,
       comment: null,
-      count: 0,
+      count: null,
     };
   },
   created() {
     this.getMoviesDetail();
-    // this.upLike()
+
+    this.getLikeCount()
     
   },
   methods: {
@@ -54,35 +62,49 @@ export default {
         url: `${API_URL}/movies/${this.$route.params.id}/`,
       })
         .then((response) => {
-          console.log(response);
+          // console.log(response);
           this.movie = response.data;
         })
         .catch((error) => {
           console.log(error);
         });
     },
-    upLike() {
+
+    getLikeCount() {
+
+      axios({
+        method: 'get',
+        url: `${API_URL}/movies/${this.$route.params.id}/like/count/`,
+      })
+      .then((res)=> {
+        console.log(res)
+        this.count = res.data.like_count
+      })
+      .catch((err)=> {
+        console.log(err)
+      })
+    },
+
+    likeMovie() {
       const token = localStorage.getItem('jwt')
-      
+
       axios({
         method: 'post',
         url: `${API_URL}/movies/${this.$route.params.id}/like/`,
         headers: {
           Authorization: `Bearer ${token}`,
-        },
-
-      }).then((res)=> {
+        }
+      })
+      .then((res)=> {
         console.log(res)
-
-        this.count = res.data.liked_count
-
-
-      }).catch((err)=> {
+        this.getLikeCount()
+      })
+      .catch((err)=> {
         console.log(err)
       })
-      // 카운트 올라가기
-      // 버튼 내부 멘트 ~님이 좋아요를 누른 영화입니다! 로 바꾸기
+      
     },
+
     createComment() {
       const comment = this.comment
       const token = localStorage.getItem('jwt')
