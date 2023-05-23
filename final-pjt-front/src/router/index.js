@@ -8,7 +8,7 @@ import MovieDetailView from '../views/Movie/MovieDetailView.vue'
 import CommunityCreateView from '../views/Community/CommunityCreateView.vue'
 import CommunityDetailView from '../views/Community/CommunityDetailView.vue'
 import CommunityUpdateView from '../views/Community/CommunityUpdateView.vue'
-// import ProfileView from '../views/Accounts/ProfileView.vue'
+import ProfileView from '../views/Accounts/ProfileView.vue'
 import RecommendView from '@/views/Movie/RecommendView'
 
 
@@ -60,6 +60,11 @@ const routes = [
     name: 'RecommendView',
     component: RecommendView
   },
+  {
+    path: '/profile/:username',
+    name: 'ProfileView',
+    component: ProfileView
+  }
 
 ]
 
