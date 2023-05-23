@@ -1,8 +1,13 @@
 <template>
   <div class="Movie">
+    <br />
+    <br />
+    <br />
     <h1>Movie</h1>
     <br />
-    <router-link :to="{ name: 'RecommendView' }">기분에 따라 영화를 추천받을 수 있어요!</router-link>
+    <router-link :to="{ name: 'RecommendView' }"
+      >기분에 따라 영화를 추천받을 수 있어요!</router-link
+    >
     <section class="movielist">
       <MovieCard v-for="movie in movies" :key="movie.id" :movie="movie" />
     </section>
@@ -38,13 +43,11 @@ export default {
 </script>
 
 <style>
-
 .movielist {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
   margin: 0px 20px;
-
 }
 </style>
