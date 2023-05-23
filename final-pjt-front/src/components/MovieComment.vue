@@ -110,13 +110,14 @@ export default {
 
 <style>
 div.rgyPostIt {
+    width: 70%;
     position: relative;
     display: inline-block;
     padding: 20px 45px 20px 15px;
     margin: 5px 0;
     border: 1px solid #f8f861;
     border-left: 30px solid #f8f861;
-    border-bottom-right-radius: 60px 10px;
+    border-bottom-right-radius: 60px 10pxz;
     font-family: 'Nanum Pen Script';
     font-size: 27px;
     color: #555;

@@ -55,7 +55,9 @@
             placeholder="Enter Your name"
             v-model="last_name"
           />
-          <input class="signup_btn signupbbtn" type="submit" value="Signup" />
+          <div id="btncenter"> 
+            <input class="signup_btn signupbbtn" type="submit" value="Signup" />
+          </div>
         </form>
       </div>
       <br />
@@ -168,6 +170,12 @@ label {
     #6e6bd7 100%
   );
 }
+
+#btncenter {
+  margin: 0px auto;
+  width: 10rem;
+}
+
 
 .id {
   letter-spacing: 10px;
