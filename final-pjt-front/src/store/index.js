@@ -50,21 +50,26 @@ export default new Vuex.Store({
       const username = payload.username
       const password1 = payload.password1
       const password2 = payload.password2
+      const lastname = payload.lastname
+      const email = payload.email
 
       axios({
         method: 'post',
         url: `${API_URL}/accounts/signup/`,
         data: {
-          username, password1, password2
+          username, password1, password2, lastname, email
         }
       })
         .then(() => {
           // console.log(response)
-          alert('회원가입 성공')
+          alert('MoodU와 함께 오늘의 한 페이지를 남겨봐요!')
           router.push({ name: 'LoginView' })
 
         })
         .catch((error) => {
+          if (error.response.status === 400) {
+            alert('중복 ID 입니다. ID를 변경해주세요.')
+          }
           console.log(error)
         })
     },
