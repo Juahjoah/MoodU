@@ -55,7 +55,7 @@
         <br />
 
         <label for="lastname">
-          이름:
+          name:
           <input
             class="signupinput"
             type="text"
@@ -72,9 +72,7 @@
   </div>
 </template>
 
-<style>
-@import url("https://fonts.googleapis.com/css2?family=Pangolin&display=swap");
-</style>
+
 <script>
 export default {
   name: "SignupView",
@@ -114,28 +112,39 @@ export default {
 </script>
 
 <style>
-.signupinput {
-  /* width: 12rem; */
-  font-family: "Pangolin", cursive;
-  width: 70%;
-  height: 2rem;
-  border-radius: 5px;
-}
+@import url("https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Pangolin&display=swap");
+</style>
+<style>
+/* @font-face {
+  font-family: "Pangolin";
+  src: url("https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap");
+  unicode-range: U+0041-005A, U+0061-007A;
+} */
 
 label {
   margin: 4px;
 }
 
 .signupbox {
+  font-family: "Gamja Flower", cursive;
   width: 30rem;
   margin: 0px auto;
+}
+
+.signupinput {
+  /* width: 12rem; */
+  font-family: "Gamja Flower", cursive;
+  width: 70%;
+  height: 2.3rem;
+  border-radius: 5px;
+  font-size: 20px;
 }
 
 .signup_btn {
   font-family: "Pangolin", cursive;
   flex: 1 1 auto;
   margin: 10px;
-  padding: 10px;
+  padding: 7px;
   text-align: center;
   text-transform: uppercase;
   transition: 0.5s;
@@ -153,9 +162,9 @@ label {
 .btn-4 {
   background-image: linear-gradient(
     to right,
-    #a1c4fd 0%,
-    #c2e9fb 51%,
-    #a1c4fd 100%
+    #72a8ff 0%,
+    #c7e9f8 51%,
+    #004ac0 100%
   );
 }
 </style>
