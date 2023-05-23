@@ -31,10 +31,10 @@ export default {
       const content = this.content;
 
       if (!title) {
-        alert("제목 입력해주세요");
+        confirm("제목 입력해주세요");
         return;
       } else if (!content) {
-        alert("내용 입력해주세요");
+        confirm("내용 입력해주세요");
         return;
       }
       const token = localStorage.getItem("jwt");
@@ -50,7 +50,7 @@ export default {
         },
       })
         .then((response) => {
-          this.$router.push({ name: "Community" }).catch(() => { });
+          this.$router.push({ name: "Community" }).catch(() => {});
           console.log(response);
         })
         .catch((error) => {

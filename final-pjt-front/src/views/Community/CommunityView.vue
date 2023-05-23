@@ -45,7 +45,7 @@ export default {
           this.communities = response.data;
         })
         .catch((error) => {
-          alert("로그인한 콩알님들만 볼 수 있어요😣!");
+          confirm("로그인한 콩알님들만 볼 수 있어요😣!");
           this.$router.push({ name: "LoginView" });
           console.log(error);
         });
