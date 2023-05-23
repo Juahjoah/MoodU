@@ -55,10 +55,10 @@
             placeholder="Enter Your name"
             v-model="last_name"
           />
+          <input class="signup_btn signupbbtn" type="submit" value="Signup" />
         </form>
       </div>
       <br />
-      <input class="signup_btn signupbbtn" type="submit" value="Signup" />
     </div>
   </div>
 </template>
@@ -113,7 +113,7 @@ export default {
 } */
 
 label {
-  margin: 10px;
+  margin: 15px;
 }
 
 .signupbox {
@@ -134,8 +134,8 @@ label {
 .signupinput {
   /* width: 12rem; */
   font-family: "Gamja Flower", cursive;
-  width: 70%;
-  height: 2.3rem;
+  width: 80%;
+  height: 2rem;
   border-radius: 5px;
   font-size: 20px;
   letter-spacing: 2px;
@@ -180,12 +180,12 @@ label {
   text-align: right;
 }
 .email {
-  letter-spacing: 5px;
+  letter-spacing: 4px;
   display: inline-block;
   text-align: right;
 }
 .name {
-  letter-spacing: 10px;
+  letter-spacing: 8px;
   display: inline-block;
   text-align: right;
 }

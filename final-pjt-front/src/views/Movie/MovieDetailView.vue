@@ -18,24 +18,23 @@
       <hr />
     </div>
 
-    <button @click="likeMovie()">이 영화 맘에 드셨나요?</button>
-    <span>{{count}}</span>
+    <button @click.self.prevent="likeMovie()">이 영화 맘에 드셨나요?</button>
+    <span>{{ count }}</span>
 
     <MovieComment />
-
   </div>
 </template>
 
 <script>
 import axios from "axios";
-import MovieComment from '@/components/MovieComment'
+import MovieComment from "@/components/MovieComment";
 
 const API_URL = "http://127.0.0.1:8000";
 
 export default {
   name: "MovieDetailView",
   components: {
-    MovieComment
+    MovieComment,
   },
 
   data() {
@@ -47,12 +46,11 @@ export default {
   },
 
   created() {
-    this.getMoviesDetail()
-    this.getLikeCount()
+    this.getMoviesDetail();
+    this.getLikeCount();
   },
 
   methods: {
-
     getMoviesDetail() {
       axios({
         method: "get",
@@ -69,37 +67,35 @@ export default {
 
     getLikeCount() {
       axios({
-        method: 'get',
+        method: "get",
         url: `${API_URL}/movies/${this.$route.params.id}/like/count/`,
       })
-      .then((res)=> {
-        console.log(res)
-        this.count = res.data.like_count
-      })
-      .catch((err)=> {
-        console.log(err)
-      })
+        .then((res) => {
+          console.log(res);
+          this.count = res.data.like_count;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
 
     likeMovie() {
-      const token = localStorage.getItem('jwt')
+      const token = localStorage.getItem("jwt");
       axios({
-        method: 'post',
+        method: "post",
         url: `${API_URL}/movies/${this.$route.params.id}/like/`,
         headers: {
           Authorization: `Bearer ${token}`,
-        }
+        },
       })
-      .then((res)=> {
-        console.log(res)
-        this.getLikeCount()
-      })
-      .catch((err)=> {
-        console.log(err)
-      })
+        .then((res) => {
+          console.log(res);
+          this.getLikeCount();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
-
-    
   },
 
   computed: {
@@ -107,7 +103,6 @@ export default {
       return `https://image.tmdb.org/t/p/original/${this.movie.poster_path}`;
     },
   },
-
 };
 </script>
 

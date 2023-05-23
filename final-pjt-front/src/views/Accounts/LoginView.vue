@@ -27,9 +27,9 @@
             />
           </label>
           <br />
+          <input class="login_btn loginbbtn" type="submit" value="logIn" />
         </form>
       </div>
-      <input class="login_btn loginbbtn" type="submit" value="logIn" />
     </div>
   </div>
 </template>
@@ -63,10 +63,6 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Pangolin&display=swap");
 </style>
 <style scoped>
-label {
-  margin: 10px;
-}
-
 .loginbox {
   font-family: "Gamja Flower", cursive;
   /* background-color: floralwhite; */
@@ -88,10 +84,11 @@ form {
 .logininput {
   font-family: "Gamja Flower", cursive;
   width: 16rem;
-  height: 2.3rem;
-  margin: auto;
+  height: 1.8rem;
+  margin: 5px auto;
   border-radius: 5px;
   font-size: 20px;
+  letter-spacing: 2px;
 }
 
 .login_btn {

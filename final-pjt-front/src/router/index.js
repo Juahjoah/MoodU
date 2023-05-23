@@ -56,7 +56,7 @@ const routes = [
     component: LoginView
   },
   {
-    path: 'recommended/',
+    path: '/recommended',
     name: 'RecommendView',
     component: RecommendView
   },
