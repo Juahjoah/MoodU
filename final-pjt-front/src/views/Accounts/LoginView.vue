@@ -1,33 +1,35 @@
 <template>
   <div class="login">
-    <h1>오늘도 모듀와 함께해요!</h1>
     <div class="loginbox">
-      <form @submit.prevent="login">
-        <label for="username"
-          >ID:
-          <input
-            class="logininput"
-            type="text"
-            id="username"
-            placeholder="Enter ID"
-            v-model="username"
-          />
-        </label>
-        <br />
-        <label for="password"
-          >PW:
-          <input
-            class="logininput"
-            type="password"
-            id="password"
-            placeholder="Enter password"
-            v-model="password"
-          />
-        </label>
-        <br />
-
-        <input class="login_btn btn-4" type="submit" value="logIn" />
-      </form>
+      <br />
+      <h1>오늘도 모듀와 함께해요!</h1>
+      <div class="logininfo">
+        <form @submit.prevent="login">
+          <label for="username"
+            >I D:
+            <input
+              class="logininput"
+              type="text"
+              id="username"
+              placeholder="Enter ID"
+              v-model="username"
+            />
+          </label>
+          <br />
+          <label for="password"
+            >PW:
+            <input
+              class="logininput"
+              type="password"
+              id="password"
+              placeholder="Enter password"
+              v-model="password"
+            />
+          </label>
+          <br />
+        </form>
+      </div>
+      <input class="login_btn loginbbtn" type="submit" value="logIn" />
     </div>
   </div>
 </template>
@@ -60,20 +62,34 @@ export default {
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Pangolin&display=swap");
 </style>
-<style>
+<style scoped>
 label {
-  margin: 4px;
+  margin: 10px;
 }
 
 .loginbox {
   font-family: "Gamja Flower", cursive;
+  /* background-color: floralwhite; */
+  margin: 0px auto;
+  width: 30rem;
+  height: 20rem;
+}
+
+.logininfo {
+  width: 27rem;
+  margin: 0px auto;
+}
+
+form {
+  display: inline-block;
+  text-align: right;
 }
 
 .logininput {
   font-family: "Gamja Flower", cursive;
   width: 16rem;
   height: 2.3rem;
-  margin: 0px auto;
+  margin: auto;
   border-radius: 5px;
   font-size: 20px;
 }
@@ -97,12 +113,12 @@ label {
   background-position: right center; /* change the direction of the change here */
 }
 
-.btn-4 {
+.loginbbtn {
   background-image: linear-gradient(
     to right,
-    #72a8ff 0%,
-    #c7e9f8 51%,
-    #004ac0 100%
+    #b2b0eb 0%,
+    #fefefe 51%,
+    #6e6bd7 100%
   );
 }
 </style>
