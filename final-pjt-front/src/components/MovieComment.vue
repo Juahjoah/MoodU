@@ -1,19 +1,21 @@
 <template>
   <div>
     <section class="user_comment">
-      <p class="displaytext">여러분은 영화를 어떻게 보셨나요?</p>
+      <h3 class="displaytext">여러분은 영화를 어떻게 보셨나요?</h3>
       <form @submit.prevent="createComment">
         <input
           type="text"
           v-model.trim="comment"
-          @keyup.enter="createComment"
         />
-        <button @click="createComment">!</button>
+        <button @click.self.prevent="createComment">+</button>
       </form>
     </section>
-    <div>
-      <p v-for="con in contentList" :key="con.id">{{ con.content }}</p>
+
+    <div v-for="con in contentList" :key="con.id">
+      <span>{{ con.content }} | 작성자 {{con.username}} </span>
+      <button @click="commentDelete(con.id)" v-if="con.username === $store.state.user">X</button>
     </div>
+
   </div>
 </template>
 
@@ -29,12 +31,13 @@ export default {
       comment: null,
     };
   },
+
   methods: {
+    // 댓글 생성
     createComment() {
       const comment = this.comment;
-      if (!comment) {
-        alert("댓글을 달고 엔터를 눌러라");
-      } else {
+
+      if (comment) {
         axios({
           method: "post",
           url: `${API_URL}/movies/${this.$route.params.id}/comments/create/`,
@@ -46,28 +49,58 @@ export default {
             contentList: [],
           },
         })
-          .then((res) => {
-            console.log(res);
-            this.getCommentList();
-            this.comment = "";
-          })
-          .catch((err) => {
-            console.log(err);
-          });
+        .then(() => {
+          // console.log(res);
+          this.getCommentList();
+          this.comment = "";
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+      }
+      else {
+        alert("댓글을 쓰고 제출을 해주겠어? ^^");
       }
     },
+
+    // 댓글 리스트 조회
     getCommentList() {
       axios({
         method: "get",
         url: `${API_URL}/movies/${this.$route.params.id}/comments/`,
-      }).then((res) => {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
         // console.log(res)
         this.contentList = res.data;
-        console.log(this.contentList);
-        // this.$router.push({name: 'MovieDetailView'})
-      });
+        // console.log(this.contentList);
+      })
+      .catch((err)=> {
+        console.log(err)
+      })
+    },
+
+    // 댓글 삭제
+    commentDelete(comment_id) {
+      axios({
+        method: "delete",
+        url: `${API_URL}/movies/${this.$route.params.id}/comments/${comment_id}/`,
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+      })
+      .then(() => {
+        // console.log(res)
+        this.getCommentList();
+      })
+      .catch((err)=> {
+        console.log(err)
+      })
     },
   },
+
   created() {
     this.getCommentList();
   },
