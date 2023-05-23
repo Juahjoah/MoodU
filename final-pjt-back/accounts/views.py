@@ -4,6 +4,8 @@ from rest_framework.response import Response
 from .serializers import UserSerializer
 from django.shortcuts import get_object_or_404, get_list_or_404
 from .models import User
+from community.models import Review
+from movies.models import Comment, Genre, Movie
 from .serializers import UserSerializer
 from django.contrib.auth import get_user_model
 
@@ -59,7 +61,10 @@ def login(request):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def profile(request, username):
-    pass
+    user = get_object_or_404(get_user_model(), username = username)
+    serializer = UserSerializer(user)
+    print(serializer.data)
+    return Response(serializer.data)
 
 
 @api_view(['POST'])
