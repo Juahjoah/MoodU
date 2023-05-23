@@ -6,18 +6,22 @@
           <router-link to="/">Movie</router-link>
           <router-link :to="{ name: 'Community' }">Community</router-link>
         </div>
-        <img class="logoimg" src="./assets/MoodU.png" alt="moodU_logo" />
+        <img class="logoimg" src="./assets/logo_background.png" alt="moodU_logo" />
         <div class="boundary2">
           <router-link :to="{ name: 'SignupView' }">Sign up page</router-link>
           <router-link :to="{ name: 'LoginView' }">Login page</router-link>
         </div>
       </section>
       <section class="ylogin" v-else>
-        <router-link to="/">Movie</router-link>
-        <router-link :to="{ name: 'Community' }">Community</router-link>
-        <img class="logoimg" src="./assets/MoodU.png" alt="moodU_logo" />
-        <a @click="logout">logout</a>
-        <router-link :to="{ name: 'ProfileView' }">my profile</router-link>
+        <div class="boundary1">
+          <router-link to="/">Movie</router-link>
+          <router-link :to="{ name: 'Community' }">Community</router-link>
+        </div>
+        <img class="logoimg" src="./assets/logo_background.png" alt="moodU_logo" />
+        <div class="boundary2">
+          <a @click="logout">logout</a>
+          <router-link :to="{ name: 'ProfileView' }">my profile</router-link>
+        </div>
       </section>
       <hr />
       <div class="hidiv" v-if="!$store.state.user">
