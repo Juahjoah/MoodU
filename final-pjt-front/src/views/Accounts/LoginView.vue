@@ -27,7 +27,9 @@
             />
           </label>
           <br />
-          <input class="login_btn loginbbtn" type="submit" value="logIn" />
+          <div id="loginbtncenter">
+            <input class="login_btn loginbbtn" type="submit" value="logIn" />
+          </div>
         </form>
       </div>
     </div>
@@ -117,5 +119,12 @@ form {
     #fefefe 51%,
     #6e6bd7 100%
   );
+}
+
+#loginbtncenter {
+  display: flex;
+  text-align: center;
+  width: 10rem;
+  margin: 0px auto;
 }
 </style>
