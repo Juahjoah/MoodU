@@ -7,8 +7,8 @@
         <button @click.self.prevent="createComment">+</button>
       </form>
     </section>
-    <div class="rgyPostIt">
-      <div v-for="con in contentList" :key="con.id">
+    <div v-for="con in contentList" :key="con.id">
+        <div class="rgyPostIt">
         <span>{{ con.content }} | 작성자 {{ con.username }} </span>
         <button
           @click="commentDelete(con.id)"
