@@ -1,11 +1,11 @@
 <template>
   <div class="moviedetail">
     <div>
-      <p>{{ movie.title }}</p>
-      <p>개봉일: {{ movie.release_date }}</p>
-      <img :src="getPoster" />
+      <p id="titlep">{{ movie.title }}</p>
+      <p id="contentp">개봉일: {{ movie.release_date }}</p>
       <hr />
-      <p>{{ movie.overview }}</p>
+      <img align="right" :src="getPoster" />
+
       <p>인기도: {{ movie.popularity }}</p>
       <p>평균 점수: {{ movie.vote_average }}</p>
       <p>투표 수: {{ movie.vote_count }}</p>
@@ -14,6 +14,7 @@
         <span v-for="genre in movie.genres" :key="genre.id">
           {{ genre.name }},
         </span>
+        <p id="overviewp">{{ movie.overview }}</p>
       </div>
       <hr />
     </div>
@@ -57,13 +58,13 @@ export default {
         method: "get",
         url: `${API_URL}/movies/${this.$route.params.id}/`,
       })
-      .then((res) => {
-        // console.log(response);
-        this.movie = res.data;
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+        .then((res) => {
+          // console.log(response);
+          this.movie = res.data;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
 
     // 좋아요 수 가져오기
@@ -72,13 +73,13 @@ export default {
         method: "get",
         url: `${API_URL}/movies/${this.$route.params.id}/like/count/`,
       })
-      .then((res) => {
-        // console.log(res);
-        this.count = res.data.like_count;
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+        .then((res) => {
+          // console.log(res);
+          this.count = res.data.like_count;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
 
     // 좋아요 누르기
@@ -92,13 +93,14 @@ export default {
           Authorization: `Bearer ${token}`,
         },
       })
-      .then(() => {
-        // console.log(res);
-        this.getLikeCount();
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+        .then(() => {
+          // console.log(res);
+          this.getLikeCount();
+        })
+        .catch((err) => {
+          confirm("로그인을 해야 좋아요를 누를 수 있어요!");
+          console.log(err);
+        });
     },
   },
 
@@ -111,8 +113,31 @@ export default {
 </script>
 
 <style scoped>
+.moviedetail {
+  width: 60rem;
+  margin: 5rem auto;
+  text-align: left;
+  padding: 0px 1.5rem;
+}
+
 img {
-  float: right;
-  width: 15em;
+  width: 18em;
+  padding: 0.7rem;
+}
+
+#titlep {
+  font-size: 30px;
+  text-align: left;
+  margin: 0px 1rem;
+}
+
+#contentp {
+  font-size: 15px;
+  text-align: left;
+  margin: 0px 1rem;
+}
+
+#overviewp {
+  font-size: 14px;
 }
 </style>
