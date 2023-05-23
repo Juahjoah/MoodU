@@ -10,7 +10,9 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 import requests
 from .models import Movie, Comment, Genre
 from .serializers import MovieListSerializer, MovieSerializer, CommentSerializer
-
+    
+import random
+import re
 
 # 장르 가져와서 저장하기
 def get_movie_genre() :
@@ -29,7 +31,7 @@ def get_movie_genre() :
 
 # 영화 가져와서 저장하기
 def get_movie_data() :
-    for i in range(1, 4):
+    for i in range(1, 5):
         URL = 'https://api.themoviedb.org/3/movie/popular'
         params = {
             'language':'ko-KR',
@@ -40,8 +42,11 @@ def get_movie_data() :
         movies = requests.get(URL, params=params).json()
 
         for movie in movies['results']:
-            if not Movie.objects.filter(title = movie['title']).exists():
-                print(movie)
+            if 'release_date' not in movie:
+                continue
+            
+            if not Movie.objects.filter(title = movie['title']).exists() and not Movie.objects.filter(poster_path=movie['poster_path']).exists():
+                    # print(movie)
                 movie_data = Movie.objects.create(
                     title = movie['title'],
                     overview = movie['overview'],
@@ -53,7 +58,7 @@ def get_movie_data() :
                 )
                 genre_ids = movie['genre_ids']
                 genres = Genre.objects.filter(id__in = genre_ids)
-                print(genres)
+                # print(genres)
                 movie_data.genres.set(genres)
 
                 movie_data.save()
@@ -85,12 +90,12 @@ def create_comment(request, movie_pk):
     if serializer.is_valid(raise_exception=True):
         serializer.save(user=request.user, movie = movie)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
-    
+
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def recommend_movie(request, emotion): # happy, sad, soso, angry, joy, depressed
-
+    # print(emotion)
     if emotion == 'happy': # 판타지, 가족, 애니메이션, 스릴러, TV 영화 (except 공포, 스릴러, 범죄)
         accept_ids = [14, 10751, 16, 53, 10770]
         except_ids = [27, 53, 80]
@@ -123,12 +128,14 @@ def recommend_movie(request, emotion): # happy, sad, soso, angry, joy, depressed
     for data in serializer.data:
         # print(data['genres'])
         gen = [gen['id'] for gen in data['genres']] # data안의 장르들을 for문으로 가져오고, 그들의 id를 list화
-        print(gen)
+        # print(gen)
         
         if all(g not in except_ids for g in gen): # gen의 g를 돌면서 g가 모두 except_ids에 포함되지 않으면
             filtered_data.append(data)
 
-    return Response(filtered_data)
+    ran_filtered_data = random.sample(filtered_data, 10)
+
+    return Response(ran_filtered_data)
 
 
 @api_view(['POST'])
