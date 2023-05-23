@@ -137,6 +137,15 @@ def recommend_movie(request, emotion): # happy, sad, soso, angry, joy, depressed
 
     return Response(ran_filtered_data)
 
+@api_view(['GET'])
+def like_movie_count(request, movie_pk):
+    movie = Movie.objects.get(pk=movie_pk)
+
+    context = {
+        'like_count' : movie.like_users.count()
+    }
+    return Response(context)
+
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
@@ -153,7 +162,6 @@ def like_movie(request, movie_pk):
 
     context = {
             'is_liked': is_liked,
-            'liked_count': movie.like_users.count(),
         }
 
     return Response(context)
