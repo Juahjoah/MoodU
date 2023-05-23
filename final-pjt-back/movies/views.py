@@ -1,20 +1,20 @@
 from django.shortcuts import render
-from rest_framework.response import Response
-
 from django.shortcuts import get_object_or_404, get_list_or_404
+
+from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework import status
 from rest_framework.decorators import permission_classes
 from rest_framework.permissions import IsAuthenticated, AllowAny
 
-import requests
 from .models import Movie, Comment, Genre
 from .serializers import MovieListSerializer, MovieSerializer, CommentSerializer
     
+import requests
 import random
-import re
 
-# 장르 가져와서 저장하기
+
+# 장르 api를 이용해 종류를 가져와 db에 저장
 def get_movie_genre() :
     url = "https://api.themoviedb.org/3/genre/movie/list"
     params = {
@@ -29,7 +29,7 @@ def get_movie_genre() :
             genre_data = Genre.objects.create(id = genre['id'], name = genre['name'])
 
 
-# 영화 가져와서 저장하기
+# 영화 api를 이용해 영화 list를 가져와 db에 저장
 def get_movie_data() :
     for i in range(1, 5):
         URL = 'https://api.themoviedb.org/3/movie/popular'
@@ -64,6 +64,7 @@ def get_movie_data() :
                 movie_data.save()
 
 
+# 전체 영화 list 전송
 @api_view(['GET'])
 def index(request):
     get_movie_genre()
@@ -73,6 +74,7 @@ def index(request):
     return Response(serializer.data)
 
 
+# 상세 영화 정보 전송
 @api_view(['GET'])
 def detail(request, movie_pk):
     movie = get_object_or_404(Movie, pk=movie_pk)
@@ -81,6 +83,17 @@ def detail(request, movie_pk):
     return Response(serializer.data)
 
 
+# 영화에 따른 댓글 list 전송
+@api_view(['GET'])
+def comment(reqeust, movie_pk):
+    movie = get_object_or_404(Movie, pk=movie_pk)
+    comments = Comment.objects.filter(movie = movie)
+    serializer = CommentSerializer(comments, many=True)
+
+    return Response(serializer.data)
+
+
+# 특정 영화에 댓글 생성하고 db에 저장
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def create_comment(request, movie_pk):
@@ -92,6 +105,7 @@ def create_comment(request, movie_pk):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 
+# 영화 추천 알고리즘
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def recommend_movie(request, emotion): # happy, sad, soso, angry, joy, depressed
@@ -122,7 +136,6 @@ def recommend_movie(request, emotion): # happy, sad, soso, angry, joy, depressed
 
     movies = Movie.objects.filter(genres__in = accept_ids)
     serializer = MovieSerializer(movies, many=True)
-
     # print(serializer.data)
     filtered_data = []
     for data in serializer.data:
@@ -134,9 +147,10 @@ def recommend_movie(request, emotion): # happy, sad, soso, angry, joy, depressed
             filtered_data.append(data)
 
     ran_filtered_data = random.sample(filtered_data, 10)
-
     return Response(ran_filtered_data)
 
+
+# 영화에 좋아요 개수 count
 @api_view(['GET'])
 def like_movie_count(request, movie_pk):
     movie = Movie.objects.get(pk=movie_pk)
@@ -147,6 +161,7 @@ def like_movie_count(request, movie_pk):
     return Response(context)
 
 
+# 좋아요를 눌렀을 때 추가하고 해제했을 때 삭제
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def like_movie(request, movie_pk):
@@ -163,6 +178,5 @@ def like_movie(request, movie_pk):
     context = {
             'is_liked': is_liked,
         }
-
     return Response(context)
 
