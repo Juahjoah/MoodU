@@ -3,10 +3,12 @@
     <nav class="main_nav">
       <section class="nlogin" v-if="!$store.state.user">
         <div class="boundary1">
-          <router-link to="/">Movie</router-link>
+          <router-link :to="{ name: 'Movie'}">Movie</router-link>
           <router-link :to="{ name: 'Community' }">Community</router-link>
         </div>
-        <img class="logoimg" src="./assets/logo_background.png" alt="moodU_logo" />
+        <router-link :to="{ name: 'Movie'}">
+          <img class="logoimg" src="./assets/logo_black_width.png" alt="moodU_logo" />
+        </router-link>
         <div class="boundary2">
           <router-link :to="{ name: 'SignupView' }">Sign up page</router-link>
           <router-link :to="{ name: 'LoginView' }">Login page</router-link>
@@ -17,7 +19,9 @@
           <router-link to="/">Movie</router-link>
           <router-link :to="{ name: 'Community' }">Community</router-link>
         </div>
-        <img class="logoimg" src="./assets/logo_background.png" alt="moodU_logo" />
+        <router-link :to="{ name: 'Movie'}">
+          <img class="logoimg" src="./assets/logo_black_width.png" alt="moodU_logo" />
+        </router-link>
         <div class="boundary2">
           <a @click="logout">logout</a>
           <router-link :to="{ name: 'ProfileView' , params:{username: $store.state.user}}">my profile</router-link>
@@ -99,7 +103,7 @@ nav a.router-link-exact-active {
 }
 
 .logoimg {
-  width: 8rem;
+  width: 14rem;
   margin: 0px auto;
 }
 
@@ -115,4 +119,9 @@ nav a.router-link-exact-active {
   justify-content: space-evenly;
   padding: 10px;
 }
+
+
+
+
+
 </style>
