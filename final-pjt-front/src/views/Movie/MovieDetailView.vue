@@ -21,12 +21,7 @@
     <button @click="likeMovie()">이 영화 맘에 드셨나요?</button>
     <span>{{count}}</span>
 
-    <section class="user_comment">
-      <p class="displaytext">여러분은 영화를 어떻게 보셨나요?</p>
-      <input type="text" v-model.trim="comment" @keyup.enter="createComment">
-      <button @click="createComment">!</button>
-      <MovieComment />
-    </section>
+    <MovieComment />
 
   </div>
 </template>
@@ -42,20 +37,22 @@ export default {
   components: {
     MovieComment
   },
+
   data() {
     return {
       movie: Object,
-      comment: null,
+
       count: null,
     };
   },
-  created() {
-    this.getMoviesDetail();
 
+  created() {
+    this.getMoviesDetail()
     this.getLikeCount()
-    
   },
+
   methods: {
+
     getMoviesDetail() {
       axios({
         method: "get",
@@ -71,7 +68,6 @@ export default {
     },
 
     getLikeCount() {
-
       axios({
         method: 'get',
         url: `${API_URL}/movies/${this.$route.params.id}/like/count/`,
@@ -87,7 +83,6 @@ export default {
 
     likeMovie() {
       const token = localStorage.getItem('jwt')
-
       axios({
         method: 'post',
         url: `${API_URL}/movies/${this.$route.params.id}/like/`,
@@ -102,41 +97,17 @@ export default {
       .catch((err)=> {
         console.log(err)
       })
-      
     },
 
-    createComment() {
-      const comment = this.comment
-      const token = localStorage.getItem('jwt')
-
-      if (!comment) {
-        alert('댓글을 달고 엔터를 눌러라')
-      } else {
-        axios({
-          method: 'post',
-          url: `${API_URL}/movies/${this.$route.params.id}/comments/create/`,
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-          data: {
-            content : comment
-          }
-        }).then((res)=> {
-          console.log(res)
-        }).catch((err)=> {
-          console.log(err)
-        })
-      }
-
-
-    }
+    
   },
+
   computed: {
     getPoster() {
       return `https://image.tmdb.org/t/p/original/${this.movie.poster_path}`;
     },
-
   },
+
 };
 </script>
 
