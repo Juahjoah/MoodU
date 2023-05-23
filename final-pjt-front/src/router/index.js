@@ -8,7 +8,9 @@ import MovieDetailView from '../views/Movie/MovieDetailView.vue'
 import CommunityCreateView from '../views/Community/CommunityCreateView.vue'
 import CommunityDetailView from '../views/Community/CommunityDetailView.vue'
 import CommunityUpdateView from '../views/Community/CommunityUpdateView.vue'
-import ProfileView from '../views/Accounts/ProfileView.vue'
+// import ProfileView from '../views/Accounts/ProfileView.vue'
+import RecommendView from '@/views/Movie/RecommendView'
+
 
 Vue.use(VueRouter)
 
@@ -54,10 +56,11 @@ const routes = [
     component: LoginView
   },
   {
-    path: '/profile',
-    name: 'ProfileView',
-    component: ProfileView
+    path: 'recommended/',
+    name: 'RecommendView',
+    component: RecommendView
   },
+
 ]
 
 const router = new VueRouter({
