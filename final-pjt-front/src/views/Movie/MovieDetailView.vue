@@ -44,7 +44,8 @@ export default {
   },
   created() {
     this.getMoviesDetail();
-    this.upLike()
+    // this.upLike()
+    
   },
   methods: {
     getMoviesDetail() {
@@ -72,7 +73,9 @@ export default {
 
       }).then((res)=> {
         console.log(res)
+
         this.count = res.data.liked_count
+
 
       }).catch((err)=> {
         console.log(err)

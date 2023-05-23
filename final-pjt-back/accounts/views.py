@@ -5,8 +5,12 @@ from .serializers import UserSerializer
 from django.shortcuts import get_object_or_404, get_list_or_404
 from .models import User
 from .serializers import UserSerializer
+from django.contrib.auth import get_user_model
 
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+
+from rest_framework.decorators import permission_classes
+from rest_framework.permissions import IsAuthenticated, AllowAny
 
 @api_view(['POST'])
 def signup(request):
@@ -50,3 +54,32 @@ def login(request):
         },
     }
     return Response(data, status = 200)
+
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def profile(request, username):
+    pass
+
+
+@api_view(['POST'])
+# @permission_classes([IsAuthenticated])
+def follow(request, user_pk):
+    person = get_object_or_404(get_user_model(), pk=user_pk)
+    user = request.user
+
+    if person != user:
+        if person.followers.filter(pk=user.pk).exists():
+            person.followers.remove(user)
+            is_followed = False
+        else:
+            person.followers.add(user)
+            is_followed = True
+
+        context = {
+            'is_followed': is_followed,
+            'followers_count': person.followers.count(),
+            'followings_count': person.followings.count(),
+        }
+        # print(context)
+        return Response(context)
