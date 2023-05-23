@@ -1,12 +1,12 @@
 <template>
   <div class="signup">
-    <h1>Welcome to MoodU!</h1>
-    <h5>모듀에서 사용할 정보를 입력해주세요!</h5>
     <div class="signupbox">
-      <form @submit.prevent="signup">
-        <label for="username">
+      <h1>Welcome to MoodU!</h1>
+      <h5>모듀에서 사용할 정보를 입력해주세요!</h5>
+      <div class="signupinfo">
+        <form @submit.prevent="signup">
           <br />
-          ID:
+          <label class="id" for="username"> ID </label> :
           <input
             class="signupinput"
             type="text"
@@ -14,12 +14,10 @@
             placeholder="Enter ID"
             v-model="username"
           />
-        </label>
-        <!-- <button @click.self.prevent="checkid()">중복 확인</button> -->
-        <br />
+          <!-- <button @click.self.prevent="checkid()">중복 확인</button> -->
+          <br />
 
-        <label for="password1">
-          PW:
+          <label class="pw" for="password1"> PW </label> :
           <input
             class="signupinput"
             type="password"
@@ -27,11 +25,9 @@
             placeholder="Enter password"
             v-model="password1"
           />
-        </label>
-        <br />
+          <br />
 
-        <label for="password2">
-          PW check:
+          <label class="pw2" for="password2">PW check </label> :
           <input
             class="signupinput"
             type="password"
@@ -39,35 +35,30 @@
             placeholder="Enter password one more time"
             v-model="password2"
           />
-        </label>
-        <br />
+          <br />
 
-        <label for="email">
-          email:
+          <label class="email" for="email"> E-mail </label> :
           <input
             class="signupinput"
             type="email"
             id="email"
-            placeholder="Enter email"
+            placeholder="Enter E-mail"
             v-model.trim="email"
           />
-        </label>
-        <br />
+          <br />
 
-        <label for="lastname">
-          name:
+          <label class="name" for="last_name">NAME </label> :
           <input
             class="signupinput"
             type="text"
-            id="lastname"
+            id="last_name"
             placeholder="Enter Your name"
-            v-model="lastname"
+            v-model="last_name"
           />
-        </label>
-        <br />
-
-        <input class="signup_btn btn-4" type="submit" value="Signup" />
-      </form>
+        </form>
+      </div>
+      <br />
+      <input class="signup_btn signupbbtn" type="submit" value="Signup" />
     </div>
   </div>
 </template>
@@ -81,7 +72,7 @@ export default {
       username: null,
       password1: null,
       password2: null,
-      lastname: null,
+      last_name: null,
       email: null,
     };
   },
@@ -90,14 +81,14 @@ export default {
       const username = this.username;
       const password1 = this.password1;
       const password2 = this.password2;
-      const lastname = this.lastname;
+      const last_name = this.last_name;
       const email = this.email;
 
       const payload = {
         username,
         password1,
         password2,
-        lastname,
+        last_name,
         email,
       };
 
@@ -111,7 +102,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Pangolin&display=swap");
 </style>
 <style>
@@ -122,13 +113,22 @@ export default {
 } */
 
 label {
-  margin: 4px;
+  margin: 10px;
 }
 
 .signupbox {
   font-family: "Gamja Flower", cursive;
-  width: 30rem;
+  width: 37rem;
+  height: 40rem;
   margin: 0px auto;
+  /* background-color: #f8eded; */
+  border-radius: 5px;
+}
+
+.signupinfo {
+  width: 35rem;
+  display: inline-block;
+  text-align: right;
 }
 
 .signupinput {
@@ -138,6 +138,7 @@ label {
   height: 2.3rem;
   border-radius: 5px;
   font-size: 20px;
+  letter-spacing: 2px;
 }
 
 .signup_btn {
@@ -159,12 +160,33 @@ label {
   background-position: right center; /* change the direction of the change here */
 }
 
-.btn-4 {
+.signupbbtn {
   background-image: linear-gradient(
     to right,
-    #72a8ff 0%,
-    #c7e9f8 51%,
-    #004ac0 100%
+    #b2b0eb 0%,
+    #fefefe 51%,
+    #6e6bd7 100%
   );
+}
+
+.id {
+  letter-spacing: 10px;
+  display: inline-block;
+  text-align: right;
+}
+.pw {
+  letter-spacing: 10px;
+  display: inline-block;
+  text-align: right;
+}
+.email {
+  letter-spacing: 5px;
+  display: inline-block;
+  text-align: right;
+}
+.name {
+  letter-spacing: 10px;
+  display: inline-block;
+  text-align: right;
 }
 </style>
