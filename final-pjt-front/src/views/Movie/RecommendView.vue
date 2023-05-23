@@ -32,11 +32,11 @@ export default {
   },
   methods: {
     emotionSelect(e) {
-      console.log(e);
+      // console.log(e);
       this.emo = e;
-
       const emo = this.emo;
-      console.log(emo);
+      // console.log(emo);
+
       const token = localStorage.getItem("jwt");
 
       axios({
@@ -46,15 +46,17 @@ export default {
           Authorization: `Bearer ${token}`,
         },
       })
-        .then((res) => {
-          console.log(res);
-          this.emotionMovie = res.data;
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      .then((res) => {
+        // console.log(res);
+        this.emotionMovie = res.data;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
     },
+    
   },
+
   components: {
     RecommendMovie,
   },

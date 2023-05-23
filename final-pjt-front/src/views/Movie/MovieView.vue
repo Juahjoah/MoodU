@@ -19,12 +19,15 @@ export default {
       movies: null,
     };
   },
+
   components: {
     MovieCard,
   },
+
   created() {
     this.getMovies();
   },
+
   methods: {
     getMovies() {
       this.$store.dispatch("getMovies");

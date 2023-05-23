@@ -21,7 +21,7 @@ export default {
   props: {
     communities: Array,
   },
-  methods: {},
+
 };
 </script>
 
