@@ -92,10 +92,10 @@ export default new Vuex.Store({
           router.push({ name: 'Movie' })
         })
         .catch((error) => {
-          // if (error.response.status === 401) {
-          //   alert('확인되지 않은 사용자입니다. 다시 한 번 확인해주세요!')
-          // }
           console.log(error)
+          if (error.response.status === 404) {
+            alert('확인되지 않은 사용자입니다. 다시 한 번 확인해주세요!')
+          }
         })
     },
     logout(context) {
