@@ -7,6 +7,8 @@ import LoginView from '../views/Accounts/LoginView.vue'
 import MovieDetailView from '../views/Movie/MovieDetailView.vue'
 import CommunityCreateView from '../views/Community/CommunityCreateView'
 import CommunityDetailView from '../views/Community/CommunityDetailView'
+import RecommendView from '@/views/Movie/RecommendView'
+import RecommendMovie from '@/components/RecommendMovie'
 
 Vue.use(VueRouter)
 
@@ -45,6 +47,16 @@ const routes = [
     path: '/login',
     name: 'LoginView',
     component: LoginView
+  },
+  {
+    path: 'recommended/:emtion',
+    name: 'RecommendView',
+    component: RecommendView
+  },
+  {
+    path: 'recommendMovie/',
+    name: 'RecommendMovie',
+    component: RecommendMovie
   }
 ]
 
