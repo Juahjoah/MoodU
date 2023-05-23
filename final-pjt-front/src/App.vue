@@ -17,7 +17,7 @@
         <router-link :to="{ name: 'Community' }">Community</router-link>
         <img class="logoimg" src="./assets/MoodU.png" alt="moodU_logo" />
         <a @click="logout">logout</a>
-        <router-link :to="{ name: 'ProfileView' }">my profile</router-link>
+        <router-link :to="{ name: 'ProfileView', params:{username: $store.state.user}}">my profile</router-link>
       </section>
       <hr />
       <div class="hidiv" v-if="!$store.state.user">
