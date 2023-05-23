@@ -73,7 +73,7 @@ section {
 
 #app {
   font-family: "Jua", sans-serif;
-  font-size: 25px;
+  font-size: 15px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -91,7 +91,7 @@ nav a {
 }
 
 nav a.router-link-exact-active {
-  color: #42b983;
+  color: #e6d3ed;
 }
 
 /* background-color: lemonchiffon; */
