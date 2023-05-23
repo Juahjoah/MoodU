@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <p class="navp">{{ $store.state.user }}님! 오늘도 반가워요!</p>
     <nav class="main_nav">
       <section class="nlogin" v-if="!$store.state.user">
         <router-link to="/">Movie</router-link> |
@@ -10,6 +9,7 @@
         <router-link :to="{ name: 'LoginView' }">Login page</router-link>
       </section>
       <section class="ylogin" v-else>
+        <p class="navp">{{ $store.state.user }}님! 오늘도 반가워요!</p>
         <router-link to="/">Movie</router-link> |
         <router-link :to="{ name: 'Community' }">Community</router-link> |
         <img class="logoimg" src="./assets/MoodU.png" alt="moodU_logo" />
