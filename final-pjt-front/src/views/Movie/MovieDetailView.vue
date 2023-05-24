@@ -14,13 +14,14 @@
         <span v-for="genre in movie.genres" :key="genre.id">
           {{ genre.name }},
         </span>
-        <p id="overviewp">{{ movie.overview }}</p>
+        <p v-if="movie.overview" id="overviewp"> {{ movie.overview }} </p>
+        <p v-else> 해당 영화는 줄거리가 제공되지 않습니다. </p>
       </div>
       <hr />
     </div>
-
-    <button @click.self.prevent="likeMovie()">이 영화 맘에 드셨나요?</button>
-    <span>{{ count }}</span>
+    <span>{{ count }} 명의 모듀러가 해당 영화를 좋아합니다. </span>
+    <br>
+    <button class="heart" @click.self.prevent="likeMovie()">❤</button>
 
     <MovieComment />
   </div>
@@ -139,5 +140,9 @@ img {
 
 #overviewp {
   font-size: 14px;
+}
+
+.heart {
+  font-size: 20px;
 }
 </style>
