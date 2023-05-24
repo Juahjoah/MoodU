@@ -3,8 +3,9 @@
     <div class="each-movie-card">
       <router-link :to="{ name: 'MovieDetail', params: { id: movie.id } }">
         <img class="card-img-top" :src="getPoster" alt="Poster image" />
-        <p class="hovertext" data-hover="More information" />
-        <p>{{ movie.title }}</p>
+        <div class="textarea">
+          <h3>{{ movie.title }}</h3>
+        </div>
       </router-link>
     </div>
   </div>
@@ -27,31 +28,37 @@ export default {
 </script>
 
 <style scoped>
-h3 {
-  margin: 40px 0 0;
+
+@font-face {
+    font-family: 'KimjungchulGothic-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/KimjungchulGothic-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
+
 a {
   color: #2c3e50;
   text-decoration: none;
 }
 
 .card {
-  width: 13rem;
+  font-family: 'KimjungchulGothic-Bold';
+  font-size: 15px;
+  width: 12rem;
   height: auto;
   margin: 20px;
   position: relative;
-  background-color: beige;
-  box-shadow: 1px 1px 1px 1px black;
+}
+.textarea {
+  text-align: left;
 }
 
+.each-movie-card{
+  width: 13rem;
+  height: auto;
+  /* background-color: beige;
+  box-shadow: 1px 1px 1px 1px black; */
+}
 
 .card img {
   width: 13rem;

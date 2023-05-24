@@ -105,7 +105,7 @@ i {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  margin: 40px 20px 0;
+  margin: 40px auto 0;
   width: 80%;
 }
 
