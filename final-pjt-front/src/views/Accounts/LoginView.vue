@@ -84,13 +84,21 @@ form {
 }
 
 .logininput {
+  border-style: dotted;
+  border-left-width: 0;
+  border-right-width: 0;
+  border-top-width: 0;
+  border-bottom-width: 1;
   font-family: "Gamja Flower", cursive;
   width: 16rem;
-  height: 1.8rem;
+  height: 2.3rem;
   margin: 5px auto;
-  border-radius: 5px;
   font-size: 20px;
   letter-spacing: 2px;
+}
+
+.logininput:focus {
+  outline: none;
 }
 
 .login_btn {
