@@ -107,7 +107,7 @@ export default {
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Pangolin&display=swap");
 </style>
-<style>
+<style scoped>
 /* @font-face {
   font-family: "Pangolin";
   src: url("https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap");
@@ -120,7 +120,7 @@ label {
 
 .signupbox {
   font-family: "Gamja Flower", cursive;
-  width: 37rem;
+  width: 40rem;
   height: 40rem;
   margin: 0px auto;
   /* background-color: #f8eded; */
@@ -128,7 +128,7 @@ label {
 }
 
 .signupinfo {
-  width: 35rem;
+  width: 38rem;
   display: inline-block;
   text-align: right;
 }
@@ -148,6 +148,26 @@ label {
 
 .signupinput:focus {
   outline: none;
+}
+.id {
+  letter-spacing: 10px;
+  display: inline-block;
+  text-align: right;
+}
+.pw {
+  letter-spacing: 10px;
+  display: inline-block;
+  text-align: right;
+}
+.email {
+  letter-spacing: 3px;
+  display: inline-block;
+  text-align: right;
+}
+.name {
+  letter-spacing: 8px;
+  display: inline-block;
+  text-align: right;
 }
 
 .signup_btn {
@@ -181,26 +201,5 @@ label {
 #btncenter {
   margin: 0px auto;
   width: 10rem;
-}
-
-.id {
-  letter-spacing: 10px;
-  display: inline-block;
-  text-align: right;
-}
-.pw {
-  letter-spacing: 10px;
-  display: inline-block;
-  text-align: right;
-}
-.email {
-  letter-spacing: 4px;
-  display: inline-block;
-  text-align: right;
-}
-.name {
-  letter-spacing: 8px;
-  display: inline-block;
-  text-align: right;
 }
 </style>
