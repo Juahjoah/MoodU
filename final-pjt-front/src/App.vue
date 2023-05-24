@@ -3,33 +3,33 @@
     <nav class="main_nav">
       <section class="nlogin" v-if="!$store.state.user">
         <div class="boundary1">
+          <router-link :to="{ name: 'Movie' }">
+            <img
+              class="logoimg"
+              src="./assets/logo_black_width.png"
+              alt="moodU_logo"
+            />
+          </router-link>
           <router-link :to="{ name: 'Movie' }">Movie</router-link>
           <router-link :to="{ name: 'Community' }">Community</router-link>
         </div>
-        <router-link :to="{ name: 'Movie' }">
-          <img
-            class="logoimg"
-            src="./assets/logo_black_width.png"
-            alt="moodU_logo"
-          />
-        </router-link>
         <div class="boundary2">
-          <router-link :to="{ name: 'SignupView' }">Sign up page</router-link>
-          <router-link :to="{ name: 'LoginView' }">Login page</router-link>
+          <router-link :to="{ name: 'SignupView' }">Sign up</router-link>
+          <router-link :to="{ name: 'LoginView' }">Login</router-link>
         </div>
       </section>
       <section class="ylogin" v-else>
         <div class="boundary1">
-          <router-link to="/">Movie</router-link>
-          <router-link :to="{ name: 'Community' }">Community</router-link>
-        </div>
-        <router-link :to="{ name: 'Movie' }">
-          <img
+          <router-link :to="{ name: 'Movie' }">
+            <img
             class="logoimg"
             src="./assets/logo_black_width.png"
             alt="moodU_logo"
-          />
-        </router-link>
+            />
+          </router-link>
+          <router-link to="/">Movie</router-link>
+          <router-link :to="{ name: 'Community' }">Community</router-link>
+        </div>
         <div class="boundary2">
           <a @click="logout">logout</a>
           <router-link
@@ -42,15 +42,17 @@
         </div>
       </section>
       <hr />
-
-      <div class="hidiv" v-if="!$store.state.user">
-        <p align="right">오늘도 모듀와 함께 행복해요.</p>
-      </div>
-      <div class="hidiv" v-else>
-        <p align="right" class="navp">
-          {{ $store.state.user }}님! 오늘도 반가워요!
-        </p>
-      </div>
+      
+      <!-- <header>
+        <div class="hidiv" v-if="!$store.state.user">
+          <h6 align="right">오늘도 모듀와 함께 행복해요.</h6>
+        </div>
+        <div class="hidiv" v-else>
+          <h6 align="right" class="navp">
+            {{ $store.state.user }}님! 오늘도 반가워요!
+          </h6>
+        </div>
+      </header> -->
     </nav>
     <router-view />
   </div>
@@ -72,16 +74,62 @@ export default {
 </script>
 
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Poor+Story&family=Ubuntu:ital,wght@1,700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap');
 </style>
 <style>
-/* * {
-  font-family: "Poor Story", cursive;
-  font-size: 20px;
-} */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+@font-face {
+    font-family: 'TheJamsil5Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
 
 #app {
-  font-family: "Poor Story", cursive;
+  font-family: 'TheJamsil5Bold';
   font-size: 20px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -90,59 +138,55 @@ export default {
 }
 
 nav {
-  padding: 2rem 1rem 0 1rem;
-  height: 10rem;
+  padding: 1rem;
+  height: 1.5rem;
+
 }
 
 nav section {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  font-size: 20px;
   align-items: end;
-  font-size: 25px;
-  font-family: "Ubuntu", sans-serif;
-
-  /* text-align: justify, :after; */
-}
-.hidiv {
-  height: 3rem;
 }
 
-.navp {
-  height: 0.5rem;
+.boundary1 {
+  width: 30rem;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: end;
+}
+.boundary2 {
+  width: 15rem;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 nav a {
   font-weight: bold;
-  color: #2c3e50;
+  color: hsl(213, 5%, 37%);
   text-decoration: none;
 }
 
 nav a.router-link-exact-active {
-  color: #e6d3ed;
-}
-
-/* background-color: lemonchiffon; */
-.main_nav {
-  height: 13rem;
-  /* display: flex;
-  flex-direction: column-reverse; */
+  color: black;
 }
 
 .logoimg {
-  width: 10rem;
-  margin: 0px auto;
+  width: 9rem;
+  height: auto;
+  margin-right: 1rem;
 }
 
-.boundary1 {
-  width: 20rem;
-  display: flex;
-  justify-content: space-evenly;
-  padding: 10px;
+header {
+  padding-top: 1.0rem;
+  padding-right: 1rem;
+  height: 2rem;
+  /* background-color: #ebe8e1 ; */
 }
-.boundary2 {
-  width: 20rem;
-  display: flex;
-  justify-content: space-evenly;
-  padding: 10px;
+
+.hidiv {
+  height: 3rem;
 }
+
 </style>

@@ -39,15 +39,24 @@ li {
   margin: 0 10px;
 }
 a {
-  color: #42b983;
+  color: #2c3e50;
+  text-decoration: none;
 }
 
 .card {
-  width: 13rem;
+  width: 12rem;
   height: auto;
   margin: 20px;
   position: relative;
 }
+
+.each-movie-card{
+  width: 13rem;
+  height: ;
+  background-color: beige;
+  box-shadow: 1px 1px 1px 1px black;
+}
+
 .card img {
   width: 13rem;
   height: 19.375rem;
@@ -56,7 +65,7 @@ a {
   transition: all 0.2s ease-in;
 }
 
-.card-img-top:hover {
+.each-movie-card:hover {
   box-shadow: 5px 5px 5px 5px gray;
   transform: scale(1.2);
   /* content: attr(data-hover); */

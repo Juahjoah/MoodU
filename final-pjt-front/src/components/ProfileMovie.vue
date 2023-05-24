@@ -30,6 +30,7 @@ export default {
 
 a {
   color: #42b983;
+  text-decoration: none;
 }
 
 .card {

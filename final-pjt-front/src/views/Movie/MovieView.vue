@@ -1,13 +1,43 @@
 <template>
   <div class="Movie">
-    <router-link
-      class="mainrecombtn"
-      data-text-after="기분에 따라 영화를 추천받을 수 있어요!"
-      data-text="오늘도 모듀와 함께해요!"
-      :to="{ name: 'RecommendView' }"
-    ></router-link>
-    <br />
-    <input type="text" v-model="searchMovie" @keyup.enter="search()" />
+    <div class="searchbox">
+      <i class="bi bi-search"> 
+        <input type="text" v-model="searchMovie" @keyup.enter="search()" /> </i>
+    </div>
+    <section class="moviepic">
+
+      
+
+
+
+    </section>
+    
+    <br><br><br><br>
+
+    <router-link      
+    :to="{ name: 'RecommendView' }"
+    > 
+      <div id="banner">
+          <p class="ch"> 오늘 어떤 영화볼지 고민인가요?</p>
+          <!-- <img class="tistory" src="images/ch_logo.png"> -->
+          <p class="txt">오늘의 기분을 고르시면,</p>
+          <p class="txt2">모듀가 직접 영화를 골라드려요!</p>
+          <p class="logo"><i class="fab fa-chrome"></i><i class="fab fa-internet-explorer"></i><i class="fab fa-firefox"></i><i class="fab fa-opera"></i><i class="fab fa-safari"></i></p>
+          <p class="device"><i class="fas fa-desktop"></i><i class="fas fa-mobile-alt"></i></p>
+        </div>
+      </router-link>
+  
+
+
+
+  
+
+
+
+
+
+
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
     <h1>Movie</h1>
     <section class="movielist">
       <MovieCard v-for="movie in movies" :key="movie.id" :movie="movie" />
@@ -25,15 +55,12 @@ export default {
       movies: null,
     };
   },
-
   components: {
     MovieCard,
   },
-
   created() {
     this.getMovies();
   },
-
   methods: {
     getMovies() {
       this.$store.dispatch("getMovies");
@@ -56,9 +83,29 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+* {
+  font-family: 'TheJamsil5Bold';
+}
 .Movie {
-  font-family: "Poor Story", cursive;
+  font-family: 'TheJamsil5Bold';
+}
+input {
+  width: 20rem;
+  height: 1.7rem;
+  border-radius: 3px;
+  margin-left: 0.5rem;
+}
+i {
+  font-size: 0.9rem;
+}
+.searchbox {
+  float: right;
+  margin-right: 10rem;
+}
+
+.moviepic {
+  height: 10rem;
 }
 
 .movielist {
@@ -69,53 +116,197 @@ export default {
   margin: 0px 20px;
 }
 
-.mainrecombtn {
-  position: absolute;
-  transform: translate(-50%, -50%);
-  width: 35rem;
-  height: 3rem;
-  line-height: 50px;
-  font-size: 20px;
-  text-align: center;
-  font-family: "Poor Story", cursive;
-  text-decoration: none;
-  text-transform: uppercase;
-  letter-spacing: 5px;
-  background: #ccc;
-}
-.mainrecombtn:before {
-  content: attr(data-text);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  background: #fffaf3;
-  color: black;
-  transition: 0.5s;
-  transform-origin: bottom;
-  transform: translatey(-100%) rotatex(90deg);
-}
-.mainrecombtn:hover:before {
-  transform: translatey(0) rotatex(0deg);
+
+
+a {
+
+text-decoration: none;
+
+color: black;
+
 }
 
-.mainrecombtn:after {
-  content: attr(data-text-after);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  background: #fffaf3;
-  color: black;
-  transition: 0.5s;
-  transform-origin: top;
-  transform: translatey(0) rotatex(0deg);
+
+
+#banner {
+display: inline-flex;
+position: relative;
+
+overflow: hidden;
+
+width: 700px;
+
+height: 250px;
+
+border: 1px solid #ccc;
+
+background: #E3DAD5 
+
 }
-.mainrecombtn:hover:after {
-  transform: translatey(100%) rotatex(90deg);
+
+
+
+.ch {
+
+position: absolute;
+
+left: 290px;
+
+top: 10px;
+
+transition: all 0.5s;
+
+}
+
+
+
+#banner:hover .ch {
+
+left: 520px;
+
+}
+
+
+
+.tistory {
+
+position: absolute;
+
+left: 15px;
+
+top: -90px;
+
+transition: all 0.5s 0.2s;
+
+}
+
+
+
+#banner:hover .tistory {
+
+top: 15px;
+
+}
+
+
+
+.txt {
+
+display: block;
+
+position: absolute;
+
+left: 20px;
+
+top: 110px;
+
+font-size: 30px;
+
+font-weight: bold;
+
+opacity: 0;
+
+transform: scale(2, 2);
+
+transition: all 0.25s linear 0.2s;
+
+}
+
+
+
+#banner:hover .txt {
+
+opacity: 1;
+
+transform: scale(1, 1);
+
+}
+
+
+
+.txt2 {
+
+display: block;
+
+position: absolute;
+
+left: -300px;
+
+bottom: 20px;
+
+font-size: 30px;
+
+font-weight: bold;
+
+color: #555;
+
+transition: all 0.5s 0.3s;
+
+}
+
+
+
+#banner:hover .txt2 {
+
+left: 18px;
+
+}
+
+
+
+.logo {
+
+display: block;
+
+position: absolute;
+
+left: 270px;
+
+bottom: -50px;
+
+font-size: 20px;
+
+color: #888;
+
+transition: all 0.5s 0.3s;
+
+}
+
+
+
+#banner:hover .logo {
+
+bottom: 20px;
+
+}
+
+
+
+.device {
+
+display: block;
+
+position: absolute;
+
+right: 180px;
+
+bottom: 10px;
+
+font-size: 55px;
+
+color: #007AAE;
+
+opacity: 0;
+
+transition: opacity 0.5s linear 0.2s;
+
+}
+
+
+
+#banner:hover .device {
+
+opacity: 1;
+
 }
 </style>
