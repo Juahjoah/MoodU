@@ -1,31 +1,51 @@
 <template>
   <div>
-    <h3>모듀님의 기분에 따른 영화를 추천해 드릴게요!</h3>
+    <br />
+    <br />
+    <br />
+    <h3>모듀러님의 기분에 따른 영화를 추천해 드릴게요!</h3>
     <h5>현재 기분을 골라주세요!</h5>
     <div class="emobtn">
-      <span class="happy" @click.self.prevent="emotionSelect('happy')"
-        >행복해요</span
+      <span
+        class="btn-3d clickbtn happy"
+        @click.self.prevent="emotionSelect('happy')"
+        >😀<br />
+        행복해요</span
       >
-      |
-      <span class="sad" @click.self.prevent="emotionSelect('sad')">슬퍼요</span>
-      |
-      <span class="soso" @click.self.prevent="emotionSelect('soso')"
-        >그저 그래요</span
+
+      <span
+        class="btn-3d clickbtn sad"
+        @click.self.prevent="emotionSelect('sad')"
+        >😥<br />
+        슬퍼요</span
       >
-      |
-      <span class="joy" @click.self.prevent="emotionSelect('joy')">신나요</span>
-      |
-      <span class="angry" @click.self.prevent="emotionSelect('angry')"
-        >화나요</span
+
+      <span
+        class="btn-3d clickbtn soso"
+        @click.self.prevent="emotionSelect('soso')"
+        >😗<br />그저 그래요</span
       >
-      |
+
+      <span
+        class="btn-3d clickbtn joy"
+        @click.self.prevent="emotionSelect('joy')"
+        >😎<br />신나요</span
+      >
+
+      <span
+        class="btn-3d clickbtn angry"
+        @click.self.prevent="emotionSelect('angry')"
+        >🥴<br />화나요</span
+      >
     </div>
-    <h5>{{ emo }} 모듀님을 위한 영화</h5>
-    <RecommendMovie
-      v-for="(movie, index) in emotionMovie"
-      :key="index"
-      :movie="movie"
-    />
+    <h5>{{ emo }}한 기분인 모듀러를 위한 영화</h5>
+    <div class="recommendmovielist">
+      <RecommendMovie
+        v-for="(movie, index) in emotionMovie"
+        :key="index"
+        :movie="movie"
+      />
+    </div>
   </div>
 </template>
 
@@ -46,20 +66,22 @@ export default {
     RecommendMovie,
   },
   methods: {
+    setToken() {
+      const token = localStorage.getItem("jwt");
+      const config = {
+        Authorization: `Bearer ${token}`,
+      };
+      return config;
+    },
     emotionSelect(e) {
       // console.log(e);
       this.emo = e;
       const emo = this.emo;
       // console.log(emo);
-
-      const token = localStorage.getItem("jwt");
-
       axios({
         method: "get",
         url: `${API_URL}/movies/recommended/${emo}/`,
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+        headers: this.setToken(),
       })
         .then((res) => {
           // console.log(res);
@@ -72,11 +94,62 @@ export default {
         });
     },
   },
-  created() {
-    this.emotionSelect();
-  },
+  // created() {
+  //   this.emotionSelect();
+  // },
 };
 </script>
 
 <style>
+.emobtn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 0px auto;
+  width: 70rem;
+}
+.clickbtn {
+  margin: 1rem;
+  /* display: flex; */
+}
+
+.btn-3d {
+  position: relative;
+  display: inline-block;
+  font-size: 20px;
+  padding: 20px 60px;
+  color: black;
+  margin: 20px 10px 10px;
+  border-radius: 6px;
+  text-align: center;
+  transition: top 0.01s linear;
+  text-shadow: 0 4px 0 rgba(0, 0, 0, 0.15);
+}
+.btn-3d.clickbtn:hover {
+  background-color: #e6d3ed;
+}
+
+.btn-3d:active {
+  top: 9px;
+}
+/* 3D button colors */
+.btn-3d.clickbtn {
+  background-color: #e6d3ed;
+  box-shadow: 0 0 0 1px #f8eded inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset,
+    0 8px 0 0 #b2b0eb, 0 8px 0 1px rgba(0, 0, 0, 0.4),
+    0 8px 8px 1px rgba(0, 0, 0, 0.5);
+}
+.btn-3d.clickbtn:active {
+  box-shadow: 0 0 0 1px #f8eded inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset,
+    0 0 0 1px rgba(0, 0, 0, 0.4);
+}
+
+.recommendmovielist {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 80rem;
+  margin: 0px auto;
+}
 </style>

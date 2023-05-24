@@ -2,16 +2,15 @@
   <div class="card">
     <div class="each-movie-card">
       <router-link :to="{ name: 'MovieDetail', params: { id: movie.id } }">
-        <img class="card-img-top" :src="getPoster" alt="Poster image"/>
+        <img class="card-img-top" :src="getPoster" alt="Poster image" />
         <p class="hovertext" data-hover="More information" />
-          <p> {{movie.title}}</p>
-        </router-link>
+        <p>{{ movie.title }}</p>
+      </router-link>
     </div>
   </div>
 </template>
 
 <script>
-
 export default {
   name: "MovieCard",
 
@@ -63,7 +62,6 @@ a {
   /* opacity: 1; */
 }
 
-
 /* .hovertext::before {
   position:absolute;
   content:attr(data-hover);
@@ -81,7 +79,4 @@ a {
   /* 템플릿의 html 요소 p태그로 만들기 부모 포지션/위치에 만들고 투명도를 줬다가 hover를 하면 투명도를 100% */
   z-index: 1;
 }
-
-
-
 </style>
