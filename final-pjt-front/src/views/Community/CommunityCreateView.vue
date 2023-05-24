@@ -29,7 +29,7 @@
         <div id="createbtncenter">
           <input
             type="submit"
-            class="create_btn createbbtn"
+            class="comebtn createbbtn"
             @click.self.prevent="createCommunity()"
             value="Submit"
           />
@@ -92,6 +92,11 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Poor+Story&display=swap");
 </style>
 <style scoped>
+
+.create {
+  margin-top: 100px;
+}
+
 .createbox {
   font-family: "Poor Story", cursive;
   /* background-color: floralwhite; */
@@ -140,31 +145,60 @@ export default {
   outline: none;
 }
 
-.create_btn {
-  font-family: "Pangolin", cursive;
-  flex: 1 1 auto;
-  margin: 10px;
-  padding: 5px;
-  text-align: center;
-  text-transform: uppercase;
-  transition: 0.5s;
-  background-size: 200% auto;
-  color: black;
-  text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-  box-shadow: 0 0 20px #eee;
-  border-radius: 5px;
+.comebtn {
+  margin: 20px;
+  outline: none;
 }
-
-.create_btn:hover {
-  background-position: right center; /* change the direction of the change here */
+.comebtn {
+  width: 100px;
+  height: 40px;
+  padding: 10px 25px;
+  border: 2px solid #000;
+  font-family: 'Lato', sans-serif;
+  font-weight: 450;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
 }
-.createbbtn {
-  background-image: linear-gradient(
-    to right,
-    #b2b0eb 0%,
-    #fefefe 51%,
-    #6e6bd7 100%
-  );
+.comebtn {
+  background: #000;
+  color: #fff;
+  line-height: 42px;
+  padding: 0;
+  border: none;
+}
+.comebtn:hover {
+  background: transparent;
+  color: #000;
+   box-shadow:
+   -7px -7px 20px 0px #fff9,
+   -4px -4px 5px 0px #fff9,
+   7px 7px 20px 0px #0002,
+   4px 4px 5px 0px #0001;
+}
+.comebtn:before,
+.comebtn:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: #000;
+  transition:400ms ease all;
+}
+.comebtn:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+.comebtn:hover:before,
+.comebtn:hover:after{
+  width:100%;
+  transition:800ms ease all;
 }
 #createbtncenter {
   display: flex;

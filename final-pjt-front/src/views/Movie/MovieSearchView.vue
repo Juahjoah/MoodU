@@ -1,18 +1,19 @@
 <template>
-  <div>
+  <div class="searchmovie">
     <h1>
     "{{newMovieTitle}}"로 찾은 영화들 !
     </h1>
-    <input type="text" v-model="newMovieTitle" @keyup.enter="newFind()">
+    <input type="text" v-model="newMovieTitle" @keyup.enter="newFind()" value="">
     <div v-if="noMovie">
         {{noMovie}}
     </div>
     <div v-else>
-
-        <div v-for="(movie, index) in searchMovieList" :key="index">
-            <p>{{movie.title}}</p>
-            <img :src="`https://image.tmdb.org/t/p/original/${movie.poster_path}`" />
-        </div>
+      <div class="searchmovielist">
+          <div v-for="(movie, index) in searchMovieList" :key="index">
+              <img :src="`https://image.tmdb.org/t/p/original/${movie.poster_path}`" />
+              <p>{{movie.title}}</p>
+          </div>
+      </div>
     </div>
     
   </div>
@@ -79,7 +80,18 @@ export default {
 
 <style>
 img {
-    width: 100px;
-    height: 100px;
+    width: 13rem;
+    height: auto;
 }
+
+.searchmovie {
+  margin-top: 100px;
+}
+.searchmovielist {
+  margin: 20px auto;
+  width: 80%;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
 </style>
