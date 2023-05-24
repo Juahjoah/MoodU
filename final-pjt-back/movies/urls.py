@@ -11,4 +11,5 @@ urlpatterns = [
     path('recommended/<str:emotion>/', views.recommend_movie),
     path('<int:movie_pk>/like/', views.like_movie),
     path('<int:movie_pk>/like/count/', views.like_movie_count),
+    path('search/<str:movie_title>/', views.movie_search),
 ]

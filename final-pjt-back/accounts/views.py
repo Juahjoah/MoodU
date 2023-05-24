@@ -63,7 +63,7 @@ def login(request):
 def profile(request, username):
     user = get_object_or_404(get_user_model(), username = username)
     serializer = UserSerializer(user)
-    print(serializer.data)
+    # print(serializer.data)
     return Response(serializer.data)
 
 
