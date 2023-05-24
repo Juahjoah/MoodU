@@ -12,7 +12,7 @@
           팔로잉 : {{userData.followings.length}}
         </p>
         <li v-for="(following, index) in userData.followings" :key="index">
-          {{following}}
+          {{following.username}}
         </li>
         <p>
           팔로워 : {{userData.followers.length}}
@@ -39,7 +39,7 @@
           팔로잉 : {{userData.followings.length}}
         </p>
         <li v-for="(following, index) in userData.followings" :key="index">
-          {{following}}
+          {{following.username}}
         </li>
         <p>
           팔로워 : {{userData.followers.length}}
