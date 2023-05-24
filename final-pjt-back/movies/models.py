@@ -8,6 +8,7 @@ class Genre(models.Model):
 
 
 class Movie(models.Model):
+    ids = models.IntegerField()
     title = models.CharField(max_length=100)
     release_date = models.DateField(default=None, null=True, blank=True)
     popularity = models.FloatField()
