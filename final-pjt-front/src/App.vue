@@ -66,12 +66,17 @@ export default {
 </script>
 
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Jua&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poor+Story&family=Ubuntu:ital,wght@1,700&display=swap");
 </style>
 <style>
+/* * {
+  font-family: "Poor Story", cursive;
+  font-size: 20px;
+} */
+
 #app {
-  font-family: "Jua", sans-serif;
-  font-size: 15px;
+  font-family: "Poor Story", cursive;
+  font-size: 20px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -87,7 +92,8 @@ nav section {
   display: flex;
   justify-content: space-around;
   align-items: end;
-  font-size: 20px;
+  font-size: 25px;
+  font-family: "Ubuntu", sans-serif;
 
   /* text-align: justify, :after; */
 }

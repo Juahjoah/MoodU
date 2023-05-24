@@ -43,6 +43,10 @@ export default {
 </script>
 
 <style>
+.Movie {
+  font-family: "Poor Story", cursive;
+}
+
 .movielist {
   display: flex;
   flex-direction: row;
