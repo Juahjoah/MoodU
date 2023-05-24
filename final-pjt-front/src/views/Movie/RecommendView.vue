@@ -28,11 +28,15 @@
         @click.self.prevent="emotionSelect('joy')"
         >😎<br />신나요</span
       >
-
       <span
         class="btn-3d clickbtn angry"
         @click.self.prevent="emotionSelect('angry')"
-        >🥴<br />화나요</span
+        >😤<br />화나요</span
+      >
+      <span
+        class="btn-3d clickbtn depressed"
+        @click.self.prevent="emotionSelect('depressed')"
+        >🥴<br />속상해요</span
       >
     </div>
     <h5>{{ emo }}한 기분인 모듀러를 위한 영화</h5>
@@ -91,9 +95,9 @@ export default {
         });
     },
   },
-  // created() {
-  //   this.emotionSelect();
-  // },
+  created() {
+    this.loginuseronly();
+  },
 };
 </script>
 
@@ -107,15 +111,16 @@ export default {
   width: 70rem;
 }
 .clickbtn {
-  margin: 1rem;
+  margin: 0.7rem;
   /* display: flex; */
 }
 
 .btn-3d {
+  width: 9rem;
   position: relative;
   display: inline-block;
-  font-size: 20px;
-  padding: 20px 60px;
+  font-size: 17px;
+  padding: 10px 20px;
   color: black;
   margin: 20px 10px 10px;
   border-radius: 6px;

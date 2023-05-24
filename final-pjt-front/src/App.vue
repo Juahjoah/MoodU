@@ -43,7 +43,6 @@
       </section>
       <hr />
 
-
       <div class="hidiv" v-if="!$store.state.user">
         <p align="right">오늘도 모듀와 함께 행복해요.</p>
       </div>
@@ -62,15 +61,13 @@ export default {
   data() {
     return {
       searchMovie: null,
-    }
+    };
   },
   methods: {
     logout() {
       this.$store.dispatch("logout");
     },
-
   },
-
 };
 </script>
 
@@ -93,7 +90,7 @@ export default {
 }
 
 nav {
-  padding: 50px;
+  padding: 2rem 1rem 0 1rem;
   height: 10rem;
 }
 
@@ -107,7 +104,7 @@ nav section {
   /* text-align: justify, :after; */
 }
 .hidiv {
-  height: 10rem;
+  height: 3rem;
 }
 
 .navp {
@@ -132,7 +129,7 @@ nav a.router-link-exact-active {
 }
 
 .logoimg {
-  width: 14rem;
+  width: 10rem;
   margin: 0px auto;
 }
 
