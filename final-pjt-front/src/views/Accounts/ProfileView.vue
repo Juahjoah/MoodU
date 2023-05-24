@@ -55,7 +55,7 @@
         </li>
 
         <button @click="followingUser()">
-          팔로잉하기
+          {{followMsg}}
         </button>
     </div>
   </div>
@@ -72,6 +72,7 @@ export default {
   data() {
     return {
       userData: [],
+      followMsg: null,
     }
   },
   methods: {
@@ -102,13 +103,23 @@ export default {
       })
       .then((res)=> {
         console.log(res)
+        if (res.data.is_followed) {
+          this.followMsg = '팔로우 취소'
+        } else {
+          this.followMsg = '팔로우'
+        }
         this.getUserData()
       })
+      .catch((err)=>{
+        console.log(err)
+      })
+
     }
   },
+
   created() {
-    this.$route.params.username
     this.getUserData()
+    this.followingUser()
   }
 };
 </script>
