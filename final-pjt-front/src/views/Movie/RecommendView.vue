@@ -1,51 +1,54 @@
 <template>
-  <div>
-    <h3>모듀러님의 기분에 따른 영화를 추천해 드릴게요!</h3>
-    <h5>현재 기분을 골라주세요!</h5>
-    <div class="emobtn">
-      <span
-        class="btn-3d clickbtn happy"
-        @click.self.prevent="emotionSelect('happy')"
-        >😀<br />
-        행복해요</span
-      >
+  <div >
+    <div class="recommendview">
+      <h3>모듀러님의 기분에 따른 영화를 추천해 드릴게요!</h3>
+      <h5>현재 기분을 골라주세요!</h5>
+      <div class="emobtn">
+        <span
+          class="btn-3d clickbtn happy"
+          @click.self.prevent="emotionSelect('happy')"
+          >😀<br />
+          행복해요</span
+        >
+  
+        <span
+          class="btn-3d clickbtn sad"
+          @click.self.prevent="emotionSelect('sad')"
+          >😥<br />
+          슬퍼요</span
+        >
+  
+        <span
+          class="btn-3d clickbtn soso"
+          @click.self.prevent="emotionSelect('soso')"
+          >😗<br />그저 그래요</span
+        >
+  
+        <span
+          class="btn-3d clickbtn joy"
+          @click.self.prevent="emotionSelect('joy')"
+          >😎<br />신나요</span
+        >
+        <span
+          class="btn-3d clickbtn angry"
+          @click.self.prevent="emotionSelect('angry')"
+          >😤<br />화나요</span
+        >
+        <span
+          class="btn-3d clickbtn depressed"
+          @click.self.prevent="emotionSelect('depressed')"
+          >🥴<br />속상해요</span
+        >
+      </div>
+      <h5>{{ emo }}한 기분인 모듀러를 위한 영화</h5>
+      <div class="recommendmovielist">
+        <RecommendMovie
+          v-for="(movie, index) in emotionMovie"
+          :key="index"
+          :movie="movie"
+        />
+      </div>
 
-      <span
-        class="btn-3d clickbtn sad"
-        @click.self.prevent="emotionSelect('sad')"
-        >😥<br />
-        슬퍼요</span
-      >
-
-      <span
-        class="btn-3d clickbtn soso"
-        @click.self.prevent="emotionSelect('soso')"
-        >😗<br />그저 그래요</span
-      >
-
-      <span
-        class="btn-3d clickbtn joy"
-        @click.self.prevent="emotionSelect('joy')"
-        >😎<br />신나요</span
-      >
-      <span
-        class="btn-3d clickbtn angry"
-        @click.self.prevent="emotionSelect('angry')"
-        >😤<br />화나요</span
-      >
-      <span
-        class="btn-3d clickbtn depressed"
-        @click.self.prevent="emotionSelect('depressed')"
-        >🥴<br />속상해요</span
-      >
-    </div>
-    <h5>{{ emo }}한 기분인 모듀러를 위한 영화</h5>
-    <div class="recommendmovielist">
-      <RecommendMovie
-        v-for="(movie, index) in emotionMovie"
-        :key="index"
-        :movie="movie"
-      />
     </div>
   </div>
 </template>
@@ -102,6 +105,13 @@ export default {
 </script>
 
 <style>
+.recommendview {
+
+  padding-top: 50px;
+}
+
+
+
 .emobtn {
   display: flex;
   flex-direction: row;

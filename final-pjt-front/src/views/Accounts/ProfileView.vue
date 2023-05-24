@@ -202,6 +202,7 @@ export default {
   flex-wrap: wrap;
   justify-content: center;
   width: 80rem;
+  margin-top: 100px;
 } 
 
 .myinfo {
@@ -233,6 +234,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: left;
 }
 .bi {
   font-size: 15rem;
@@ -241,6 +243,7 @@ export default {
 
 .followbox {
   text-align: left;
+  width: 30rem;
 }
 .followersbox {
   display: inline-block;
@@ -268,5 +271,14 @@ export default {
   margin-top: 1rem;
   font-size: 3rem;
 }
+
+.movielist {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 50rem;
+  margin: 0px auto;
+}
+
 
 </style>
