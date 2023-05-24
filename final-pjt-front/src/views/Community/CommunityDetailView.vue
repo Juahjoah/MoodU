@@ -4,10 +4,10 @@
     <p>내용 : {{ community.content }}</p>
     <p @click.self.prevent="movieOtherProfile()" class="namep"> 작성자 : {{ community.username }}</p>
     <hr />
-    <button @click.self.prevent="communityUpdate()">[수정하기]</button>
-    <button @click.self.prevent="communityDelete()">[삭제하기]</button>
+    <button @click.self.prevent="communityUpdate()" class="comebtn">수정하기</button>
+    <button @click.self.prevent="communityDelete()" class="comebtn">삭제하기</button>
 
-    <router-link :to="{name : 'CommunityView'}">뒤로가기</router-link>
+    <router-link :to="{name : 'CommunityView'}" class="comebtn">뒤로가기</router-link>
   </div>
 </template>
 
@@ -101,8 +101,74 @@ export default {
 </script>
 
 <style scoped>
+.communitydetail {
+  margin-top: 100px ;
+}
+
 .namep {
   cursor: pointer;
 }
+a {
+  text-decoration: none;
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+}
+
+.comebtn {
+  margin: 20px;
+  outline: none;
+}
+.comebtn {
+  width: 100px;
+  height: 40px;
+  padding: 10px 25px;
+  border: 2px solid #000;
+  font-family: 'Lato', sans-serif;
+  font-weight: 450;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+}
+.comebtn {
+  background: #000;
+  color: #fff;
+  line-height: 42px;
+  padding: 0;
+  border: none;
+}
+.comebtn:hover {
+  background: transparent;
+  color: #000;
+   box-shadow:
+   -7px -7px 20px 0px #fff9,
+   -4px -4px 5px 0px #fff9,
+   7px 7px 20px 0px #0002,
+   4px 4px 5px 0px #0001;
+}
+.comebtn:before,
+.comebtn:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: #000;
+  transition:400ms ease all;
+}
+.comebtn:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+.comebtn:hover:before,
+.comebtn:hover:after{
+  width:100%;
+  transition:800ms ease all;
+}
+
 
 </style>

@@ -4,38 +4,27 @@
       <i class="bi bi-search"> 
         <input type="text" v-model="searchMovie" @keyup.enter="search()" /> </i>
     </div>
+    <br><br><br><br>
+
     <section class="moviepic">
-
-      
-
-
 
     </section>
     
     <br><br><br><br>
 
+    <div id="banner">
     <router-link      
     :to="{ name: 'RecommendView' }"
     > 
-      <div id="banner">
           <p class="ch"> 오늘 어떤 영화볼지 고민인가요?</p>
           <!-- <img class="tistory" src="images/ch_logo.png"> -->
           <p class="txt">오늘의 기분을 고르시면,</p>
           <p class="txt2">모듀가 직접 영화를 골라드려요!</p>
           <p class="logo"><i class="fab fa-chrome"></i><i class="fab fa-internet-explorer"></i><i class="fab fa-firefox"></i><i class="fab fa-opera"></i><i class="fab fa-safari"></i></p>
           <p class="device"><i class="fas fa-desktop"></i><i class="fas fa-mobile-alt"></i></p>
-        </div>
-      </router-link>
+        </router-link>
+      </div>
   
-
-
-
-  
-
-
-
-
-
 
     <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
     <h1>Movie</h1>
@@ -88,6 +77,7 @@ export default {
   font-family: 'TheJamsil5Bold';
 }
 .Movie {
+
   font-family: 'TheJamsil5Bold';
 }
 input {
@@ -105,7 +95,9 @@ i {
 }
 
 .moviepic {
-  height: 10rem;
+  height: 20rem;
+  background-color: #555;
+  border-bottom: 2px solid yellow;
 }
 
 .movielist {
@@ -113,7 +105,8 @@ i {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  margin: 0px 20px;
+  margin: 40px 20px 0;
+  width: 80%;
 }
 
 
