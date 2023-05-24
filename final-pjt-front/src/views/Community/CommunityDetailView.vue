@@ -6,6 +6,8 @@
     <hr />
     <button @click.self.prevent="communityUpdate()">[수정하기]</button>
     <button @click.self.prevent="communityDelete()">[삭제하기]</button>
+
+    <router-link :to="{name : 'CommunityView'}">뒤로가기</router-link>
   </div>
 </template>
 
