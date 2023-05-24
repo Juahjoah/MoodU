@@ -1,8 +1,5 @@
 <template>
   <div>
-    <br />
-    <br />
-    <br />
     <h3>모듀러님의 기분에 따른 영화를 추천해 드릴게요!</h3>
     <h5>현재 기분을 골라주세요!</h5>
     <div class="emobtn">
