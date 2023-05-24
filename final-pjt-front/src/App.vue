@@ -42,6 +42,8 @@
         </div>
       </section>
       <hr />
+
+
       <div class="hidiv" v-if="!$store.state.user">
         <p align="right">오늘도 모듀와 함께 행복해요.</p>
       </div>
@@ -57,11 +59,18 @@
 
 <script>
 export default {
+  data() {
+    return {
+      searchMovie: null,
+    }
+  },
   methods: {
     logout() {
       this.$store.dispatch("logout");
     },
+
   },
+
 };
 </script>
 
