@@ -16,20 +16,23 @@ export default new Vuex.Store({
   state: {
     movies: [
     ],
+    token: null,
     user: null,
   },
 
   mutations: {
     GET_MOVIES(state, movies) {
       state.movies = movies
-      console.log(state.movies)
+      // console.log(state.movies)
     },
-    USER(state, username) {
-      state.user = username
+    USER(state, userData) {
+      state.user = userData.username
+      state.token = userData.token
       console.log(state.user)
     },
     LOGOUT(state) {
       state.user = null
+      state.token = null
     }
   },
   actions: {
@@ -39,7 +42,7 @@ export default new Vuex.Store({
         url: `${API_URL}/movies/`,
       })
         .then((response) => {
-          console.log(response)
+          // console.log(response)
           context.commit('GET_MOVIES', response.data)
         })
         .catch((error) => {
@@ -86,9 +89,14 @@ export default new Vuex.Store({
       })
         .then((response) => {
           // console.log(response)
-          console.log(response.data.user.username)
+          console.log(response.data.user)
           localStorage.setItem("jwt", response.data.token.accessToken)
-          context.commit("USER", username)
+          const userData = {
+            username: username,
+            token : response.data.token.accessToken
+          }
+          context.commit("USER", userData)
+
           router.push({ name: 'Movie' })
           router.go(0)
         })
