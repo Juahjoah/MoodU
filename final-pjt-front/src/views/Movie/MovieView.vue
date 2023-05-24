@@ -1,13 +1,13 @@
 <template>
   <div class="Movie">
-    <br />
-    <br />
+    <router-link
+      class="mainrecombtn"
+      data-text-after="기분에 따라 영화를 추천받을 수 있어요!"
+      data-text="오늘도 모듀와 함께해요!"
+      :to="{ name: 'RecommendView' }"
+    ></router-link>
     <br />
     <h1>Movie</h1>
-    <br />
-    <router-link :to="{ name: 'RecommendView' }"
-      >기분에 따라 영화를 추천받을 수 있어요!</router-link
-    >
     <section class="movielist">
       <MovieCard v-for="movie in movies" :key="movie.id" :movie="movie" />
     </section>
@@ -53,5 +53,55 @@ export default {
   flex-wrap: wrap;
   justify-content: center;
   margin: 0px 20px;
+}
+
+.mainrecombtn {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 35rem;
+  height: 3rem;
+  line-height: 50px;
+  font-size: 20px;
+  text-align: center;
+  font-family: "Poor Story", cursive;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  background: #ccc;
+}
+.mainrecombtn:before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background: #fffaf3;
+  color: black;
+  transition: 0.5s;
+  transform-origin: bottom;
+  transform: translatey(-100%) rotatex(90deg);
+}
+.mainrecombtn:hover:before {
+  transform: translatey(0) rotatex(0deg);
+}
+
+.mainrecombtn:after {
+  content: attr(data-text-after);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background: #fffaf3;
+  color: black;
+  transition: 0.5s;
+  transform-origin: top;
+  transform: translatey(0) rotatex(0deg);
+}
+.mainrecombtn:hover:after {
+  transform: translatey(100%) rotatex(90deg);
 }
 </style>
