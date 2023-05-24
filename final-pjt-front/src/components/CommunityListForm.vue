@@ -1,16 +1,27 @@
 <template>
   <div class="CommunityListForm">
-    <div
-      class="communitylist"
-      v-for="(community, idx) in communities"
-      :key="idx"
-    >
-      <!-- <p>{{community}}</p> -->
-      <router-link
-        :to="{ name: 'CommunityDetail', params: { id: community.id } }"
+    <div class="communitytable">
+      <tr>
+        <th>게시글 번호</th>
+        <th>제목</th>
+        <th>작성자</th>
+        <th>작성일</th>
+      </tr>
+      <tr
+        class="communitylist"
+        v-for="(community, idx) in communities"
+        :key="idx"
       >
-        <p>{{ community.id }} {{ community.title }} {{ community.content }}</p>
-      </router-link>
+        <td>{{ community.id }}</td>
+        <td
+          class="articletitle"
+          @click.self.prevent="CommunityDetail(community)"
+        >
+          {{ community.title }}
+        </td>
+        <td>{{ community.username }}</td>
+        <td>{{ community.created_at }}</td>
+      </tr>
     </div>
   </div>
 </template>
@@ -21,9 +32,54 @@ export default {
   props: {
     communities: Array,
   },
-
+  methods: {
+    CommunityDetail(community) {
+      this.$router.push({
+        name: "CommunityDetail",
+        params: { id: community.id },
+      });
+    },
+  },
 };
 </script>
 
-<style>
+<style scoped>
+* {
+  font-size: 15px;
+}
+
+.communitytable {
+  margin: 20px auto 0px auto;
+  display: inline-block;
+}
+
+.communitytable,
+.communitytable th,
+.communitytable td {
+  border: 1px solid gray;
+  border-width: 1px 0;
+  border-collapse: collapse;
+  text-align: center;
+  padding: 8px;
+}
+
+.communitytable th {
+  background-color: #b2b0eb;
+  font-size: 1.1em;
+  color: #fff;
+  border-width: 2px 0;
+}
+
+.communitytable td {
+  border-style: dotted;
+  /* display: inline-block; */
+  margin: 0.5rem;
+  text-align: center;
+  align-items: center;
+}
+
+.communitytable tr:hover td {
+  background-color: #f8eded;
+  cursor: pointer;
+}
 </style>

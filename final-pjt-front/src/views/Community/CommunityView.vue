@@ -1,5 +1,8 @@
 <template>
   <div class="community">
+    <br />
+    <br />
+    <br />
     <h1>여러분의 생각을 들려주세요.</h1>
     <article>
       <CommunityListForm :communities="communities" />
