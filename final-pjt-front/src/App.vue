@@ -61,7 +61,6 @@ export default {
     logout() {
       this.$store.dispatch("logout");
     },
-    
   },
 };
 </script>
@@ -86,7 +85,7 @@ export default {
 
 nav {
   padding: 50px;
-  height: 3rem;
+  height: 10rem;
 }
 
 nav section {
@@ -118,7 +117,7 @@ nav a.router-link-exact-active {
 
 /* background-color: lemonchiffon; */
 .main_nav {
-  height: 5rem;
+  height: 13rem;
   /* display: flex;
   flex-direction: column-reverse; */
 }

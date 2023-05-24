@@ -1,8 +1,5 @@
 <template>
   <div class="create">
-    <br />
-    <br />
-    <br />
     <h1>커뮤니티 게시글 작성</h1>
     <div class="createbox">
       <form @submit.prevent="createCommunity">
