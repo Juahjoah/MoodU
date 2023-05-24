@@ -36,9 +36,18 @@
         </div>
         <div class="likemovie">
           <p>내가 좋아요 한 영화 개수 : {{ userData.like_movies.length }}</p>
-          <li v-for="(like, index) in userData.like_movies" :key="index">
-            {{ like.title }}
-          </li>
+          <div v-for="(like, index) in userData.like_movies" :key="index">
+            <div class="card">
+              <router-link
+                :to="{ name: 'MovieDetail', params: { id: like.id } }"
+              >
+                <img class="card-img-top" :src="getPoster" alt="Poster image" />
+                <p>{{ like.title }}</p>
+                <p>{{ like }}</p>
+                {{ like.poster_path }}
+              </router-link>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -114,6 +123,11 @@ export default {
       userData: [],
       followMsg: null,
     };
+  },
+  computed: {
+    // getPoster() {
+    //   return `https://image.tmdb.org/t/p/original/${this.like.poster_path}`;
+    // },
   },
   methods: {
     getUserData() {
@@ -225,5 +239,25 @@ export default {
 .biuser {
   margin-top: 1rem;
   font-size: 3rem;
+}
+
+.card {
+  width: 13rem;
+  height: auto;
+  margin: 20px;
+  position: relative;
+}
+.card img {
+  width: 13rem;
+  height: 19.375rem;
+  object-fit: fill;
+  height: auto;
+  overflow-x: hidden;
+  transition: all 0.2s ease-in;
+}
+
+.card-img-top:hover {
+  box-shadow: 5px 5px 5px 5px gray;
+  transform: scale(1.2);
 }
 </style>

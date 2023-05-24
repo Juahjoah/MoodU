@@ -38,7 +38,6 @@ export default {
   width: 13rem;
   height: 19.375rem;
   object-fit: fill;
-  height: auto;
   overflow-x: hidden;
   transition: all 0.2s ease-in;
 }
