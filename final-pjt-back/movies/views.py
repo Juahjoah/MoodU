@@ -9,7 +9,6 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 
 from .models import Movie, Comment, Genre
 from .serializers import MovieListSerializer, MovieSerializer, CommentSerializer
-    
 import requests
 import random
 
@@ -207,3 +206,20 @@ def like_movie(request, movie_pk):
         }
     return Response(context)
 
+
+@api_view(['GET'])
+def movie_search(request, movie_title):
+    movies = get_list_or_404(Movie)
+    serializer = MovieListSerializer(movies, many=True)
+    
+    # print(serializer.data)
+    find_movie = []
+    for movie in serializer.data:
+        if movie_title in movie['title']:
+            find_movie.append(movie)
+    
+    res = {
+        'find_movie': find_movie
+    }
+
+    return Response(res)
