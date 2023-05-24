@@ -2,6 +2,7 @@
   <div class="signup">
     <div class="signupbox">
       <h1>Welcome to MoodU!</h1>
+      <br>
       <h5>모듀에서 사용할 정보를 입력해주세요!</h5>
       <div class="signupinfo">
         <form @submit.prevent="signup">
@@ -56,7 +57,7 @@
             v-model="last_name"
           />
           <div id="btncenter">
-            <input class="signup_btn signupbbtn" type="submit" value="Signup" />
+            <input class="signup_btn clickbtn signupbbtn" type="submit" value="Signup" />
           </div>
         </form>
       </div>
@@ -108,27 +109,24 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Pangolin&display=swap");
 </style>
 <style scoped>
-/* @font-face {
-  font-family: "Pangolin";
-  src: url("https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap");
-  unicode-range: U+0041-005A, U+0061-007A;
-} */
 
 label {
   margin: 15px;
 }
 
 .signupbox {
-  font-family: "Gamja Flower", cursive;
-  width: 40rem;
+  font-family: 'TheJamsil5Bold';
+  /* background-color: floralwhite; */
+  margin: 100px auto 0;
+  width: 45rem;
   height: 40rem;
-  margin: 0px auto;
   /* background-color: #f8eded; */
   border-radius: 5px;
+  font-size: 15px;
 }
 
 .signupinfo {
-  width: 38rem;
+  width: 40rem;
   display: inline-block;
   text-align: right;
 }
@@ -142,7 +140,7 @@ label {
   font-family: "Gamja Flower", cursive;
   width: 80%;
   height: 2.3rem;
-  font-size: 20px;
+  font-size: 17px;
   letter-spacing: 2px;
 }
 
@@ -171,35 +169,39 @@ label {
 }
 
 .signup_btn {
-  font-family: "Pangolin", cursive;
-  flex: 1 1 auto;
-  margin: 10px;
-  padding: 7px;
-  text-align: center;
-  text-transform: uppercase;
-  transition: 0.5s;
-  background-size: 200% auto;
+  width: 9rem;
+  position: relative;
+  display: inline-block;
+  font-size: 17px;
+  padding: 10px 20px;
   color: black;
-  text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-  box-shadow: 0 0 20px #eee;
-  border-radius: 5px;
+  margin: 20px 10px 10px;
+  border-radius: 6px;
+  text-align: center;
+  transition: top 0.01s linear;
+  text-shadow: 0 4px 0 rgba(0, 0, 0, 0.15);
+}
+.signup_btn.clickbtn:hover {
+  background-color: #e6d3ed;
 }
 
-.signup_btn:hover {
-  background-position: right center; /* change the direction of the change here */
+.signup_btn:active {
+  top: 9px;
 }
-
-.signupbbtn {
-  background-image: linear-gradient(
-    to right,
-    #b2b0eb 0%,
-    #fefefe 51%,
-    #6e6bd7 100%
-  );
+/* 3D button colors */
+.signup_btn.clickbtn {
+  background-color: #e6d3ed;
+  box-shadow: 0 0 0 1px #f8eded inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset,
+    0 8px 0 0 #b2b0eb, 0 8px 0 1px rgba(0, 0, 0, 0.4),
+    0 8px 8px 1px rgba(0, 0, 0, 0.5);
 }
-
+.signup_btn.clickbtn:active {
+  box-shadow: 0 0 0 1px #f8eded inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset,
+    0 0 0 1px rgba(0, 0, 0, 0.4);
+}
 #btncenter {
   margin: 0px auto;
   width: 10rem;
 }
+
 </style>

@@ -1,28 +1,29 @@
 <template>
   <div class="CommunityListForm">
-    <div class="communitytable">
+    <table class="communitytable">
       <tr>
-        <th>게시글 번호</th>
-        <th>제목</th>
-        <th>작성자</th>
-        <th>작성일</th>
+        <th>   게시글 번호   </th>
+        <th>   제목   </th>
+        <th>   작성자   </th>
+        <th>   작성일   </th>
       </tr>
       <tr
         class="communitylist"
         v-for="(community, idx) in communities"
         :key="idx"
+        
       >
-        <td>{{ community.id }}</td>
-        <td
+        <td @click.self.prevent="CommunityDetail(community)">{{ community.id }}</td>
+        <td @click.self.prevent="CommunityDetail(community)"
           class="articletitle"
-          @click.self.prevent="CommunityDetail(community)"
+          
         >
           {{ community.title }}
-        </td>
-        <td>{{ community.username }}</td>
-        <td>{{ community.created_at }}</td>
+        </td >
+        <td @click.self.prevent="CommunityDetail(community)">{{ community.username }}</td>
+        <td @click.self.prevent="CommunityDetail(community)">{{ community.created_at }}</td>
       </tr>
-    </div>
+    </table>
   </div>
 </template>
 
@@ -48,6 +49,7 @@ export default {
   font-size: 15px;
 }
 
+
 .communitytable {
   margin: 20px auto 0px auto;
   display: inline-block;
@@ -64,7 +66,7 @@ export default {
 }
 
 .communitytable th {
-  background-color: #b2b0eb;
+  background-color: #AFAEAB;
   font-size: 1.1em;
   color: #fff;
   border-width: 2px 0;

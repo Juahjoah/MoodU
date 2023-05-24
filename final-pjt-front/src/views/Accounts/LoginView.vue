@@ -66,16 +66,16 @@ export default {
 </style>
 <style scoped>
 .loginbox {
-  font-family: "Gamja Flower", cursive;
+  font-family: 'TheJamsil5Bold';
   /* background-color: floralwhite; */
-  margin: 0px auto;
+  margin: 100px auto 0;
   width: 30rem;
   height: 20rem;
 }
 
 .logininfo {
   width: 27rem;
-  margin: 0px auto;
+  margin: 20px auto 0;
 }
 
 form {
@@ -89,7 +89,7 @@ form {
   border-right-width: 0;
   border-top-width: 0;
   border-bottom-width: 1;
-  font-family: "Gamja Flower", cursive;
+  font-family: "Pangolin", cursive;
   width: 16rem;
   height: 2.3rem;
   margin: 5px auto;
@@ -125,7 +125,7 @@ form {
     to right,
     #b2b0eb 0%,
     #fefefe 51%,
-    #6e6bd7 100%
+    #262630 100%
   );
 }
 

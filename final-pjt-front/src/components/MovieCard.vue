@@ -44,18 +44,14 @@ a {
 }
 
 .card {
-  width: 12rem;
+  width: 13rem;
   height: auto;
   margin: 20px;
   position: relative;
-}
-
-.each-movie-card{
-  width: 13rem;
-  height: ;
   background-color: beige;
   box-shadow: 1px 1px 1px 1px black;
 }
+
 
 .card img {
   width: 13rem;
