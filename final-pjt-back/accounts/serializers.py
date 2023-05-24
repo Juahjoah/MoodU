@@ -10,7 +10,15 @@ class UserSerializer(serializers.ModelSerializer):
         class Meta:
             model = get_user_model()
             fields = ('id', 'username', 'last_name',)
+
+    class followingSerializer(serializers.ModelSerializer):
+
+        class Meta:
+            model = get_user_model()
+            fields = ('id', 'username',)
+
     followers = followerSerializer(read_only = True, many=True)
+    followings = followingSerializer(read_only = True, many =True)
     class Meta:
         model = get_user_model()
         fields = ('id', 'username', 'last_name', 'email', 'followings', 'followers', 'like_movies')
