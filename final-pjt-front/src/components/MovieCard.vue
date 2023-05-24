@@ -50,7 +50,8 @@ a {
 }
 .card img {
   width: 13rem;
-  height: auto;
+  height: 19.375rem;
+  object-fit: fill;
   overflow-x: hidden;
   transition: all 0.2s ease-in;
 }
