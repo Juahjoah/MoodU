@@ -23,6 +23,7 @@
             required
             maxlength="1000"
             placeholder="1000자 이내로 작성해주세요."
+            @keyup.enter.self.prevent="createCommunity()"
           />
         </div>
         <div id="createbtncenter">
