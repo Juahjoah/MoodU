@@ -10,7 +10,7 @@ import CommunityDetailView from '../views/Community/CommunityDetailView.vue'
 import CommunityUpdateView from '../views/Community/CommunityUpdateView.vue'
 import ProfileView from '../views/Accounts/ProfileView.vue'
 import RecommendView from '@/views/Movie/RecommendView'
-
+import MovieSearchView from '@/views/Movie/MovieSearchView'
 
 Vue.use(VueRouter)
 
@@ -65,7 +65,11 @@ const routes = [
     name: 'ProfileView',
     component: ProfileView,
   },
-
+  {
+    path: '/search/:movieTitle',
+    name: 'MovieSearchView',
+    component: MovieSearchView,
+  }
 
 ]
 
