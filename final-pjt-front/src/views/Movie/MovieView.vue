@@ -7,6 +7,7 @@
       :to="{ name: 'RecommendView' }"
     ></router-link>
     <br />
+    <input type="text" v-model="searchMovie" @keyup.enter="search()">
     <h1>Movie</h1>
     <section class="movielist">
       <MovieCard v-for="movie in movies" :key="movie.id" :movie="movie" />
@@ -38,6 +39,15 @@ export default {
       this.$store.dispatch("getMovies");
       this.movies = this.$store.state.movies;
     },
+    search() {
+      if (this.searchMovie) {
+        this.$router.push({name: 'MovieSearchView', params: {movieTitle : this.searchMovie}}).catch(()=>{})
+
+      } else {
+        alert('검색할 단어를 써주고 검색을 눌러주겠어?')
+        this.$router.push({name: 'MovieView'})
+      }
+    }
   },
 };
 </script>
