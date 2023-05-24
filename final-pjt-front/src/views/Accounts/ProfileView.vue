@@ -36,22 +36,14 @@
         </div>
         <div class="likemovie">
           <p>내가 좋아요 한 영화 개수 : {{ userData.like_movies.length }}</p>
-          <div v-for="(like, index) in userData.like_movies" :key="index">
-            <div class="card">
-              <router-link
-                :to="{ name: 'MovieDetail', params: { id: like.id } }"
-              >
-                <img class="card-img-top" :src="getPoster" alt="Poster image" />
-                <p>{{ like.title }}</p>
-                <p>{{ like }}</p>
-                {{ like.poster_path }}
-              </router-link>
-            </div>
+          <section class="movielist">
+            <ProfileMovie v-for="(like, index) in userData.like_movies" :key="index" :like="like" />
+          </section>
           </div>
         </div>
       </div>
-    </div>
-    <div v-else>
+    
+  <div v-else>
       <h1>{{ userData.username }}님의 프로필</h1>
       <div class="userinfo">
         <div class="basicinfo">
@@ -97,13 +89,11 @@
           </div>
         </div>
         <div class="likemovie">
-          <p>
-            {{ userData.username }}님이 좋아요 한 영화
-            {{ userData.like_movies.length }} 개
-          </p>
-          <li v-for="(like, index) in userData.like_movies" :key="index">
-            {{ like.title }}
-          </li>
+          <p> {{ userData.username }}님이 좋아요 한 영화
+            {{ userData.like_movies.length }} 개 </p>
+          <section class="movielist">
+            <ProfileMovie v-for="(like, index) in userData.like_movies" :key="index" :like="like" />
+          </section>
         </div>
       </div>
     </div>
@@ -112,6 +102,7 @@
 
 <script>
 import axios from "axios";
+import ProfileMovie from "@/components/ProfileMovie.vue";
 
 const API_URL = "http://127.0.0.1:8000";
 const token = localStorage.getItem("jwt");
@@ -124,10 +115,11 @@ export default {
       followMsg: null,
     };
   },
+  components: {
+    ProfileMovie
+  },
   computed: {
-    // getPoster() {
-    //   return `https://image.tmdb.org/t/p/original/${this.like.poster_path}`;
-    // },
+
   },
   methods: {
     getUserData() {
@@ -178,17 +170,25 @@ export default {
 </script>
 
 <style>
+.profile {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 80rem;
+} 
+
+
 .myinfo {
   display: flex;
   flex-direction: column;
-  width: 40rem;
+  width: 50rem;
   height: 80rem;
   margin: 0px auto;
 }
 .userinfo {
   display: flex;
   flex-direction: column;
-  width: 40rem;
+  width: 50rem;
   height: 80rem;
   margin: 0px auto;
 }
@@ -241,23 +241,4 @@ export default {
   font-size: 3rem;
 }
 
-.card {
-  width: 13rem;
-  height: auto;
-  margin: 20px;
-  position: relative;
-}
-.card img {
-  width: 13rem;
-  height: 19.375rem;
-  object-fit: fill;
-  height: auto;
-  overflow-x: hidden;
-  transition: all 0.2s ease-in;
-}
-
-.card-img-top:hover {
-  box-shadow: 5px 5px 5px 5px gray;
-  transform: scale(1.2);
-}
 </style>
