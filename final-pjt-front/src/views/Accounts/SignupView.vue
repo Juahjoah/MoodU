@@ -55,7 +55,7 @@
             placeholder="Enter Your name"
             v-model="last_name"
           />
-          <div id="btncenter"> 
+          <div id="btncenter">
             <input class="signup_btn signupbbtn" type="submit" value="Signup" />
           </div>
         </form>
@@ -134,13 +134,20 @@ label {
 }
 
 .signupinput {
-  /* width: 12rem; */
+  border-style: dotted;
+  border-left-width: 0;
+  border-right-width: 0;
+  border-top-width: 0;
+  border-bottom-width: 1;
   font-family: "Gamja Flower", cursive;
   width: 80%;
-  height: 2rem;
-  border-radius: 5px;
+  height: 2.3rem;
   font-size: 20px;
   letter-spacing: 2px;
+}
+
+.signupinput:focus {
+  outline: none;
 }
 
 .signup_btn {
@@ -175,7 +182,6 @@ label {
   margin: 0px auto;
   width: 10rem;
 }
-
 
 .id {
   letter-spacing: 10px;
