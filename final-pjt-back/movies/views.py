@@ -48,6 +48,7 @@ def get_movie_data() :
             if not Movie.objects.filter(title = movie['title']).exists() and not Movie.objects.filter(poster_path=movie['poster_path']).exists():
                     # print(movie)
                 movie_data = Movie.objects.create(
+                    ids = movie['id'],
                     title = movie['title'],
                     overview = movie['overview'],
                     release_date = movie['release_date'],
