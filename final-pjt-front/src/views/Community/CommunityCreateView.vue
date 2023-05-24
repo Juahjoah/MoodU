@@ -1,15 +1,31 @@
 <template>
   <div class="create">
     <h1>커뮤니티 게시글 작성</h1>
-    <form>
-      <label for="title"> 제목: </label>
-      <input type="text" id="title" v-model.trim="title" />
-      <br />
-      <label for="content"> 내용 :</label>
-      <textarea type="text" id="content" v-model.trim="content" />
-      <br />
-      <button @click.self.prevent="createCommunity()">제출</button>
-    </form>
+    <div class="createbox">
+      <form @submit.prevent="createCommunity">
+        <div class="createinfo">
+          <label for="title"> 제목: </label>
+          <input
+            type="text"
+            id="title"
+            v-model.trim="title"
+            class="createinput"
+          />
+          <br />
+          <label for="content"> 내용 :</label>
+          <textarea type="text" id="content" v-model.trim="content" />
+        </div>
+        <br />
+        <div id="createbtncenter">
+          <input
+            type="submit"
+            class="create_btn createbbtn"
+            @click.self.prevent="createCommunity()"
+            value="Submit"
+          />
+        </div>
+      </form>
+    </div>
   </div>
 </template>
 
@@ -62,4 +78,77 @@ export default {
 </script>
 
 <style>
+@import url("https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Pangolin&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poor+Story&display=swap");
+</style>
+<style scoped>
+.createbox {
+  font-family: "Poor Story", cursive;
+  /* background-color: floralwhite; */
+  width: 50rem;
+  height: 20rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0px auto;
+}
+
+.createinfo {
+  width: 50rem;
+  margin: 0px auto;
+}
+
+form {
+  display: inline-block;
+}
+
+.createinput {
+  border-left-width: 0;
+  border-right-width: 0;
+  border-top-width: 0;
+  border-bottom-width: 1;
+  font-family: "Gamja Flower", cursive;
+  width: 40rem;
+  height: 1.5rem;
+  margin: 5px auto;
+  font-size: 20px;
+  letter-spacing: 2px;
+}
+
+.createinput:focus {
+  outline: none;
+}
+
+.create_btn {
+  font-family: "Pangolin", cursive;
+  flex: 1 1 auto;
+  margin: 10px;
+  padding: 5px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: black;
+  text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 20px #eee;
+  border-radius: 5px;
+}
+
+.create_btn:hover {
+  background-position: right center; /* change the direction of the change here */
+}
+.createbbtn {
+  background-image: linear-gradient(
+    to right,
+    #b2b0eb 0%,
+    #fefefe 51%,
+    #6e6bd7 100%
+  );
+}
+#createbtncenter {
+  display: flex;
+  text-align: center;
+  width: 10rem;
+  margin: 0px auto;
+}
 </style>
