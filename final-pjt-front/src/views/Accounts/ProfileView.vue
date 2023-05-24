@@ -43,6 +43,7 @@
               >
                 <img class="card-img-top" :src="getPoster" alt="Poster image" />
                 <p>{{ like.title }}</p>
+                <p>{{ like }}</p>
                 {{ like.poster_path }}
               </router-link>
             </div>

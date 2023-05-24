@@ -95,9 +95,9 @@ export default {
         });
     },
   },
-  // created() {
-  //   this.emotionSelect();
-  // },
+  created() {
+    this.loginuseronly();
+  },
 };
 </script>
 
