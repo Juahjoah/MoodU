@@ -90,7 +90,7 @@ export default {
 }
 
 nav {
-  padding: 50px;
+  padding: 2rem 1rem 0 1rem;
   height: 10rem;
 }
 
@@ -104,7 +104,7 @@ nav section {
   /* text-align: justify, :after; */
 }
 .hidiv {
-  height: 10rem;
+  height: 3rem;
 }
 
 .navp {
