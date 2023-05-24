@@ -19,7 +19,7 @@
           >
             <div class="followings">
               <i class="biuser bi-person-hearts"></i>
-              {{ following.username }}
+              <p @click.self.prevent="movieOtherProfile()" > {{ following.username }} </p>
             </div>
           </div>
           <p>팔로워 {{ userData.followers.length }}명</p>
@@ -30,7 +30,7 @@
           >
             <div class="followers">
               <i class="biuser bi-person-heart"></i>
-              {{ follower.username }}
+              <p @click.self.prevent="movieOtherProfile()"> {{ follower.username }} </p>
             </div>
           </div>
         </div>
@@ -73,7 +73,7 @@
           >
             <div class="followings">
               <i class="biuser bi-person-hearts"></i>
-              {{ following.username }}
+              <p @click.self.prevent="movieOtherProfile()" > {{ following.username }} </p>
             </div>
           </div>
           <p>팔로워 {{ userData.followers.length }}명</p>
@@ -84,7 +84,7 @@
           >
             <div class="followers">
               <i class="biuser bi-person-heart"></i>
-              {{ follower.username }}
+              <p @click.self.prevent="movieOtherProfile()"> {{ follower.username }}</p>
             </div>
           </div>
         </div>
@@ -160,6 +160,33 @@ export default {
           console.log(err);
         });
     },
+    setToken() {
+      const token = localStorage.getItem("jwt");
+      const config = {
+        Authorization: `Bearer ${token}`,
+      };
+      return config;
+    },
+    movieOtherProfile() {
+      const user = this.$route.params.username;
+        axios({
+          method: 'post',
+          url: `${API_URL}/accounts/profile/${user}/`,
+          headers: this.setToken()
+        })
+        .then((res)=> {
+          console.log(res.data)
+          if (res.data.username === this.$store.state.user) {
+            alert('본인의 아이디를 클릭하셨네요 ! 본인 프로필로 넘어갑니다.')
+            this.$router.push({name: 'ProfileView', params: {username: this.$store.state.user}})
+          } else {
+            this.$router.push({name: 'ProfileView', params: {username : res.data.username}})
+          }
+        })
+        .catch((err)=> {
+          console.log(err)
+        })
+    }
   },
 
   created() {
@@ -176,7 +203,6 @@ export default {
   justify-content: center;
   width: 80rem;
 } 
-
 
 .myinfo {
   display: flex;
@@ -220,6 +246,7 @@ export default {
   display: inline-block;
 }
 .followers {
+  cursor: pointer;
   width: 7rem;
   display: flex;
   flex-direction: column;
@@ -230,6 +257,7 @@ export default {
   display: inline-block;
 }
 .followings {
+  cursor: pointer;
   width: 7rem;
   display: flex;
   flex-direction: column;

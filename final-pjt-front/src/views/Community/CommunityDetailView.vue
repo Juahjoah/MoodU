@@ -2,7 +2,7 @@
   <div class="communitydetail">
     <p>제목 : {{ community.title }}</p>
     <p>내용 : {{ community.content }}</p>
-    <p @click="movieOtherProfile()">작성자 : {{ community.username }}</p>
+    <p @click.self.prevent="movieOtherProfile()" class="namep"> 작성자 : {{ community.username }}</p>
     <hr />
     <button @click.self.prevent="communityUpdate()">[수정하기]</button>
     <button @click.self.prevent="communityDelete()">[삭제하기]</button>
@@ -101,4 +101,8 @@ export default {
 </script>
 
 <style scoped>
+.namep {
+  cursor: pointer;
+}
+
 </style>
