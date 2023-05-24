@@ -42,6 +42,8 @@
         </div>
       </section>
       <hr />
+      <input type="text" v-model="searchMovie" @keyup.enter="search()">
+
       <div class="hidiv" v-if="!$store.state.user">
         <p align="right">오늘도 모듀와 함께 행복해요.</p>
       </div>
@@ -57,11 +59,26 @@
 
 <script>
 export default {
+  data() {
+    return {
+      searchMovie: null,
+    }
+  },
   methods: {
     logout() {
       this.$store.dispatch("logout");
     },
+    search() {
+      if (this.searchMovie) {
+        this.$router.push({name: 'MovieSearchView', params: {movieTitle : this.searchMovie}}).catch(()=>{})
+
+      } else {
+        alert('검색할 단어를 써주고 검색을 눌러주겠어?')
+        this.$router.push({name: 'MovieView'})
+      }
+    }
   },
+
 };
 </script>
 
