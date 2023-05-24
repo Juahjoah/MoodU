@@ -208,6 +208,7 @@ def like_movie(request, movie_pk):
 
 
 @api_view(['GET'])
+@permission_classes([AllowAny])
 def movie_search(request, movie_title):
     movies = get_list_or_404(Movie)
     serializer = MovieListSerializer(movies, many=True)
@@ -222,4 +223,7 @@ def movie_search(request, movie_title):
         'find_movie': find_movie
     }
 
-    return Response(res)
+    if find_movie:
+        return Response(res)
+    else:
+        return Response(status=status.HTTP_404_NOT_FOUND)
