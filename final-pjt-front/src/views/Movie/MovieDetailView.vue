@@ -14,23 +14,24 @@
         <span v-for="genre in movie.genres" :key="genre.id">
           {{ genre.name }},
         </span>
-        <p v-if="movie.overview" id="overviewp"> {{ movie.overview }} </p>
-        <p v-else> 해당 영화는 줄거리가 제공되지 않습니다. </p>
+        <p v-if="movie.overview" id="overviewp">{{ movie.overview }}</p>
+        <p v-else>해당 영화는 줄거리가 제공되지 않습니다.</p>
       </div>
       <hr />
     </div>
     <span>{{ count }} 명의 모듀러가 해당 영화를 좋아합니다. </span>
-    <br>
+    <br />
     <button class="heart" @click.self.prevent="likeMovie()">❤</button>
 
     <MovieComment />
+    <MovieVideo />
   </div>
 </template>
 
 <script>
 import axios from "axios";
 import MovieComment from "@/components/MovieComment";
-import MovieVideo from '@/components/MovieVideo'
+import MovieVideo from "@/components/MovieVideo";
 
 const API_URL = "http://127.0.0.1:8000";
 

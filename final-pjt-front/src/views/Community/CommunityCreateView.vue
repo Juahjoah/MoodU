@@ -1,21 +1,33 @@
 <template>
   <div class="create">
+    <br />
+    <br />
+    <br />
     <h1>커뮤니티 게시글 작성</h1>
     <div class="createbox">
       <form @submit.prevent="createCommunity">
         <div class="createinfo">
-          <label for="title"> 제목: </label>
+          <label for="title"></label>
           <input
             type="text"
             id="title"
             v-model.trim="title"
             class="createinput"
+            placeholder="제목을 작성해주세요."
           />
           <br />
-          <label for="content"> 내용 :</label>
-          <textarea type="text" id="content" v-model.trim="content" />
+          <label class="arealabel" for="content"></label>
+          <textarea
+            type="text"
+            id="content"
+            v-model.trim="content"
+            class="areainput"
+            wrap="hard"
+            required
+            maxlength="1000"
+            placeholder="1000자 이내로 작성해주세요."
+          />
         </div>
-        <br />
         <div id="createbtncenter">
           <input
             type="submit"
@@ -90,12 +102,13 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0px auto;
+  margin: 5rem auto;
 }
 
 .createinfo {
   width: 50rem;
   margin: 0px auto;
+  position: relative;
 }
 
 form {
@@ -107,8 +120,8 @@ form {
   border-right-width: 0;
   border-top-width: 0;
   border-bottom-width: 1;
-  font-family: "Gamja Flower", cursive;
-  width: 40rem;
+  font-family: "Poor Story", cursive;
+  width: 70%;
   height: 1.5rem;
   margin: 5px auto;
   font-size: 20px;
@@ -116,6 +129,20 @@ form {
 }
 
 .createinput:focus {
+  outline: none;
+}
+
+.areainput {
+  width: 70%;
+  height: 20rem;
+  resize: none;
+  border: 2px solid grey;
+  font-family: "Poor Story", cursive;
+  font-size: 20px;
+  border-radius: 5px;
+}
+
+.areainput:focus {
   outline: none;
 }
 
@@ -150,5 +177,8 @@ form {
   text-align: center;
   width: 10rem;
   margin: 0px auto;
+}
+.arealabel {
+  display: inline-block;
 }
 </style>
