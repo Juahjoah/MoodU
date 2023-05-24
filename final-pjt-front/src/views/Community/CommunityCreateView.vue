@@ -108,10 +108,6 @@ export default {
   position: relative;
 }
 
-form {
-  display: inline-block;
-}
-
 .createinput {
   border-left-width: 0;
   border-right-width: 0;
@@ -174,8 +170,5 @@ form {
   text-align: center;
   width: 10rem;
   margin: 0px auto;
-}
-.arealabel {
-  display: inline-block;
 }
 </style>
