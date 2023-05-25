@@ -92,14 +92,17 @@ export default {
           this.emotionMovie = res.data;
         })
         .catch((err) => {
-          confirm("로그인한 콩알님들만 볼 수 있어요😣!");
-          this.$router.push({ name: "LoginView" });
+          
           console.log(err);
         });
     },
   },
   created() {
     this.loginuseronly();
+    if (!this.$store.state.user) {
+      confirm("로그인한 모듀러들만 볼 수 있어요😣!");
+      this.$router.push({ name: "LoginView" });
+    }
   },
 };
 </script>
