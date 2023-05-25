@@ -76,7 +76,7 @@ export default {
         },
       })
         .then((response) => {
-          this.$router.push({ name: "Community" }).catch(() => {});
+          this.$router.push({ name: "CommunityView" }).catch(() => {});
           console.log(response);
         })
         .catch((error) => {

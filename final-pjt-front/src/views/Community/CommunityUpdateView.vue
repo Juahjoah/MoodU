@@ -63,7 +63,7 @@ export default {
         .then((response) => {
           console.log(response);
           this.$router.push({
-            name: "CommunityDetail",
+            name: "CommunityDetailView",
             params: { id: this.community.id },
           }).catch(() => { });
         })
