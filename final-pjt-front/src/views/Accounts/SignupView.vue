@@ -48,14 +48,14 @@
           />
           <br />
 
-          <label class="name" for="last_name">NAME </label> :
+          <!-- <label class="name" for="last_name">NAME </label> :
           <input
             class="signupinput"
             type="text"
             id="last_name"
             placeholder="Enter Your name"
             v-model="last_name"
-          />
+          /> -->
           <div id="btncenter">
             <input class="signup_btn clickbtn signupbbtn" type="submit" value="Signup" />
           </div>
@@ -84,14 +84,14 @@ export default {
       const username = this.username;
       const password1 = this.password1;
       const password2 = this.password2;
-      const last_name = this.last_name;
+      // const last_name = this.last_name;
       const email = this.email;
 
       const payload = {
         username,
         password1,
         password2,
-        last_name,
+        // last_name,
         email,
       };
 
