@@ -1,21 +1,24 @@
 <template>
   <div class="moviedetail">
     <div>
-      <p id="titlep">{{ movie.title }}</p>
-      <p id="contentp">개봉일: {{ movie.release_date }}</p>
+      <div class="namecontent">
+        <p id="titlep">{{ movie.title }}</p>
+        <p id="contentp">개봉일: {{ movie.release_date }}</p>
+      </div>
       <hr />
       <img align="right" :src="getPoster" />
-
-      <p>인기도: {{ movie.popularity }}</p>
-      <p>평균 점수: {{ movie.vote_average }}</p>
-      <p>투표 수: {{ movie.vote_count }}</p>
-      <div>
-        장르 :
-        <span v-for="genre in movie.genres" :key="genre.id">
-          {{ genre.name }},
-        </span>
-        <p v-if="movie.overview" id="overviewp">{{ movie.overview }}</p>
-        <p v-else>해당 영화는 줄거리가 제공되지 않습니다.</p>
+      <div class="detailcontent">
+        <p>인기도: {{ movie.popularity }}</p>
+        <p>평균 점수: {{ movie.vote_average }}</p>
+        <p>투표 수: {{ movie.vote_count }}</p>
+        <div>
+          장르 :
+          <span v-for="genre in movie.genres" :key="genre.id">
+            {{ genre.name }},
+          </span>
+          <p v-if="movie.overview" id="overviewp">{{ movie.overview }}</p>
+          <p v-else>해당 영화는 줄거리가 제공되지 않습니다.</p>
+        </div>
       </div>
       <hr />
     </div>
@@ -147,5 +150,11 @@ img {
 
 .heart {
   font-size: 20px;
+}
+.detailcontent {
+  padding: 1rem;
+}
+.namecontent {
+  padding: 1rem;
 }
 </style>
