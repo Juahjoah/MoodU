@@ -97,7 +97,7 @@ export default new Vuex.Store({
           }
           context.commit("USER", userData)
 
-          router.push({ name: 'Movie' })
+          router.push({ name: 'MovieView' })
           router.go(0)
         })
         .catch((error) => {
@@ -120,7 +120,8 @@ export default new Vuex.Store({
         alert('이미 로그아웃된 상태예요!')
         router.push({name: 'LoginView'})
       }
-    }
+    },
+
   },
   modules: {
   }

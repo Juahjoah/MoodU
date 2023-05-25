@@ -3,15 +3,15 @@
     <nav class="main_nav">
       <section class="nlogin" v-if="!$store.state.user">
         <div class="boundary1">
-          <router-link :to="{ name: 'Movie' }">
+          <router-link :to="{ name: 'MovieView' }">
             <img
               class="logoimg"
               src="./assets/logo_black_width.png"
               alt="moodU_logo"
             />
           </router-link>
-          <router-link :to="{ name: 'Movie' }">Movie</router-link>
-          <router-link :to="{ name: 'Community' }">Community</router-link>
+          <router-link :to="{ name: 'MovieView' }">Movie</router-link>
+          <router-link :to="{ name: 'CommunityView' }">Community</router-link>
         </div>
         <div class="boundary2">
           <router-link :to="{ name: 'SignupView' }">Sign up</router-link>
@@ -20,7 +20,7 @@
       </section>
       <section class="ylogin" v-else>
         <div class="boundary1">
-          <router-link :to="{ name: 'Movie' }">
+          <router-link :to="{ name: 'MovieView' }">
             <img
             class="logoimg"
             src="./assets/logo_black_width.png"
@@ -28,7 +28,7 @@
             />
           </router-link>
           <router-link to="/">Movie</router-link>
-          <router-link :to="{ name: 'Community' }">Community</router-link>
+          <router-link :to="{ name: 'CommunityView' }">Community</router-link>
         </div>
         <div class="boundary2">
           <a @click="logout">logout</a>
@@ -37,7 +37,7 @@
               name: 'ProfileView',
               params: { username: $store.state.user },
             }"
-            >my profile</router-link
+            @click="profile">my profile</router-link
           >
         </div>
       </section>
@@ -69,6 +69,9 @@ export default {
     logout() {
       this.$store.dispatch("logout");
     },
+    profile() {
+      this.$store.dispatch('profile')
+    }
   },
 };
 </script>
