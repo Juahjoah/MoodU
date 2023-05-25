@@ -131,7 +131,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .profile {
   display: flex;
   flex-wrap: wrap;

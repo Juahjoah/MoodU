@@ -4,8 +4,10 @@ import Vuex from 'vuex'
 import axios from 'axios'
 import createPersistedState from 'vuex-persistedstate'
 import router from '../router'
+import VueCarousel from 'vue-carousel'
 
 Vue.use(Vuex)
+Vue.use(VueCarousel)
 
 const API_URL = 'http://127.0.0.1:8000'
 
@@ -99,7 +101,7 @@ export default new Vuex.Store({
           localStorage.setItem("jwt", response.data.token.accessToken)
           const userData = {
             username: username,
-            token : response.data.token.accessToken
+            token: response.data.token.accessToken
           }
           context.commit("USER", userData)
 
@@ -126,7 +128,7 @@ export default new Vuex.Store({
         router.push({ name: 'MovieView' }).catch(() => { });
       } else {
         alert('이미 로그아웃된 상태예요!')
-        router.push({name: 'LoginView'})
+        router.push({ name: 'LoginView' })
       }
     },
 
