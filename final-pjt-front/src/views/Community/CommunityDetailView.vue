@@ -67,7 +67,7 @@ export default {
     communityUpdate() {
       if (this.$store.state.user == this.community.username) {
         this.$router.push({
-          name: "CommunityUpdate",
+          name: "CommunityUpdateView",
           params: { id: this.community.id },
         });
       } else {
@@ -108,7 +108,10 @@ export default {
               params: { username: this.$store.state.user },
             });
           } else {
-            this.$router.push({name: 'OtherProfileView', params: {username : res.data.username}})
+            this.$router.push({
+              name: "OtherProfileView",
+              params: { username: res.data.username },
+            });
           }
         })
         .catch((err) => {
