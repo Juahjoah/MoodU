@@ -3,14 +3,17 @@
     <section class="user_comment">
       <hr />
       <h3 class="displaytext">여러분은 영화를 어떻게 보셨나요?</h3>
+      <h2>의견을 자유롭게 남겨주세요!</h2>
       <form @submit.prevent="createComment">
-        <input type="text" v-model.trim="comment" />
-        <button @click.self.prevent="createComment">+</button>
+        <input class="commentinput" type="text" v-model.trim="comment" />
+        <button @click.self.prevent="createComment">입력</button>
       </form>
     </section>
     <div v-for="con in contentList" :key="con.id">
       <div class="rgyPostIt">
-        <span>{{ con.content }} | 작성자 {{ con.username }} </span>
+        <span class="commentpost"
+          >{{ con.content }} 📃 작성자 {{ con.username }}
+        </span>
         <button
           @click="commentDelete(con.id)"
           v-if="con.username === $store.state.user"
@@ -110,8 +113,24 @@ export default {
 </script>
 
 <style>
-div.rgyPostIt {
+.commentinput {
+  border-left-width: 0;
+  border-right-width: 0;
+  border-top-width: 0;
+  border-bottom-width: 1;
   width: 70%;
+  height: 1.5rem;
+  margin: 5px auto;
+  font-size: 20px;
+  letter-spacing: 3px;
+  padding-right: 2rem;
+}
+.commentinput:focus {
+  outline: none;
+}
+
+div.rgyPostIt {
+  width: 90%;
   position: relative;
   display: inline-block;
   padding: 20px 45px 20px 15px;
@@ -119,8 +138,8 @@ div.rgyPostIt {
   border: 1px solid #f8f861;
   border-left: 30px solid #f8f861;
   border-bottom-right-radius: 60px 10pxz;
-  font-family: "Nanum Pen Script";
-  font-size: 27px;
+  /* font-family: "Nanum Pen Script"; */
+  font-size: 20px;
   color: #555;
   word-break: break-all;
   background: #ffff88; /* Old browsers */
