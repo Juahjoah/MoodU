@@ -4,10 +4,8 @@ import Vuex from 'vuex'
 import axios from 'axios'
 import createPersistedState from 'vuex-persistedstate'
 import router from '../router'
-import VueCarousel from 'vue-carousel'
 
 Vue.use(Vuex)
-Vue.use(VueCarousel)
 
 const API_URL = 'http://127.0.0.1:8000'
 

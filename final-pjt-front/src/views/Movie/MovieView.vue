@@ -7,17 +7,20 @@
     </div>
     <br /><br /><br />
 
-    <section>
-      <!-- 
-      <section
-        class="moviepic"
-        v-for="(back, index) in backGround"
-        :key="index"
-      >
-        <img :src="back" alt="" />
+    <img class="bannerimg" src="@/assets/movie-banner.png" alt="bannerimg"/>
+   <!--    <section>
+      <div class="styles.bannerBG">
+        <div class="styles.bannerWrapper">
+          <div class="styles.imgWrapper" v-for="(back, index) in backGround"
+          :key="index">
+            <img class="styles.wrapperImg" :src="back" alt="" />
+          </div>
+          </div>
+        </div>
       </section> -->
-    </section>
-    <br /><br /><br /><br />
+
+
+    <br /><br />
 
     <div id="banner">
       <router-link :to="{ name: 'RecommendView' }">
@@ -29,10 +32,10 @@
         <p class="logo">
           <!-- 아래에서 날라옴 -->
         </p>
-        <p class="device">
-          <!-- 제자리에서 사라지기 -->
+        <!-- 제자리에서 사라지기 -->
+        <!-- <p class="device">
           <i class="bi bi-film"></i>
-        </p>
+        </p> -->
         <img
           class="bannerfooter"
           src="@/assets/logo_black_width.png"
@@ -41,7 +44,7 @@
       </router-link>
     </div>
 
-    <br /><br /><br /><br /><br /><br /><br />
+    <br /><br /><br /><br />
     <h1>Movie</h1>
     <section class="movielist">
       <MovieCard v-for="movie in movies" :key="movie.id" :movie="movie" />
@@ -64,9 +67,11 @@ export default {
   components: {
     MovieCard,
   },
+  updated(){
+    this.getBackGround();
+  },
   created() {
     this.getMovies();
-    this.getBackGround();
   },
   methods: {
     getMovies() {
@@ -91,7 +96,7 @@ export default {
       for (let i = 0; i < movies.length; i++) {
         this.backGround[
           i
-        ] = `https://image.tmdb.org/t/p/original${movies[i].backdrop_path}`;
+        ] = `https://image.tmdb.org/t/p/original/${movies[i].backdrop_path}`;
       }
       console.log(this.backGround);
     },
@@ -140,14 +145,16 @@ a {
   color: black;
 }
 
+
 #banner {
   display: inline-flex;
   position: relative;
   overflow: hidden;
   width: 46.25rem;
   height: 10rem;
-  border: 1px solid #ccc;
-  background: hsl(20, 100%, 98%);
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  background: hwb(20 99% 0%);
 }
 
 .focus {
