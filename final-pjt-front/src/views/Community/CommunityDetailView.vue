@@ -2,18 +2,18 @@
   <div class="communitydetail">
     <div class="detailinfo">
       <div class="communityuserinfo">
-        <h2>제목 : {{ community.title }}</h2>
-        <h6 @click.self.prevent="movieOtherProfile()" class="namep">
+        <h3>제목 : {{ community.title }}</h3>
+        <h4 @click.self.prevent="movieOtherProfile()" class="namep">
           작성자 : {{ community.username }}
-        </h6>
+        </h4>
       </div>
       <hr class="insidehr" />
       <div class="communitycontent">
-        내용 :
+        <h3>내용 :</h3>
         <h4 class="communityh4">{{ community.content }}</h4>
       </div>
     </div>
-    <hr />
+    <!-- <hr /> -->
     <button @click.self.prevent="communityUpdate()" class="comebtn">
       수정하기
     </button>
@@ -134,7 +134,7 @@ export default {
   flex-direction: column;
   text-align: left;
   margin: 0px auto;
-  height: 30rem;
+  height: 27rem;
 }
 .communityuserinfo {
   display: flex;
@@ -150,12 +150,11 @@ export default {
   text-align: end;
 }
 .communitycontent {
-  margin: 2rem;
+  margin: 0 2rem;
 }
 .communityh4 {
-  margin: 2rem;
   background-color: beige;
-  border-radius: 20px;
+  /* border-radius: 20px; */
   height: 12rem;
   padding: 2rem;
 }
