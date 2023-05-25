@@ -1,7 +1,9 @@
 <template>
   <div class="otherprofile">
-    <h1>{{ userData.username }}님의 프로필</h1>
     <div class="userinfo">
+      <h1>{{ userData.username }}님의 프로필</h1>
+      <br />
+      <br />
       <div class="basicinfo">
         <div class="userfollow">
           <i class="bi bi-person-circle"></i>
@@ -151,13 +153,6 @@ export default {
   margin: 100px auto 0;
 }
 
-.myinfo {
-  display: flex;
-  flex-direction: column;
-  width: 50rem;
-  height: 80rem;
-  margin: 0px auto;
-}
 .userinfo {
   display: flex;
   flex-direction: column;
@@ -190,6 +185,7 @@ export default {
 .followbox {
   text-align: left;
   width: 30rem;
+  padding: 3rem;
 }
 .followersbox {
   display: inline-block;

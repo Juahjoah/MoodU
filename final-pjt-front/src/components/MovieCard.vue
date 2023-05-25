@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <div class="each-movie-card">
-      <router-link :to="{ name: 'MovieDetail', params: { id: movie.id } }">
+      <router-link :to="{ name: 'MovieDetailView', params: { id: movie.id } }">
         <img class="card-img-top" :src="getPoster" alt="Poster image" />
         <div class="textarea">
           <h3>{{ movie.title }}</h3>
@@ -28,12 +28,12 @@ export default {
 </script>
 
 <style scoped>
-
 @font-face {
-    font-family: 'KimjungchulGothic-Bold';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/KimjungchulGothic-Bold.woff2') format('woff2');
-    font-weight: 700;
-    font-style: normal;
+  font-family: "KimjungchulGothic-Bold";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/KimjungchulGothic-Bold.woff2")
+    format("woff2");
+  font-weight: 700;
+  font-style: normal;
 }
 
 a {
@@ -42,7 +42,7 @@ a {
 }
 
 .card {
-  font-family: 'KimjungchulGothic-Bold';
+  font-family: "KimjungchulGothic-Bold";
   font-size: 15px;
   width: 12rem;
   height: auto;
@@ -53,7 +53,7 @@ a {
   text-align: left;
 }
 
-.each-movie-card{
+.each-movie-card {
   width: 13rem;
   height: auto;
   /* background-color: beige;

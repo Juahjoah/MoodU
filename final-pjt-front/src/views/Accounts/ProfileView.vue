@@ -147,13 +147,7 @@ export default {
   height: 80rem;
   margin: 0px auto;
 }
-.userinfo {
-  display: flex;
-  flex-direction: column;
-  width: 50rem;
-  height: 80rem;
-  margin: 0px auto;
-}
+
 .userfollow {
   display: flex;
   flex-direction: column;
@@ -179,6 +173,7 @@ export default {
 .followbox {
   text-align: left;
   width: 30rem;
+  padding: 3rem;
 }
 .followersbox {
   display: inline-block;
