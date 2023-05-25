@@ -21,7 +21,9 @@
         @keyup.enter.self.prevent="updateCommunity(community)"
       />
       <br />
-      <button @click.self.prevent="updateCommunity(community)">제출</button>
+      <button class="comebtn" @click.self.prevent="updateCommunity(community)">
+        제출하기
+      </button>
     </form>
   </div>
 </template>
@@ -131,5 +133,64 @@ export default {
 }
 .areainput:focus {
   outline: none;
+}
+
+.comebtn {
+  margin: 20px;
+  outline: none;
+}
+.comebtn {
+  width: 100px;
+  height: 40px;
+  padding: 10px 25px;
+  border: 2px solid #000;
+  font-family: "Lato", sans-serif;
+  font-weight: 450;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+}
+.comebtn {
+  background: #000;
+  color: #fff;
+  line-height: 42px;
+  padding: 0;
+  border: none;
+}
+.comebtn:hover {
+  background: transparent;
+  color: #000;
+  box-shadow: -7px -7px 20px 0px #fff9, -4px -4px 5px 0px #fff9,
+    7px 7px 20px 0px #0002, 4px 4px 5px 0px #0001;
+}
+.comebtn:before,
+.comebtn:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 2px;
+  width: 0;
+  background: #000;
+  transition: 400ms ease all;
+}
+.comebtn:after {
+  right: inherit;
+  top: inherit;
+  left: 0;
+  bottom: 0;
+}
+.comebtn:hover:before,
+.comebtn:hover:after {
+  width: 100%;
+  transition: 800ms ease all;
+}
+#createbtncenter {
+  display: flex;
+  text-align: center;
+  width: 10rem;
+  margin: 0px auto;
 }
 </style>

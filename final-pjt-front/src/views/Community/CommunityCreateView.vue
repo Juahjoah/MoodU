@@ -26,12 +26,13 @@
             @keyup.enter.self.prevent="createCommunity()"
           />
         </div>
+        <br />
         <div id="createbtncenter">
           <input
             type="submit"
             class="comebtn createbbtn"
             @click.self.prevent="createCommunity()"
-            value="Submit"
+            value="제출하기"
           />
         </div>
       </form>
