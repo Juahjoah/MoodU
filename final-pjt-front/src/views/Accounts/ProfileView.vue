@@ -19,7 +19,9 @@
           >
             <div class="followings">
               <i class="biuser bi-person-hearts"></i>
-              <p @click.self.prevent="movieOtherProfile()" > {{ following.username }} </p>
+              <p @click.self.prevent="movieOtherProfile()">
+                {{ following.username }}
+              </p>
             </div>
           </div>
           <p>팔로워 {{ userData.followers.length }}명</p>
@@ -30,35 +32,45 @@
           >
             <div class="followers">
               <i class="biuser bi-person-heart"></i>
-              <p @click.self.prevent="movieOtherProfile()"> {{ follower.username }} </p>
+              <p @click.self.prevent="movieOtherProfile()">
+                {{ follower.username }}
+              </p>
             </div>
           </div>
         </div>
         <div class="likemovie">
           <p>내가 좋아요 한 영화 개수 : {{ userData.like_movies.length }}</p>
           <section class="movielist">
-            <ProfileMovie v-for="(like, index) in userData.like_movies" :key="index" :like="like" />
+            <ProfileMovie
+              v-for="(like, index) in userData.like_movies"
+              :key="index"
+              :like="like"
+            />
           </section>
-          </div>
         </div>
       </div>
+    </div>
   </div>
 </template>
 
 <script>
 import axios from "axios";
+import ProfileMovie from "@/components/ProfileMovie.vue";
 
 const API_URL = "http://127.0.0.1:8000";
 const token = localStorage.getItem("jwt");
 
 export default {
   name: "ProfileView",
+  components: {
+    ProfileMovie,
+  },
   data() {
     return {
       userData: [],
       username: null,
-      followMsg: '팔로우',
-      context : {}
+      followMsg: "팔로우",
+      context: {},
     };
   },
   methods: {
@@ -81,7 +93,7 @@ export default {
         });
     },
     followingUser() {
-      console.log(this.userData.id)
+      console.log(this.userData.id);
       axios({
         method: "post",
         url: `${API_URL}/accounts/${this.userData.id}/follow/`,
@@ -94,7 +106,7 @@ export default {
           if (res.data.is_followed) {
             this.followMsg = "팔로우 취소";
           } else {
-            this.followMsg = '팔로우'
+            this.followMsg = "팔로우";
           }
           this.getUserData();
         })
@@ -109,7 +121,6 @@ export default {
       };
       return config;
     },
-    
   },
 
   created() {
@@ -126,8 +137,8 @@ export default {
   flex-wrap: wrap;
   justify-content: center;
   width: 80rem;
-  margin-top: 100px;
-} 
+  margin: 100px auto 0;
+}
 
 .myinfo {
   display: flex;
@@ -136,13 +147,7 @@ export default {
   height: 80rem;
   margin: 0px auto;
 }
-.userinfo {
-  display: flex;
-  flex-direction: column;
-  width: 50rem;
-  height: 80rem;
-  margin: 0px auto;
-}
+
 .userfollow {
   display: flex;
   flex-direction: column;
@@ -168,6 +173,7 @@ export default {
 .followbox {
   text-align: left;
   width: 30rem;
+  padding: 3rem;
 }
 .followersbox {
   display: inline-block;
@@ -203,6 +209,4 @@ export default {
   width: 50rem;
   margin: 0px auto;
 }
-
-
 </style>
