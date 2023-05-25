@@ -21,6 +21,6 @@ class UserSerializer(serializers.ModelSerializer):
     followings = followingSerializer(read_only = True, many =True)
     class Meta:
         model = get_user_model()
-        fields = ('id', 'username', 'last_name', 'email', 'followings', 'followers', 'like_movies')
+        fields = ('id', 'username', 'last_name', 'email', 'followings', 'followers', 'like_movies', 'password')
         # fields = '__all__'
         read_only_fields = ('followings', 'like_movies')
