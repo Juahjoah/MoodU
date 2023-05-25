@@ -12,8 +12,17 @@
             class="followbtn"
             @click.self.prevent="followingUser()"
             data-text=""
+            v-if="followMsg"
           >
-            {{ followMsg }}
+          팔로우 취소
+          </button>
+          <button
+            type="button"
+            class="followbtn"
+            @click.self.prevent="followingUser()"
+            data-text=""
+            v-else
+          > 팔로우
           </button>
         </div>
         <div class="idemail">
@@ -83,7 +92,7 @@ export default {
     return {
       userData: [],
       username: null,
-      followMsg: "팔로우",
+      followMsg: false,
       context: {},
     };
   },
@@ -100,12 +109,21 @@ export default {
         .then((res) => {
           console.log(res.data);
           this.userData = res.data;
+          this.followMsg = false
+          const myname = this.$store.state.user
+          this.userData.followers.forEach(follower => {
+            if (follower.username === myname) {
+              this.followMsg = true
+              return ;
+            }
+          });
         })
         .catch((err) => {
           console.log(err);
         });
     },
     followingUser() {
+
       console.log(this.userData.id);
       axios({
         method: "post",
@@ -116,12 +134,16 @@ export default {
       })
         .then((res) => {
           console.log(res);
-          if (res.data.is_followed) {
-            this.followMsg = "팔로우 취소";
-          } else {
-            this.followMsg = "팔로우";
-          }
-          this.getUserData();
+          this.userData = res.data;
+          this.followMsg = false
+            const myname = this.$store.state.user
+          this.userData.followers.forEach(follower => {
+            if (follower.username === myname) {
+              this.followMsg = true
+              return
+            }
+          });
+          // this.getUserData();
         })
         .catch((err) => {
           console.log(err);
