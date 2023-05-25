@@ -6,7 +6,9 @@
     </article>
     <br />
     <hr />
-    <router-link class="createbtn" :to="{ name: 'CommunityCreateView' }">CREATE</router-link>
+    <router-link class="createbtn" :to="{ name: 'CommunityCreateView' }"
+      >CREATE</router-link
+    >
   </div>
 </template>
 
@@ -65,8 +67,6 @@ a {
   text-decoration: none;
 }
 
-
-
 .createbtn {
   margin: 20px;
   outline: none;
@@ -76,7 +76,7 @@ a {
   height: 40px;
   padding: 10px 25px;
   border: 2px solid #000;
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   font-weight: 450;
   background: transparent;
   cursor: pointer;
@@ -94,33 +94,29 @@ a {
 .createbtn:hover {
   background: transparent;
   color: #000;
-   box-shadow:
-   -7px -7px 20px 0px #fff9,
-   -4px -4px 5px 0px #fff9,
-   7px 7px 20px 0px #0002,
-   4px 4px 5px 0px #0001;
+  box-shadow: -7px -7px 20px 0px #fff9, -4px -4px 5px 0px #fff9,
+    7px 7px 20px 0px #0002, 4px 4px 5px 0px #0001;
 }
 .createbtn:before,
-.createbtn:after{
-  content:'';
-  position:absolute;
-  top:0;
-  right:0;
-  height:2px;
-  width:0;
+.createbtn:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 2px;
+  width: 0;
   background: #000;
-  transition:400ms ease all;
+  transition: 400ms ease all;
 }
-.createbtn:after{
-  right:inherit;
-  top:inherit;
-  left:0;
-  bottom:0;
+.createbtn:after {
+  right: inherit;
+  top: inherit;
+  left: 0;
+  bottom: 0;
 }
 .createbtn:hover:before,
-.createbtn:hover:after{
-  width:100%;
-  transition:800ms ease all;
+.createbtn:hover:after {
+  width: 100%;
+  transition: 800ms ease all;
 }
-
 </style>
