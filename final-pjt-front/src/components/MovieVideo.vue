@@ -4,7 +4,12 @@
     <div>
       <p v-if="videoMsg">{{ videoMsg }}</p>
       <p v-else>
-        <iframe :src="videoURL" frameborder="0"></iframe>
+        <iframe
+          :width="720"
+          :height="480"
+          :src="videoURL"
+          frameborder="0"
+        ></iframe>
       </p>
     </div>
   </div>
@@ -17,6 +22,7 @@ export default {
   props: {
     movieId: Number,
   },
+  components: {},
   data() {
     return {
       videoKey: null,

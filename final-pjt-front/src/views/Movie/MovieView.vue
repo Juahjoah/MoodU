@@ -5,12 +5,18 @@
         <input type="text" v-model="searchMovie" @keyup.enter="search()" />
       </i>
     </div>
-    <br /><br /><br /><br />
+    <br /><br /><br />
 
-    <section class="moviepic" v-for="(back, index) in backGround" :key="index">
-      <img :src="back" alt="">
+    <section>
+      <!-- 
+      <section
+        class="moviepic"
+        v-for="(back, index) in backGround"
+        :key="index"
+      >
+        <img :src="back" alt="" />
+      </section> -->
     </section>
-
     <br /><br /><br /><br />
 
     <div id="banner">
@@ -35,7 +41,7 @@
       </router-link>
     </div>
 
-    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <br /><br /><br /><br /><br /><br /><br />
     <h1>Movie</h1>
     <section class="movielist">
       <MovieCard v-for="movie in movies" :key="movie.id" :movie="movie" />
@@ -52,7 +58,7 @@ export default {
   data() {
     return {
       movies: null,
-      backGround : []
+      backGround: [],
     };
   },
   components: {
@@ -60,7 +66,7 @@ export default {
   },
   created() {
     this.getMovies();
-    this.getBackGround()
+    this.getBackGround();
   },
   methods: {
     getMovies() {
@@ -81,17 +87,19 @@ export default {
       }
     },
     getBackGround() {
-      const movies = this.$store.state.movies
-      for (let i=0; i<movies.length; i++){
-        this.backGround[i] = `https://image.tmdb.org/t/p/original${movies[i].backdrop_path}`
+      const movies = this.$store.state.movies;
+      for (let i = 0; i < movies.length; i++) {
+        this.backGround[
+          i
+        ] = `https://image.tmdb.org/t/p/original${movies[i].backdrop_path}`;
       }
-      console.log(this.backGround)
-    }
+      console.log(this.backGround);
+    },
   },
 };
 </script>
 
-<style scoped>
+<style sccoped>
 * {
   font-family: "TheJamsil5Bold";
 }
@@ -104,12 +112,12 @@ input {
   border-radius: 3px;
   margin-left: 0.5rem;
 }
-i {
+.bi {
   font-size: 0.9rem;
 }
 .searchbox {
   float: right;
-  margin-right: 10rem;
+  margin-right: 20rem;
 }
 
 .moviepic {
