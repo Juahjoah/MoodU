@@ -53,14 +53,14 @@ export default new Vuex.Store({
       const username = payload.username
       const password1 = payload.password1
       const password2 = payload.password2
-      const last_name = payload.last_name
+      // const last_name = payload.last_name
       const email = payload.email
 
       axios({
         method: 'post',
         url: `${API_URL}/accounts/signup/`,
         data: {
-          username, password1, password2, last_name, email
+          username, password1, password2, email
         }
       })
         .then(() => {
@@ -97,7 +97,7 @@ export default new Vuex.Store({
           }
           context.commit("USER", userData)
 
-          router.push({ name: 'Movie' })
+          router.push({ name: 'MovieView' })
           router.go(0)
         })
         .catch((error) => {
@@ -120,7 +120,8 @@ export default new Vuex.Store({
         alert('이미 로그아웃된 상태예요!')
         router.push({name: 'LoginView'})
       }
-    }
+    },
+
   },
   modules: {
   }

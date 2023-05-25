@@ -11,38 +11,39 @@ import CommunityUpdateView from '../views/Community/CommunityUpdateView.vue'
 import ProfileView from '../views/Accounts/ProfileView.vue'
 import RecommendView from '@/views/Movie/RecommendView'
 import MovieSearchView from '@/views/Movie/MovieSearchView'
+import OtherProfileView from '@/views/Accounts/OtherProfileView'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'Movie',
+    name: 'MovieView',
     component: MovieView
   },
   {
     path: '/:id',
-    name: 'MovieDetail',
+    name: 'MovieDetailView',
     component: MovieDetailView
   },
   {
     path: '/community',
-    name: 'Community',
+    name: 'CommunityView',
     component: CommunityView
   },
   {
     path: '/community/create',
-    name: 'CommunityCreate',
+    name: 'CommunityCreateView',
     component: CommunityCreateView
   },
   {
     path: '/community/:id',
-    name: 'CommunityDetail',
+    name: 'CommunityDetailView',
     component: CommunityDetailView
   },
   {
     path: '/community/:id/update',
-    name: 'CommunityUpdate',
+    name: 'CommunityUpdateView',
     component: CommunityUpdateView
   },
   {
@@ -69,6 +70,12 @@ const routes = [
     path: '/search/:movieTitle',
     name: 'MovieSearchView',
     component: MovieSearchView,
+  },
+  {
+    path: '/profile/other/:username',
+    name: 'OtherProfileView',
+    component: OtherProfileView
+
   }
 
 ]
