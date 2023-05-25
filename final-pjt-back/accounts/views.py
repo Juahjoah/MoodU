@@ -89,10 +89,6 @@ def follow(request, user_pk):
             person.followers.add(user)
             is_followed = True
 
-        context = {
-            'is_followed': is_followed,
-            'followers_count': person.followers.count(),
-            'followings_count': person.followings.count(),
-        }
+        you = UserSerializer(person)
         # print(context)
-        return Response(context)
+        return Response(you.data)
