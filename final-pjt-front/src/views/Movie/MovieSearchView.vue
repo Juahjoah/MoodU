@@ -8,6 +8,7 @@
       value=""
     />
     <div v-if="noMovie">
+      <b></b>
       {{ noMovie }}
     </div>
     <div v-else>
@@ -101,7 +102,7 @@ img {
   flex-wrap: nowrap;
 }
 .sermovie {
-  margin: 1rem;
+  margin: 2rem;
 }
 img {
   width: 13rem;

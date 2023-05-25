@@ -4,10 +4,10 @@
       <router-link :to="{ name: 'MovieDetail', params: { id: movie.id } }">
         <img class="card-img-top" :src="getPoster" alt="Poster image" />
         <p>제목 : {{ movie.title }}</p>
-        장르 :
+        <!-- 장르 :
         <span v-for="genre in movie.genres" :key="genre.id"
           >{{ genre.name }},</span
-        >
+        > -->
       </router-link>
     </div>
   </div>
