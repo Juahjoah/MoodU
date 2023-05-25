@@ -2,10 +2,24 @@
   <div class="moviedetail">
     <div>
       <div class="namecontent">
-        <p id="titlep">{{ movie.title }}</p>
-        <p id="contentp">개봉일: {{ movie.release_date }}</p>
+        <div>
+          <p id="titlep">{{ movie.title }}</p>
+          <br />
+          <p id="contentp">개봉일: {{ movie.release_date }}</p>
+
+          <div class="like">
+            <button
+              class="heart btn-3d clickbtn"
+              @click.self.prevent="likeMovie()"
+              data-text="💖 좋아요"
+            ></button>
+            <h6 class="h6style">
+              {{ count }} 명의 모듀러가 해당 영화를 좋아합니다.
+            </h6>
+          </div>
+        </div>
       </div>
-      <hr />
+      <hr class="dotted" />
       <img align="right" :src="getPoster" />
       <div class="detailcontent">
         <p>인기도: {{ movie.popularity }}</p>
@@ -21,11 +35,8 @@
         </div>
       </div>
       <hr />
+      <MovieVideo :movieId="movie.ids" />
     </div>
-    <span>{{ count }} 명의 모듀러가 해당 영화를 좋아합니다. </span>
-    <br />
-    <MovieVideo :movieId="movie.ids" />
-    <button class="heart" @click.self.prevent="likeMovie()">💟❤</button>
 
     <MovieComment />
   </div>
@@ -147,14 +158,56 @@ img {
 #overviewp {
   font-size: 14px;
 }
-
-.heart {
-  font-size: 20px;
+.like {
+  display: flex;
+  justify-content: space-between;
+}
+.dotted {
+  border-bottom: 1px dotted black;
 }
 .detailcontent {
   padding: 1rem;
 }
 .namecontent {
   padding: 1rem;
+}
+
+.clickbtn {
+  margin: 0.7rem;
+  /* display: flex; */
+}
+
+.btn-3d::after {
+  content: attr(data-text);
+}
+.btn-3d {
+  font-family: "TheJamsil5Bold";
+  width: 8rem;
+  height: 3rem;
+  position: relative;
+  display: inline-block;
+  font-size: 13px;
+  margin: 20px 10px 10px;
+  border-radius: 6px;
+  transition: top 0.01s linear;
+  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.15);
+}
+.btn-3d.clickbtn:hover {
+  background-color: #e6d3ed;
+}
+
+.btn-3d:active {
+  top: 9px;
+}
+/* 3D button colors */
+.btn-3d.clickbtn {
+  background-color: #e6d3ed;
+  box-shadow: 0 0 0 1px #f8eded inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset,
+    0 8px 0 0 #b2b0eb, 0 8px 0 1px rgba(0, 0, 0, 0.4),
+    0 8px 8px 1px rgba(0, 0, 0, 0.5);
+}
+.btn-3d.clickbtn:active {
+  box-shadow: 0 0 0 1px #f8eded inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset,
+    0 0 0 1px rgba(0, 0, 0, 0.4);
 }
 </style>
