@@ -16,6 +16,7 @@ class Movie(models.Model):
     vote_average = models.FloatField()
     overview = models.TextField()
     poster_path = models.CharField(max_length=200)
+    backdrop_path = models.CharField(max_length=200)
     # movie와 genres M:N table
     genres = models.ManyToManyField(Genre)
 
