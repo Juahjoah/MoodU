@@ -1,17 +1,16 @@
 <template>
   <div class="card">
     <div class="each-movie-card">
-    <router-link :to="{ name: 'MovieDetail', params: { id: like.id } }">
-      <img class="card-img-top" :src="getPoster" alt="Poster image" />
-      <p class="hovertext" data-hover="More information" />
-      <p>{{ like.title }}</p>
-    </router-link>
+      <router-link :to="{ name: 'MovieDetail', params: { id: like.id } }">
+        <img class="card-img-top" :src="getPoster" alt="Poster image" />
+        <p class="hovertext" data-hover="More information" />
+        <p>{{ like.title }}</p>
+      </router-link>
     </div>
   </div>
 </template>
   
 <script>
-
 export default {
   name: "ProfileMovie",
   props: {
@@ -27,7 +26,6 @@ export default {
 </script>
 
 <style scoped>
-
 a {
   color: #42b983;
   text-decoration: none;
