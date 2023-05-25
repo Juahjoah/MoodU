@@ -58,10 +58,10 @@ export default {
       const content = this.content;
 
       if (!title) {
-        confirm("제목 입력해주세요");
+        confirm("제목을 입력해주세요");
         return;
       } else if (!content) {
-        confirm("내용 입력해주세요");
+        confirm("내용을 입력해주세요");
         return;
       }
       const token = localStorage.getItem("jwt");

@@ -71,11 +71,11 @@ export default {
           params: { id: this.community.id },
         });
       } else {
-        alert("본인이 작성한 글만 수정이 가능합니다.");
+        alert("본인이 작성한 글만 수정이 가능해요!");
       }
     },
     communityDelete() {
-      if (confirm("정말 삭제하시겠습니까?")) {
+      if (confirm("정말 삭제하실건가요?")) {
         axios({
           method: "delete",
           url: `${API_URL}/community/${this.$route.params.id}/`,
@@ -102,7 +102,7 @@ export default {
         .then((res) => {
           console.log(res.data);
           if (res.data.username === this.$store.state.user) {
-            alert("본인의 아이디를 클릭하셨네요 ! 본인 프로필로 넘어갑니다.");
+            alert("본인의 아이디를 클릭하셨네요 ! 본인 프로필로 이동해요");
             this.$router.push({
               name: "ProfileView",
               params: { username: this.$store.state.user },
