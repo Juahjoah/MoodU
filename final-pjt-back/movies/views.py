@@ -68,8 +68,8 @@ def get_movie_data() :
 # 전체 영화 list 전송
 @api_view(['GET'])
 def index(request):
-    get_movie_genre()
-    get_movie_data()
+    # get_movie_genre()
+    # get_movie_data()
     movies = get_list_or_404(Movie)
     serializer = MovieListSerializer(movies, many=True)
     return Response(serializer.data)
