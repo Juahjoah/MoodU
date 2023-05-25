@@ -55,6 +55,7 @@ def get_movie_data() :
                     vote_count = movie['vote_count'],
                     vote_average = movie['vote_average'],
                     poster_path = movie['poster_path'],
+                    backdrop_path = movie['backdrop_path']
                 )
                 genre_ids = movie['genre_ids']
                 genres = Genre.objects.filter(id__in = genre_ids)

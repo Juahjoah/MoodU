@@ -7,7 +7,9 @@
     </div>
     <br /><br /><br /><br />
 
-    <section class="moviepic"></section>
+    <section class="moviepic" v-for="(back, index) in backGround" :key="index">
+      <img :src="back" alt="">
+    </section>
 
     <br /><br /><br /><br />
 
@@ -43,12 +45,14 @@
 
 <script>
 import MovieCard from "@/components/MovieCard.vue";
+// import axios from 'axios';
 
 export default {
   name: "MovieView",
   data() {
     return {
       movies: null,
+      backGround : []
     };
   },
   components: {
@@ -56,6 +60,7 @@ export default {
   },
   created() {
     this.getMovies();
+    this.getBackGround()
   },
   methods: {
     getMovies() {
@@ -75,6 +80,13 @@ export default {
         this.$router.push({ name: "MovieView" });
       }
     },
+    getBackGround() {
+      const movies = this.$store.state.movies
+      for (let i=0; i<movies.length; i++){
+        this.backGround[i] = `https://image.tmdb.org/t/p/original${movies[i].backdrop_path}`
+      }
+      console.log(this.backGround)
+    }
   },
 };
 </script>
