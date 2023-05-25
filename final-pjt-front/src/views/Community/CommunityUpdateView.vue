@@ -1,12 +1,25 @@
 <template>
   <div class="communityupdateview">
     <h1>커뮤니티 게시글 수정</h1>
-    <form>
+    <br />
+    <form class="updateinfo">
       <label for="title"> 제목: </label>
-      <input type="text" id="title" v-model.trim="community.title" />
+      <input
+        type="text"
+        id="title"
+        class="updateinput"
+        v-model.trim="community.title"
+      />
       <br />
-      <label for="content"> 내용 :</label>
-      <textarea type="text" id="content" v-model.trim="community.content" />
+      <label class="arealabel" for="content"> 내용 :</label>
+      <textarea
+        class="areainput"
+        required
+        type="text"
+        id="content"
+        v-model.trim="community.content"
+        @keyup.enter.self.prevent="updateCommunity(community)"
+      />
       <br />
       <button @click.self.prevent="updateCommunity(community)">제출</button>
     </form>
@@ -62,10 +75,12 @@ export default {
       })
         .then((response) => {
           console.log(response);
-          this.$router.push({
-            name: "CommunityDetail",
-            params: { id: this.community.id },
-          }).catch(() => { });
+          this.$router
+            .push({
+              name: "CommunityDetail",
+              params: { id: this.community.id },
+            })
+            .catch(() => {});
         })
         .catch((error) => {
           console.log(error);
@@ -79,4 +94,42 @@ export default {
 </script>
 
 <style>
+.communityupdateview {
+  margin-top: 100px;
+}
+
+.updateinfo {
+  width: 50rem;
+  margin: 0px auto;
+  position: relative;
+}
+
+.updateinput {
+  border-left-width: 0;
+  border-right-width: 0;
+  border-top-width: 0;
+  border-bottom-width: 1;
+  font-family: "Poor Story", cursive;
+  width: 70%;
+  height: 1.5rem;
+  margin: 5px auto;
+  font-size: 20px;
+  letter-spacing: 2px;
+}
+.updateinput:focus {
+  outline: none;
+}
+
+.areainput {
+  width: 70%;
+  height: auto;
+  resize: none;
+  border: 2px solid grey;
+  font-family: "Poor Story", cursive;
+  font-size: 20px;
+  border-radius: 5px;
+}
+.areainput:focus {
+  outline: none;
+}
 </style>
