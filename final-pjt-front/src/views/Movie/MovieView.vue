@@ -76,7 +76,7 @@ export default {
           })
           .catch(() => {});
       } else {
-        alert("검색할 단어를 써주고 검색을 눌러주겠어?");
+        alert("검색할 단어를 써주고 검색을 눌러주세요!");
         this.$router.push({ name: "MovieView" });
       }
     },
