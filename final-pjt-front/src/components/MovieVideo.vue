@@ -1,10 +1,11 @@
 <template>
-  <div>
+  <div class="movievideo">
     <button @click="getVideo()">유튜브 영상보기</button>
     <div>
       <p v-if="videoMsg">{{ videoMsg }}</p>
       <p v-else>
         <iframe
+          class="youtubemovie"
           :width="720"
           :height="480"
           :src="videoURL"
@@ -69,4 +70,18 @@ export default {
 </script>
 
 <style>
+.movievideo {
+  margin-top: 4rem;
+  right: 50%;
+  left: 50%;
+  /* content-visibility: ; */
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center; */
+  width: 40rem;
+}
+
+.youtubemovie {
+  margin: 0 auto;
+}
 </style>

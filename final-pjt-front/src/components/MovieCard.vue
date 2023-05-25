@@ -44,8 +44,8 @@ a {
 .card {
   font-family: "KimjungchulGothic-Bold";
   font-size: 15px;
-  width: 12rem;
-  height: auto;
+  /* width: 12rem; */
+  /* height: auto; */
   margin: 20px;
   position: relative;
 }

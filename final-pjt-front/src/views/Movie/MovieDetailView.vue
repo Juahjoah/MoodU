@@ -20,7 +20,7 @@
         </div>
       </div>
       <hr class="dotted" />
-      <img align="right" :src="getPoster" />
+      <img align="left" :src="getPoster" />
       <div class="detailcontent">
         <p>인기도: {{ movie.popularity }}</p>
         <p>평균 점수: {{ movie.vote_average }}</p>
@@ -35,9 +35,8 @@
         </div>
       </div>
       <hr />
-      <MovieVideo :movieId="movie.ids" />
     </div>
-
+    <MovieVideo :movieId="movie.ids" />
     <MovieComment />
   </div>
 </template>
@@ -139,8 +138,9 @@ export default {
 }
 
 img {
-  width: 18em;
+  width: 12em;
   padding: 0.7rem;
+  margin: 1rem;
 }
 
 #titlep {

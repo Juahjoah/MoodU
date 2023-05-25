@@ -75,7 +75,6 @@ const routes = [
     path: '/profile/other/:username',
     name: 'OtherProfileView',
     component: OtherProfileView
-
   }
 
 ]
