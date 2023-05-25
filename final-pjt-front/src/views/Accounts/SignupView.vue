@@ -170,6 +170,7 @@ label {
 
 .signup_btn {
   width: 9rem;
+  height: 2.5rem;
   position: relative;
   display: inline-block;
   font-size: 17px;
