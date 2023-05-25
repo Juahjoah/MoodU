@@ -105,8 +105,8 @@ export default new Vuex.Store({
           }
           context.commit("USER", userData)
 
-          router.go(0)
           router.push({ name: 'MovieView' })
+          router.go(0)
         })
         .catch((error) => {
           console.log(error)
@@ -124,8 +124,8 @@ export default new Vuex.Store({
       if (username) {
         localStorage.removeItem('jwt')
         context.commit('LOGOUT')
-        router.go(0)
         router.push({ name: 'MovieView' }).catch(() => { });
+        router.go(0)
       } else {
         alert('이미 로그아웃된 상태예요!')
         router.push({ name: 'LoginView' })
