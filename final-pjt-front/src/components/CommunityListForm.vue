@@ -2,26 +2,31 @@
   <div class="CommunityListForm">
     <table class="communitytable">
       <tr>
-        <th>   게시글 번호   </th>
-        <th>   제목   </th>
-        <th>   작성자   </th>
-        <th>   작성일   </th>
+        <th>게시글 번호</th>
+        <th>제목</th>
+        <th>작성자</th>
+        <th>작성일</th>
       </tr>
       <tr
         class="communitylist"
         v-for="(community, idx) in communities"
         :key="idx"
-        
       >
-        <td @click.self.prevent="CommunityDetail(community)">{{ community.id }}</td>
-        <td @click.self.prevent="CommunityDetail(community)"
+        <td @click.self.prevent="CommunityDetail(community)">
+          {{ community.id }}
+        </td>
+        <td
+          @click.self.prevent="CommunityDetail(community)"
           class="articletitle"
-          
         >
           {{ community.title }}
-        </td >
-        <td @click.self.prevent="CommunityDetail(community)">{{ community.username }}</td>
-        <td @click.self.prevent="CommunityDetail(community)">{{ community.created_at }}</td>
+        </td>
+        <td @click.self.prevent="CommunityDetail(community)">
+          {{ community.username }}
+        </td>
+        <td @click.self.prevent="CommunityDetail(community)">
+          {{ community.created_at }}
+        </td>
       </tr>
     </table>
   </div>
@@ -36,7 +41,7 @@ export default {
   methods: {
     CommunityDetail(community) {
       this.$router.push({
-        name: "CommunityDetail",
+        name: "CommunityDetailView",
         params: { id: community.id },
       });
     },
@@ -48,7 +53,6 @@ export default {
 * {
   font-size: 15px;
 }
-
 
 .communitytable {
   margin: 20px auto 0px auto;
@@ -66,7 +70,7 @@ export default {
 }
 
 .communitytable th {
-  background-color: #AFAEAB;
+  background-color: #afaeab;
   font-size: 1.1em;
   color: #fff;
   border-width: 2px 0;
