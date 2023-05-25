@@ -92,7 +92,6 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Poor+Story&display=swap");
 </style>
 <style scoped>
-
 .create {
   margin-top: 100px;
 }
@@ -154,7 +153,7 @@ export default {
   height: 40px;
   padding: 10px 25px;
   border: 2px solid #000;
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   font-weight: 450;
   background: transparent;
   cursor: pointer;
@@ -172,33 +171,30 @@ export default {
 .comebtn:hover {
   background: transparent;
   color: #000;
-   box-shadow:
-   -7px -7px 20px 0px #fff9,
-   -4px -4px 5px 0px #fff9,
-   7px 7px 20px 0px #0002,
-   4px 4px 5px 0px #0001;
+  box-shadow: -7px -7px 20px 0px #fff9, -4px -4px 5px 0px #fff9,
+    7px 7px 20px 0px #0002, 4px 4px 5px 0px #0001;
 }
 .comebtn:before,
-.comebtn:after{
-  content:'';
-  position:absolute;
-  top:0;
-  right:0;
-  height:2px;
-  width:0;
+.comebtn:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 2px;
+  width: 0;
   background: #000;
-  transition:400ms ease all;
+  transition: 400ms ease all;
 }
-.comebtn:after{
-  right:inherit;
-  top:inherit;
-  left:0;
-  bottom:0;
+.comebtn:after {
+  right: inherit;
+  top: inherit;
+  left: 0;
+  bottom: 0;
 }
 .comebtn:hover:before,
-.comebtn:hover:after{
-  width:100%;
-  transition:800ms ease all;
+.comebtn:hover:after {
+  width: 100%;
+  transition: 800ms ease all;
 }
 #createbtncenter {
   display: flex;
