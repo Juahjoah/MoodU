@@ -1,13 +1,29 @@
 <template>
   <div class="communitydetail">
-    <p>제목 : {{ community.title }}</p>
-    <p>내용 : {{ community.content }}</p>
-    <p @click.self.prevent="movieOtherProfile()" class="namep"> 작성자 : {{ community.username }}</p>
+    <div class="detailinfo">
+      <div class="communityuserinfo">
+        <h2>제목 : {{ community.title }}</h2>
+        <h6 @click.self.prevent="movieOtherProfile()" class="namep">
+          작성자 : {{ community.username }}
+        </h6>
+      </div>
+      <hr class="insidehr" />
+      <div class="communitycontent">
+        내용 :
+        <h4 class="communityh4">{{ community.content }}</h4>
+      </div>
+    </div>
     <hr />
-    <button @click.self.prevent="communityUpdate()" class="comebtn">수정하기</button>
-    <button @click.self.prevent="communityDelete()" class="comebtn">삭제하기</button>
+    <button @click.self.prevent="communityUpdate()" class="comebtn">
+      수정하기
+    </button>
+    <button @click.self.prevent="communityDelete()" class="comebtn">
+      삭제하기
+    </button>
 
-    <router-link :to="{name : 'CommunityView'}" class="comebtn">뒤로가기</router-link>
+    <router-link :to="{ name: 'CommunityView' }" class="comebtn"
+      >뒤로가기</router-link
+    >
   </div>
 </template>
 
@@ -15,7 +31,7 @@
 import axios from "axios";
 
 const API_URL = "http://127.0.0.1:8000";
-const token = localStorage.getItem('jwt')
+const token = localStorage.getItem("jwt");
 
 export default {
   name: "CommunityDetailView",
@@ -66,7 +82,7 @@ export default {
           headers: this.setToken(),
         })
           .then(() => {
-            this.$router.push({ name: "Community" });
+            this.$router.push({ name: "CommunityView" });
           })
           .catch((error) => {
             console.log(error);
@@ -75,42 +91,77 @@ export default {
     },
     // 다른 사람의 프로필로 이동
     movieOtherProfile() {
-      const user = this.community.username
-        axios({
-          method: 'post',
-          url: `${API_URL}/accounts/profile/${user}/`,
-          headers: {
-            Authorization: `Bearer ${token}`,
-          }
-        })
-        .then((res)=> {
-          console.log(res.data)
+      const user = this.community.username;
+      axios({
+        method: "post",
+        url: `${API_URL}/accounts/profile/${user}/`,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+        .then((res) => {
+          console.log(res.data);
           if (res.data.username === this.$store.state.user) {
-            alert('본인의 아이디를 클릭하셨네요 ! 본인 프로필로 넘어갑니다.')
-            this.$router.push({name: 'ProfileView', params: {username: this.$store.state.user}})
+            alert("본인의 아이디를 클릭하셨네요 ! 본인 프로필로 넘어갑니다.");
+            this.$router.push({
+              name: "ProfileView",
+              params: { username: this.$store.state.user },
+            });
           } else {
-            this.$router.push({name: 'ProfileView', params: {username : res.data.username}})
+            this.$router.push({
+              name: "ProfileView",
+              params: { username: res.data.username },
+            });
           }
         })
-        .catch((err)=> {
-          console.log(err)
-        })
-    }
+        .catch((err) => {
+          console.log(err);
+        });
+    },
   },
 };
 </script>
 
 <style scoped>
 .communitydetail {
-  margin-top: 100px ;
+  margin-top: 100px;
 }
-
+.detailinfo {
+  width: 70rem;
+  background-color: #fcfbf6;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  margin: 0px auto;
+  height: 30rem;
+}
+.communityuserinfo {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 2rem;
+}
+.insidehr {
+  width: 95%;
+  border-top: 1px dotted gray;
+}
 .namep {
   cursor: pointer;
+  text-align: end;
+}
+.communitycontent {
+  margin: 2rem;
+}
+.communityh4 {
+  margin: 2rem;
+  background-color: beige;
+  border-radius: 20px;
+  height: 12rem;
+  padding: 2rem;
 }
 a {
   text-decoration: none;
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   font-size: 14px;
 }
 
@@ -123,7 +174,7 @@ a {
   height: 40px;
   padding: 10px 25px;
   border: 2px solid #000;
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   font-weight: 450;
   background: transparent;
   cursor: pointer;
@@ -141,34 +192,29 @@ a {
 .comebtn:hover {
   background: transparent;
   color: #000;
-   box-shadow:
-   -7px -7px 20px 0px #fff9,
-   -4px -4px 5px 0px #fff9,
-   7px 7px 20px 0px #0002,
-   4px 4px 5px 0px #0001;
+  box-shadow: -7px -7px 20px 0px #fff9, -4px -4px 5px 0px #fff9,
+    7px 7px 20px 0px #0002, 4px 4px 5px 0px #0001;
 }
 .comebtn:before,
-.comebtn:after{
-  content:'';
-  position:absolute;
-  top:0;
-  right:0;
-  height:2px;
-  width:0;
+.comebtn:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 2px;
+  width: 0;
   background: #000;
-  transition:400ms ease all;
+  transition: 400ms ease all;
 }
-.comebtn:after{
-  right:inherit;
-  top:inherit;
-  left:0;
-  bottom:0;
+.comebtn:after {
+  right: inherit;
+  top: inherit;
+  left: 0;
+  bottom: 0;
 }
 .comebtn:hover:before,
-.comebtn:hover:after{
-  width:100%;
-  transition:800ms ease all;
+.comebtn:hover:after {
+  width: 100%;
+  transition: 800ms ease all;
 }
-
-
 </style>
