@@ -68,6 +68,9 @@ export default {
     this.getMoviesDetail();
     this.getLikeCount();
   },
+  mounted() {
+
+  },
 
   methods: {
     // 영화 상세 정보 가져오기
