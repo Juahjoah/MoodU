@@ -21,11 +21,10 @@
     </div>
     <span>{{ count }} 명의 모듀러가 해당 영화를 좋아합니다. </span>
     <br />
-    <MovieVideo :movieId="movie.ids"/>
-    <button class="heart" @click.self.prevent="likeMovie()">❤</button>
+    <MovieVideo :movieId="movie.ids" />
+    <button class="heart" @click.self.prevent="likeMovie()">💟❤</button>
 
     <MovieComment />
-
   </div>
 </template>
 
