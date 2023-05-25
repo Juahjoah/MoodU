@@ -53,8 +53,8 @@ export default new Vuex.Store({
     },
     signup(context, payload) {
       const username = payload.username
-      const password1 = payload.password1
-      const password2 = payload.password2
+      const password = payload.password1
+      const password1 = payload.password2
       // const last_name = payload.last_name
       const email = payload.email
 
@@ -62,7 +62,7 @@ export default new Vuex.Store({
         method: 'post',
         url: `${API_URL}/accounts/signup/`,
         data: {
-          username, password1, password2, email
+          username, password, password1, email
         }
       })
         .then(() => {
@@ -71,11 +71,17 @@ export default new Vuex.Store({
           router.push({ name: 'LoginView' })
 
         })
-        .catch((error) => {
-          if (error.response.status === 400) {
-            alert('중복 ID 입니다. ID를 변경해주세요.')
+        .catch((err) => {
+          if (err.response.status === 401) {
+            alert('비밀번호가 달라요...')
           }
-          console.log(error)
+          else if (err.response.status === 405) {
+            alert('비밀번호를 작성해 주세요!')
+          }
+          else if (err.response.status === 400) {
+            alert('이미 존재하는 아이디예요...')
+          }
+          console.log(err)
         })
     },
     login(context, payload) {
@@ -104,8 +110,10 @@ export default new Vuex.Store({
         })
         .catch((error) => {
           console.log(error)
-          if (error.response.status === 404) {
-            alert('확인되지 않은 사용자입니다. 다시 한 번 확인해주세요!')
+          if (error.response.status === 500) {
+            alert('아이디가 없어요! 제대로 된 아이디를 입력하거나 회원가입 먼저 진행해 주세요 :)')
+          } else if (error.response.status === 400) {
+            alert('비밀번호가 틀렸어요. 다시 확인해주세요 :)')
           }
         })
     },
@@ -116,8 +124,8 @@ export default new Vuex.Store({
       if (username) {
         localStorage.removeItem('jwt')
         context.commit('LOGOUT')
-        router.go(0)
         router.push({ name: 'MovieView' }).catch(() => { });
+        router.go(0)
       } else {
         alert('이미 로그아웃된 상태예요!')
         router.push({ name: 'LoginView' })

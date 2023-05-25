@@ -64,7 +64,7 @@ export default {
             console.log(err);
           });
       } else {
-        alert("댓글을 쓰고 제출을 해주겠어? ^^");
+        alert("댓글을 쓰고 제출을 해주세요!");
       }
     },
 
