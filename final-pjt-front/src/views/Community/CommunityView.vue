@@ -6,7 +6,7 @@
     </article>
     <br />
     <hr />
-    <router-link class="createbtn" :to="{ name: 'CommunityCreate' }">CREATE</router-link>
+    <router-link class="createbtn" :to="{ name: 'CommunityCreateView' }">CREATE</router-link>
   </div>
 </template>
 

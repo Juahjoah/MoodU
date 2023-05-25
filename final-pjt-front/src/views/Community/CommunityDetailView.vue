@@ -66,7 +66,7 @@ export default {
           headers: this.setToken(),
         })
           .then(() => {
-            this.$router.push({ name: "Community" });
+            this.$router.push({ name: "CommunityView" });
           })
           .catch((error) => {
             console.log(error);
@@ -89,7 +89,7 @@ export default {
             alert('본인의 아이디를 클릭하셨네요 ! 본인 프로필로 넘어갑니다.')
             this.$router.push({name: 'ProfileView', params: {username: this.$store.state.user}})
           } else {
-            this.$router.push({name: 'ProfileView', params: {username : res.data.username}})
+            this.$router.push({name: 'OtherProfileView', params: {username : res.data.username}})
           }
         })
         .catch((err)=> {
