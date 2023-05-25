@@ -1,14 +1,15 @@
 <template>
   <div class="community">
-    <h1>여러분의 생각을 들려주세요.</h1>
-    <article>
-      <CommunityListForm :communities="communities" />
-    </article>
-    <br />
-    <hr />
-    <router-link class="createbtn" :to="{ name: 'CommunityCreateView' }"
-      >CREATE</router-link
-    >
+    <div class="communitybox">
+      <br />
+      <h1>여러분의 생각을 들려주세요.</h1>
+      <article>
+        <CommunityListForm :communities="communities" />
+      </article>
+      <router-link class="createbtn" :to="{ name: 'CommunityCreateView' }"
+        >CREATE</router-link
+      >
+    </div>
   </div>
 </template>
 
@@ -60,11 +61,23 @@ export default {
 </script>
 
 <style scoped>
+h1 {
+  /* background-color: beige; */
+  margin: 2rem auto;
+  width: 50%;
+}
 .community {
   margin: 100px auto 0;
 }
 a {
   text-decoration: none;
+}
+.communitybox {
+  background-color: #fcfbf6;
+  width: 70%;
+  margin: 2rem auto;
+  height: 30rem;
+  border-radius: 5px;
 }
 
 .createbtn {

@@ -2,10 +2,10 @@
   <div class="CommunityListForm">
     <table class="communitytable">
       <tr>
-        <th>게시글 번호</th>
-        <th>제목</th>
-        <th>작성자</th>
-        <th>작성일</th>
+        <th class="table1">게시글 번호</th>
+        <th class="table2">제목</th>
+        <th class="table3">작성자</th>
+        <th class="table4">작성일</th>
       </tr>
       <tr
         class="communitylist"
@@ -54,19 +54,25 @@ export default {
   font-size: 15px;
 }
 
-.communitytable {
+table {
   margin: 20px auto 0px auto;
   display: inline-block;
+  width: 70%;
+  border-collapse: separate;
+  border-spacing: 20px;
+}
+.table2 {
+  width: 20rem;
 }
 
 .communitytable,
 .communitytable th,
 .communitytable td {
-  border: 1px solid gray;
   border-width: 1px 0;
   border-collapse: collapse;
   text-align: center;
-  padding: 8px;
+  padding: 10px;
+  width: auto;
 }
 
 .communitytable th {
