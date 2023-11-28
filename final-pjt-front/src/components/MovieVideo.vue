@@ -43,7 +43,7 @@ export default {
         url: `https://api.themoviedb.org/3/movie/${this.movieId}/videos`,
         params: {
           language: "ko-KR",
-          api_key: "***REMOVED***",
+          api_key: `${API_KEY}`,
         },
       })
         .then((res) => {
