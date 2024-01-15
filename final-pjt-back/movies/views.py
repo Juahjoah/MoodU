@@ -18,7 +18,7 @@ def get_movie_genre() :
     url = "https://api.themoviedb.org/3/genre/movie/list"
     params = {
         'language': 'ko-KR',
-        'api_key': '***REMOVED***'
+        'api_key': api_key
     }
 
     response = requests.get(url, params = params).json()
@@ -35,7 +35,7 @@ def get_movie_data() :
         params = {
             'language':'ko-KR',
             'page': i,
-            'api_key': '***REMOVED***'
+            'api_key': api_key
         }
 
         movies = requests.get(URL, params=params).json()
